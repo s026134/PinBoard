@@ -22,7 +22,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrw-He-Zws">
-                                <rect key="frame" x="137" y="665" width="140" height="36"/>
+                                <rect key="frame" x="137" y="660" width="140" height="36"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Create Account"/>
                                 <connections>
@@ -40,7 +40,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="z86-VF-7vY" firstAttribute="top" secondItem="nrw-He-Zws" secondAttribute="bottom" constant="50" id="2mG-Qr-hKZ"/>
+                            <constraint firstItem="z86-VF-7vY" firstAttribute="top" secondItem="nrw-He-Zws" secondAttribute="bottom" constant="55" id="2mG-Qr-hKZ"/>
                             <constraint firstItem="vZV-9C-8aQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="Lgo-B5-5DP"/>
                             <constraint firstItem="nrw-He-Zws" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gaO-6I-Eo3"/>
                             <constraint firstItem="z86-VF-7vY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i0k-wk-1jz"/>
