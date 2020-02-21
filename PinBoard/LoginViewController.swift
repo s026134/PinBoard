@@ -1,22 +1,20 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  PinBoard
 //
-//  Created by Alexis Duong (student LM) on 2/19/20.
+//  Created by Ethan Blum (student LM) on 2/21/20.
 //  Copyright © 2020 Alexis Duong (student LM). All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print ("hello world")
+
+       
     }
 
 
 }
-

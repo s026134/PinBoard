@@ -110,6 +110,7 @@
 				A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */,
 				A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */,
 				A0DEA25423FD64CA00EAE1D9 /* ViewController.swift */,
+				3FADC76024002C0E00481AFE /* LoginViewController.swift */,
 				A0DEA25623FD64CA00EAE1D9 /* Main.storyboard */,
 				9ECE3D21240026AF004EDEFE /* SignUpViewController.swift */,
 				9ECE3D23240026F8004EDEFE /* PreferencesViewController.swift */,
