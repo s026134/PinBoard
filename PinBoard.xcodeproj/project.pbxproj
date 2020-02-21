@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9ECE3D22240026AF004EDEFE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECE3D21240026AF004EDEFE /* SignUpViewController.swift */; };
+		9ECE3D24240026F8004EDEFE /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECE3D23240026F8004EDEFE /* PreferencesViewController.swift */; };
+		9ECE3D2624002D6B004EDEFE /* GoogleService-Info .plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ECE3D2524002D6B004EDEFE /* GoogleService-Info .plist */; };
+		9ECE3D2724002D6B004EDEFE /* GoogleService-Info .plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ECE3D2524002D6B004EDEFE /* GoogleService-Info .plist */; };
+		9ECE3D2824002D6B004EDEFE /* GoogleService-Info .plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ECE3D2524002D6B004EDEFE /* GoogleService-Info .plist */; };
 		A0DEA25123FD64CA00EAE1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */; };
 		A0DEA25323FD64CA00EAE1D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */; };
 		A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25423FD64CA00EAE1D9 /* ViewController.swift */; };
@@ -35,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9ECE3D21240026AF004EDEFE /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		9ECE3D23240026F8004EDEFE /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		9ECE3D2524002D6B004EDEFE /* GoogleService-Info .plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info .plist"; sourceTree = "<group>"; };
 		A0DEA24D23FD64CA00EAE1D9 /* PinBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,8 +111,11 @@
 				A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */,
 				A0DEA25423FD64CA00EAE1D9 /* ViewController.swift */,
 				A0DEA25623FD64CA00EAE1D9 /* Main.storyboard */,
+				9ECE3D21240026AF004EDEFE /* SignUpViewController.swift */,
+				9ECE3D23240026F8004EDEFE /* PreferencesViewController.swift */,
 				A0DEA25923FD64D100EAE1D9 /* Assets.xcassets */,
 				A0DEA25B23FD64D100EAE1D9 /* LaunchScreen.storyboard */,
+				9ECE3D2524002D6B004EDEFE /* GoogleService-Info .plist */,
 				A0DEA25E23FD64D100EAE1D9 /* Info.plist */,
 			);
 			path = PinBoard;
@@ -235,6 +246,7 @@
 				A0DEA25D23FD64D100EAE1D9 /* LaunchScreen.storyboard in Resources */,
 				A0DEA25A23FD64D100EAE1D9 /* Assets.xcassets in Resources */,
 				A0DEA25823FD64CA00EAE1D9 /* Main.storyboard in Resources */,
+				9ECE3D2624002D6B004EDEFE /* GoogleService-Info .plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ECE3D2724002D6B004EDEFE /* GoogleService-Info .plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ECE3D2824002D6B004EDEFE /* GoogleService-Info .plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ECE3D24240026F8004EDEFE /* PreferencesViewController.swift in Sources */,
 				A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */,
 				A0DEA25123FD64CA00EAE1D9 /* AppDelegate.swift in Sources */,
+				9ECE3D22240026AF004EDEFE /* SignUpViewController.swift in Sources */,
 				A0DEA25323FD64CA00EAE1D9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
