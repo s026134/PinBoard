@@ -144,10 +144,10 @@
             </objects>
             <point key="canvasLocation" x="-2113" y="1023"/>
         </scene>
-        <!--View Controller-->
+        <!--Home Screen View Controller-->
         <scene sceneID="gU6-wR-reZ">
             <objects>
-                <viewController id="7IJ-Xz-bRS" customClass="ViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7IJ-Xz-bRS" customClass="HomeScreenViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qtK-yo-nDg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,10 +159,10 @@
             </objects>
             <point key="canvasLocation" x="-1020" y="1023"/>
         </scene>
-        <!--View Controller-->
+        <!--Post Screen View Controller-->
         <scene sceneID="AWO-v5-qRv">
             <objects>
-                <viewController id="wMo-8o-miN" customClass="ViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wMo-8o-miN" customClass="PostScreenViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gaE-U5-TEk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
