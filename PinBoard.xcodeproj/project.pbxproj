@@ -20,6 +20,8 @@
 		A0DEA25D23FD64D100EAE1D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DEA25B23FD64D100EAE1D9 /* LaunchScreen.storyboard */; };
 		A0DEA26823FD64D200EAE1D9 /* PinBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA26723FD64D200EAE1D9 /* PinBoardTests.swift */; };
 		A0DEA27323FD64D200EAE1D9 /* PinBoardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA27223FD64D200EAE1D9 /* PinBoardUITests.swift */; };
+		A0DEA2832404B88000EAE1D9 /* DashBoardEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA2822404B88000EAE1D9 /* DashBoardEventsViewController.swift */; };
+		A0DEA2852404B8B400EAE1D9 /* CreateEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA2842404B8B400EAE1D9 /* CreateEventsViewController.swift */; };
 		DF8462922403777100F50205 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8462912403777100F50205 /* HomeScreenViewController.swift */; };
 		DF8462942403788400F50205 /* PostScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8462932403788400F50205 /* PostScreenViewController.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +61,8 @@
 		A0DEA26E23FD64D200EAE1D9 /* PinBoardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinBoardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DEA27223FD64D200EAE1D9 /* PinBoardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinBoardUITests.swift; sourceTree = "<group>"; };
 		A0DEA27423FD64D200EAE1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0DEA2822404B88000EAE1D9 /* DashBoardEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardEventsViewController.swift; sourceTree = "<group>"; };
+		A0DEA2842404B8B400EAE1D9 /* CreateEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventsViewController.swift; sourceTree = "<group>"; };
 		DF8462912403777100F50205 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		DF8462932403788400F50205 /* PostScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +127,8 @@
 				A0DEA25E23FD64D100EAE1D9 /* Info.plist */,
 				DF8462912403777100F50205 /* HomeScreenViewController.swift */,
 				DF8462932403788400F50205 /* PostScreenViewController.swift */,
+				A0DEA2822404B88000EAE1D9 /* DashBoardEventsViewController.swift */,
+				A0DEA2842404B8B400EAE1D9 /* CreateEventsViewController.swift */,
 			);
 			path = PinBoard;
 			sourceTree = "<group>";
@@ -280,7 +286,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ECE3D24240026F8004EDEFE /* PreferencesViewController.swift in Sources */,
+				A0DEA2852404B8B400EAE1D9 /* CreateEventsViewController.swift in Sources */,
 				A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */,
+				A0DEA2832404B88000EAE1D9 /* DashBoardEventsViewController.swift in Sources */,
 				DF8462942403788400F50205 /* PostScreenViewController.swift in Sources */,
 				A0DEA25123FD64CA00EAE1D9 /* AppDelegate.swift in Sources */,
 				9ECE3D22240026AF004EDEFE /* SignUpViewController.swift in Sources */,
