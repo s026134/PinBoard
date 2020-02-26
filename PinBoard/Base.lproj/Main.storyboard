@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -54,17 +55,68 @@
             </objects>
             <point key="canvasLocation" x="-2113" y="248"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="dhq-Cm-uSR">
             <objects>
-                <viewController id="JtD-sn-Men" sceneMemberID="viewController">
+                <viewController id="JtD-sn-Men" customClass="SignUpViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xqX-j4-k8w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRI-DF-zBg">
+                                <rect key="frame" x="50" y="80" width="134" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ht-iO-kUO">
+                                <rect key="frame" x="50" y="124" width="314" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aoa-It-hP7">
+                                <rect key="frame" x="50" y="178" width="94.5" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aUS-Nz-HqD">
+                                <rect key="frame" x="50" y="222" width="314" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szG-u3-8XS">
+                                <rect key="frame" x="172.5" y="727" width="69" height="36"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Sign up"/>
+                                <connections>
+                                    <action selector="signUpButtonTouchedUp:" destination="JtD-sn-Men" eventType="touchUpInside" id="3zX-uf-Shp"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pRI-DF-zBg" firstAttribute="leading" secondItem="3Ht-iO-kUO" secondAttribute="leading" id="20c-wa-3z7"/>
+                            <constraint firstItem="Aoa-It-hP7" firstAttribute="top" secondItem="3Ht-iO-kUO" secondAttribute="bottom" constant="20" id="7Ug-g3-bNQ"/>
+                            <constraint firstItem="pRI-DF-zBg" firstAttribute="leading" secondItem="t3y-nS-ume" secondAttribute="leading" constant="50" id="Chk-Wc-gJt"/>
+                            <constraint firstItem="3Ht-iO-kUO" firstAttribute="trailing" secondItem="aUS-Nz-HqD" secondAttribute="trailing" id="J7J-n5-JuX"/>
+                            <constraint firstItem="3Ht-iO-kUO" firstAttribute="centerX" secondItem="xqX-j4-k8w" secondAttribute="centerX" id="XUl-Wu-pm1"/>
+                            <constraint firstItem="aUS-Nz-HqD" firstAttribute="top" secondItem="Aoa-It-hP7" secondAttribute="bottom" constant="20" id="azD-6y-zyL"/>
+                            <constraint firstItem="Aoa-It-hP7" firstAttribute="leading" secondItem="aUS-Nz-HqD" secondAttribute="leading" id="be6-s7-Tej"/>
+                            <constraint firstItem="3Ht-iO-kUO" firstAttribute="top" secondItem="pRI-DF-zBg" secondAttribute="bottom" constant="20" id="fqa-Kd-Whz"/>
+                            <constraint firstItem="3Ht-iO-kUO" firstAttribute="leading" secondItem="Aoa-It-hP7" secondAttribute="leading" id="tJC-3O-Rdl"/>
+                            <constraint firstItem="t3y-nS-ume" firstAttribute="bottom" secondItem="szG-u3-8XS" secondAttribute="bottom" constant="45" id="ucL-l3-XMi"/>
+                            <constraint firstItem="pRI-DF-zBg" firstAttribute="top" secondItem="t3y-nS-ume" secondAttribute="top" constant="80" id="vU6-Cr-vB2"/>
+                            <constraint firstItem="aUS-Nz-HqD" firstAttribute="centerX" secondItem="szG-u3-8XS" secondAttribute="centerX" id="xN6-nQ-6kH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="t3y-nS-ume"/>
                     </view>
                     <navigationItem key="navigationItem" id="RIW-v0-7V2"/>
+                    <connections>
+                        <outlet property="emailAddress" destination="3Ht-iO-kUO" id="t2e-ta-lsS"/>
+                        <outlet property="password" destination="aUS-Nz-HqD" id="mHV-4X-F99"/>
+                        <outlet property="signUpButton" destination="szG-u3-8XS" id="Wfy-Pd-vfQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2za-IU-iw1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,7 +154,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtM-sx-SPb">
                                 <rect key="frame" x="50" y="94" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePH-c1-HlR">
                                 <rect key="frame" x="50" y="148" width="94.5" height="24"/>
@@ -113,7 +165,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Crj-Qi-QkE">
                                 <rect key="frame" x="50" y="192" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ekd-QA-V1q">
                                 <rect key="frame" x="182" y="697" width="50" height="36"/>
@@ -404,13 +456,36 @@
             </objects>
             <point key="canvasLocation" x="145" y="1811"/>
         </scene>
-        <!--View Controller-->
+        <!--Preferences View Controller-->
         <scene sceneID="qwU-Ge-CJx">
             <objects>
-                <viewController id="VN8-0F-FDV" customClass="ViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VN8-0F-FDV" customClass="PreferencesViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EV8-iW-QXR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LC0-rb-caf">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fvB-m8-7gi">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="A7m-0r-2JZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yeQ-x8-X9U">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="46c-sP-9Ms"/>
                     </view>
