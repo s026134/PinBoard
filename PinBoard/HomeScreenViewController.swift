@@ -8,13 +8,20 @@
 
 import UIKit
 
-class HomeScreenViewController: UIViewController {
+class HomeScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var feedTableView: UITableView!
+    @IBOutlet weak var feedImageView: UIImageView!
+    @IBOutlet weak var feedDescription: UITextView!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
     
 
     /*

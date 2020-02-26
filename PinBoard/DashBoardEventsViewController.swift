@@ -9,7 +9,13 @@
 import UIKit
 
 class DashBoardEventsViewController: UIViewController {
-
+    @IBOutlet weak var mainTableView: UITableView!
+    
+    @IBOutlet weak var mainCell: UITableViewCell!
+    
+    @IBOutlet weak var eventTableView: UITableView!
+    @IBOutlet weak var eventCell: UITableViewCell!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

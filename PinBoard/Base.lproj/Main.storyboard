@@ -137,10 +137,10 @@
             </objects>
             <point key="canvasLocation" x="-2113" y="2676"/>
         </scene>
-        <!--View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="Wby-BV-SCW">
             <objects>
-                <viewController id="bmf-B8-Yg7" customClass="ViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bmf-B8-Yg7" customClass="LogInViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uKc-oQ-5Tl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,6 +171,9 @@
                                 <rect key="frame" x="182" y="697" width="50" height="36"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButton:" destination="bmf-B8-Yg7" eventType="touchUpInside" id="FLy-up-UvT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -191,6 +194,10 @@
                         <viewLayoutGuide key="safeArea" id="p3J-AC-muT"/>
                     </view>
                     <navigationItem key="navigationItem" id="vJD-fY-2TP"/>
+                    <connections>
+                        <outlet property="emailAddress" destination="OtM-sx-SPb" id="b7C-Vp-7kR"/>
+                        <outlet property="password" destination="Crj-Qi-QkE" id="yDQ-7m-jYk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gn-yZ-qMF" sceneMemberID="firstResponder"/>
             </objects>
@@ -247,6 +254,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="cLj-GB-7Db"/>
                     </view>
+                    <connections>
+                        <outlet property="feedDescription" destination="X2X-Lt-1bv" id="88G-4o-4Nq"/>
+                        <outlet property="feedImageView" destination="p0t-3R-YdM" id="m0Z-R4-wux"/>
+                        <outlet property="feedTableView" destination="cif-5e-uvL" id="8qn-mm-N9R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXv-nq-Hgv" sceneMemberID="firstResponder"/>
             </objects>
@@ -260,37 +272,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7u-X0-JmG">
-                                <rect key="frame" x="309" y="771" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wm6-Ju-KKj">
-                                <rect key="frame" x="20" y="107" width="97" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title of Event" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C5v-NB-acJ">
+                                <rect key="frame" x="40" y="117" width="244" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Xs-9i-m9j">
-                                <rect key="frame" x="20" y="167" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Feb-OI-kaH">
-                                <rect key="frame" x="20" y="228" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5Zk-RF-avB">
-                                <rect key="frame" x="0.0" y="321" width="414" height="162"/>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="a5V-fa-Xgf">
+                                <rect key="frame" x="-1" y="186" width="414" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba8-Qk-KmC">
+                                <rect key="frame" x="40" y="159" width="112" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Location" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YxC-wN-qrS">
+                                <rect key="frame" x="39" y="364" width="245" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kY0-gn-oGs">
+                                <rect key="frame" x="311" y="840" width="70" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add event"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UlR-EN-oiw">
+                                <rect key="frame" x="27" y="424" width="342" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="HdP-dW-MPg"/>
                     </view>
+                    <connections>
+                        <outlet property="description" destination="UlR-EN-oiw" id="HXL-bT-vgR"/>
+                        <outlet property="eventTitle" destination="C5v-NB-acJ" id="eF2-R5-NJm"/>
+                        <outlet property="location" destination="YxC-wN-qrS" id="vnM-3N-5Y9"/>
+                        <outlet property="postDatePicker" destination="a5V-fa-Xgf" id="Omd-3K-9GT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zlb-9L-cC1" sceneMemberID="firstResponder"/>
             </objects>
@@ -387,6 +414,12 @@
                         <viewLayoutGuide key="safeArea" id="xP4-No-Bbl"/>
                     </view>
                     <navigationItem key="navigationItem" id="sXH-Es-3qr"/>
+                    <connections>
+                        <outlet property="eventCell" destination="ldZ-9a-lWX" id="YmF-nw-22v"/>
+                        <outlet property="eventTableView" destination="kCh-cW-Fvc" id="Fyy-fd-Mjf"/>
+                        <outlet property="mainCell" destination="zNp-EG-HZp" id="Qat-qC-df7"/>
+                        <outlet property="mainTableView" destination="QPv-Q1-piT" id="IbM-aH-Vek"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wu-vN-9BU" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="iXq-lG-E07"/>
