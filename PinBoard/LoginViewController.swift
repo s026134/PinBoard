@@ -14,6 +14,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var emailAddress: UITextField!
     
     @IBAction func loginButton(_ sender: UIButton) {
+        print("hello")
     }
     
     override func viewDidLoad() {
