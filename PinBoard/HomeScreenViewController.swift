@@ -8,7 +8,16 @@
 
 import UIKit
 
-class HomeScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeScreenViewController: UIViewController {
+    //UITableViewDataSource, UITableViewDelegate
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        <#code#>
+//    }
+    
     
     @IBOutlet weak var feedTableView: UITableView!
     @IBOutlet weak var feedImageView: UIImageView!

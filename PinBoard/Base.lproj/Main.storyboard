@@ -255,8 +255,6 @@
                         <viewLayoutGuide key="safeArea" id="cLj-GB-7Db"/>
                     </view>
                     <connections>
-                        <outlet property="feedDescription" destination="X2X-Lt-1bv" id="88G-4o-4Nq"/>
-                        <outlet property="feedImageView" destination="p0t-3R-YdM" id="m0Z-R4-wux"/>
                         <outlet property="feedTableView" destination="cif-5e-uvL" id="8qn-mm-N9R"/>
                     </connections>
                 </viewController>
@@ -313,7 +311,7 @@
                         <viewLayoutGuide key="safeArea" id="HdP-dW-MPg"/>
                     </view>
                     <connections>
-                        <outlet property="description" destination="UlR-EN-oiw" id="HXL-bT-vgR"/>
+                        <outlet property="Descrip" destination="UlR-EN-oiw" id="yjH-nJ-vgD"/>
                         <outlet property="eventTitle" destination="C5v-NB-acJ" id="eF2-R5-NJm"/>
                         <outlet property="location" destination="YxC-wN-qrS" id="vnM-3N-5Y9"/>
                         <outlet property="postDatePicker" destination="a5V-fa-Xgf" id="Omd-3K-9GT"/>
@@ -415,9 +413,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="sXH-Es-3qr"/>
                     <connections>
-                        <outlet property="eventCell" destination="ldZ-9a-lWX" id="YmF-nw-22v"/>
-                        <outlet property="eventTableView" destination="kCh-cW-Fvc" id="Fyy-fd-Mjf"/>
-                        <outlet property="mainCell" destination="zNp-EG-HZp" id="Qat-qC-df7"/>
                         <outlet property="mainTableView" destination="QPv-Q1-piT" id="IbM-aH-Vek"/>
                     </connections>
                 </viewController>

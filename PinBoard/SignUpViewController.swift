@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             password.becomeFirstResponder()
         }
         else{
-            passwordTextField.resignFirstResponder()
+            password.resignFirstResponder()
             signUpButton.isEnabled = true
         }
         
@@ -40,7 +40,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             if let _ = user{
                 print("user created")
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                changeRequest?.displayName = userName
+                changeRequest?.displayName = email
                 changeRequest?.commitChanges(completion: { (error) in
                     print ("couldn't change name")
                 })

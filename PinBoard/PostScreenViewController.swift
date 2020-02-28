@@ -12,7 +12,10 @@ class PostScreenViewController: UIViewController {
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var postDatePicker: UIDatePicker!
     @IBOutlet weak var location: UITextField!
-    @IBOutlet weak var description: UITextView!
+    
+    @IBOutlet weak var Descrip: UITextView!
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
