@@ -46,6 +46,7 @@
 /* Begin PBXFileReference section */
 		31DE605BE4E589D48F3DDB1D /* Pods_PinBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C902BE30E254A3FE29623C /* Pods-PinBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinBoard.release.xcconfig"; path = "Target Support Files/Pods-PinBoard/Pods-PinBoard.release.xcconfig"; sourceTree = "<group>"; };
+		3F93F9A1240D39580061FCDD /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Login.storyboard; path = "/Users/s017139/Desktop/Comp Sci Seminar/Final Project/PinBoard/PinBoard/Login.storyboard"; sourceTree = "<absolute>"; };
 		9ECE3D21240026AF004EDEFE /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9ECE3D23240026F8004EDEFE /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		A03158C32409767E000CFF41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 				A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */,
 				A0DEA25423FD64CA00EAE1D9 /* ViewController.swift */,
 				A0DEA25623FD64CA00EAE1D9 /* Main.storyboard */,
+				3F93F9A1240D39580061FCDD /* Login.storyboard */,
 				9ECE3D21240026AF004EDEFE /* SignUpViewController.swift */,
 				9ECE3D23240026F8004EDEFE /* PreferencesViewController.swift */,
 				A0DEA25923FD64D100EAE1D9 /* Assets.xcassets */,
