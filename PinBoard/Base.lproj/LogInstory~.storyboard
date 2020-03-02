@@ -35,7 +35,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="1fh-mO-9aj" kind="show" id="2sn-US-PUB"/>
+                                    <segue destination="UZ2-xD-l5M" kind="show" id="2sn-US-PUB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -488,13 +488,32 @@
             </objects>
             <point key="canvasLocation" x="-1020" y="2676"/>
         </scene>
-        <!--LogInstory-->
-        <scene sceneID="x3o-Vo-sOZ">
+        <!--View Controller-->
+        <scene sceneID="c5i-HB-dJO">
             <objects>
-                <viewControllerPlaceholder storyboardName="LogInstory" id="1fh-mO-9aj" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="WRN-H6-qPe"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VfH-sH-Wat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="UZ2-xD-l5M" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EtR-sk-FlA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIS-fi-84p">
+                                <rect key="frame" x="184" y="778" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAS-QE-BaE">
+                                <rect key="frame" x="93" y="215" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="J38-qw-iK0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mbd-wK-XZf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gwe-VR-hZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2113" y="964"/>
         </scene>
