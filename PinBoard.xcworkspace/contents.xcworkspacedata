@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/s017139/Desktop/Comp Sci Seminar/Final Project/PinBoard/PinBoard/LogInstory.storyboard">
-   </FileRef>
-   <FileRef
       location = "group:PinBoard.xcodeproj">
    </FileRef>
    <FileRef

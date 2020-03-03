@@ -137,6 +137,22 @@
             </objects>
             <point key="canvasLocation" x="-2113" y="2676"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="2C0-Gq-PYj">
+            <objects>
+                <viewController id="uf1-az-DCz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xm0-Tk-efb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="G5D-1c-LCi"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LNR-IA-7hw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MLC-xN-V6O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2104" y="999"/>
+        </scene>
         <!--Home Screen View Controller-->
         <scene sceneID="gU6-wR-reZ">
             <objects>
@@ -487,16 +503,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wa7-Mu-JK4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1020" y="2676"/>
-        </scene>
-        <!--LogInstory-->
-        <scene sceneID="x3o-Vo-sOZ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="LogInstory" id="1fh-mO-9aj" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="WRN-H6-qPe"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VfH-sH-Wat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2113" y="964"/>
         </scene>
     </scenes>
 </document>
