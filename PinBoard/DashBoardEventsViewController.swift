@@ -23,6 +23,7 @@ class DashBoardEventsViewController: UIViewController {
     
     var rootRef : DatabaseReference!
     var refEvent : DatabaseReference!
+    var dataBaseHandle :DatabaseHandle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,8 @@ class DashBoardEventsViewController: UIViewController {
                     self.mainTableView.reloadData()
                 }
             }
+            
+            
             
         })
 //            //take value from snapshot and add to table view and its cell

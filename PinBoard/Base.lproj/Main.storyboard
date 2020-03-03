@@ -35,7 +35,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="uf1-az-DCz" kind="show" id="nZ0-c8-Rjn"/>
+                                    <segue destination="hwI-yV-Aod" kind="show" id="Wwy-ML-I7G"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -136,22 +136,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIM-3z-v9D" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2113" y="2676"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="2C0-Gq-PYj">
-            <objects>
-                <viewController id="uf1-az-DCz" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Xm0-Tk-efb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="G5D-1c-LCi"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="LNR-IA-7hw"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MLC-xN-V6O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2104" y="999"/>
         </scene>
         <!--Home Screen View Controller-->
         <scene sceneID="gU6-wR-reZ">
@@ -503,6 +487,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wa7-Mu-JK4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1020" y="2676"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="cbh-lx-Ma7">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Login" storyboardName="Login" id="hwI-yV-Aod" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4ba-xl-MMc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qdr-pJ-Sar" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2113" y="1023"/>
         </scene>
     </scenes>
 </document>
