@@ -35,7 +35,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="1fh-mO-9aj" kind="show" id="2sn-US-PUB"/>
+                                    <segue destination="uf1-az-DCz" kind="show" id="nZ0-c8-Rjn"/>
                                 </connections>
                             </button>
                         </subviews>
