@@ -7,31 +7,46 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 class PostScreenViewController: UIViewController {
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var postDatePicker: UIDatePicker!
     @IBOutlet weak var location: UITextField!
-    
     @IBOutlet weak var Descrip: UITextView!
+    @IBOutlet weak var channel: UIPickerView!
     
+    var rootRef : DatabaseReference!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         rootRef = Database.database().reference()
 
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func addEventButton (_sender : UIButton){
+        guard let uid = Auth.auth().currentUser?.uid else{return}
 
-    /*
-    // MARK: - Navigation
+        let event = ["Title" : eventTitle.text!, "Date": postDatePicker.date.description, "Location" : location.text!, "Description" : Descrip.text!]
+        
+  
+        rootRef.child("user/\(uid)/event/\(event["Title"])").setValue(event)
+        
+      
+        }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let ref = sender as? DatabaseReference{
+            if let PostScreenViewController = segue.destination as? PostScreenViewController{
+                PostScreenViewController.rootRef = ref
+            }
+        }
     }
-    */
+    
 
 }
