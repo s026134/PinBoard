@@ -31,7 +31,7 @@ class DashBoardEventsViewController: UIViewController {
         refEvent = Database.database().reference().child("Events")
         
         //retrieving and listening for data from firebase database
-        
+     /*
        guard let uid = Auth.auth().currentUser?.uid else{return}
         refEvent.observe(.value, with: {(snap: DataSnapshot) in
             if let actualEvent = snap.value {
@@ -41,9 +41,10 @@ class DashBoardEventsViewController: UIViewController {
                 }
             }
             
-            
+       
             
         })
+         */
 //            //take value from snapshot and add to table view and its cell
 //            let event = snapshot.value as Any?
 //
