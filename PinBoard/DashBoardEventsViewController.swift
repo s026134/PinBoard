@@ -32,18 +32,18 @@ class DashBoardEventsViewController: UIViewController {
         
         //retrieving and listening for data from firebase database
         
-        guard let uid = Auth.auth().currentUser?.uid else{return}
-        refEvent.observe(.value, with: {(snap: DataSnapshot) in
-            if let actualEvent = snap.value {
-                if let date = actualEvent[]{
-                    self.mainCell.textLabel?.text = date
-                    self.mainTableView.reloadData()
-                }
-            }
+//        guard let uid = Auth.auth().currentUser?.uid else{return}
+//        refEvent.observe(.value, with: {(snap: DataSnapshot) in
+//            if let actualEvent = snap.value {
+//                if let date = actualEvent[]{
+//                    self.mainCell.textLabel?.text = date
+//                    self.mainTableView.reloadData()
+//                }
+//            }
+//
             
             
-            
-        })
+//        })
         //            //take value from snapshot and add to table view and its cell
         //            let event = snapshot.value as Any?
         //
