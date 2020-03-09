@@ -475,7 +475,6 @@
                                 <state key="normal" title="Post"/>
                                 <connections>
                                     <action selector="postPressed:" destination="wMo-8o-miN" eventType="touchUpInside" id="BR3-es-iWh"/>
-                                    <segue destination="7IJ-Xz-bRS" kind="show" id="jb0-5z-tsS"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pick a Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bwD-ez-BCi">
@@ -768,6 +767,5 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="wJu-sQ-nk5"/>
-        <segue reference="jb0-5z-tsS"/>
     </inferredMetricsTieBreakers>
 </document>

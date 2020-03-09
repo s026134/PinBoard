@@ -24,7 +24,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     
     var picker = UIImagePickerController()
     var datePicker : UIDatePicker?
-
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,11 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
         if Descrip.text == ""{
             postButton.isHidden = false
         }
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.large
+        self.view.addSubview(activityIndicator)
         
         
 
@@ -79,6 +84,8 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func postPressed(_ sender: UIButton) {
+        activityIndicator.startAnimating()
+
         let uid = Auth.auth().currentUser?.uid
         let ref = Database.database().reference()
         let storage = Storage.storage().reference(forURL: "gs://pinboard-c2ef5.appspot.com")
@@ -92,6 +99,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
           
             if error != nil{
                 print(error!.localizedDescription)
+                self.activityIndicator.stopAnimating()
                 return
             }
             
@@ -104,6 +112,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
                     let postFeed = ["\(key)" : feed]
                     ref.child("posts").updateChildValues(postFeed)
                     
+                    self.activityIndicator.stopAnimating()
                     self.dismiss(animated: true, completion: nil)
                 }
                 
