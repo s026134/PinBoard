@@ -19,9 +19,6 @@ class HomeScreenViewController: UIViewController {
 //    }
     
     
-    @IBOutlet weak var feedTableView: UITableView!
-    @IBOutlet weak var feedImageView: UIImageView!
-    @IBOutlet weak var feedDescription: UITextView!
     
     
 
