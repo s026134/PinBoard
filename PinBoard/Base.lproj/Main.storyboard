@@ -760,7 +760,7 @@
                                 <rect key="frame" x="340" y="832" width="54" height="30"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <segue destination="INF-Pf-Fpp" kind="show" id="wJu-sQ-nk5"/>
+                                    <segue destination="YXw-6B-wZd" kind="show" id="q6I-cX-msA"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your Interests" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmo-tQ-CWx">
@@ -808,6 +808,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wJu-sQ-nk5"/>
+        <segue reference="q6I-cX-msA"/>
     </inferredMetricsTieBreakers>
 </document>
