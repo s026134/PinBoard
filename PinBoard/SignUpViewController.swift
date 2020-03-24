@@ -72,9 +72,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
         guard let email = emailAddress.text else {return}
         guard let password = password.text else {return}
         
+//        let userTag : Set<Int> = [0]
+        
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let _ = user{
                 print("user created")
+                
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                 changeRequest?.displayName = email
                 changeRequest?.commitChanges(completion: { (error) in
@@ -103,8 +106,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
                         }
                         
                         if let url = url{
-                            let userInfo: [String : Any] = ["uid" : uid, "full name" : self.nameTextField.text!, "urlToImage" : url.absoluteString]
-                            
+                            let userInfo: [String : Any] = ["uid" : uid, "full name" : self.nameTextField.text!, "urlToImage" : url.absoluteString, "email" : email, "password": password]
+//                            , "userTag" : userTag
                             self.ref.child("users").child(uid).setValue(userInfo)
                             
 //                            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "usersPrefVC")

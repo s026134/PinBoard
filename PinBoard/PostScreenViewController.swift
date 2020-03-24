@@ -85,6 +85,8 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func postPressed(_ sender: UIButton) {
         activityIndicator.startAnimating()
+        
+//        guard let userProfile = UserService.currentUserProfile else {return}
 
         let uid = Auth.auth().currentUser?.uid
         let ref = Database.database().reference()
@@ -105,7 +107,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
             
             imageRef.downloadURL(completion: {(url, error) in
                 if let url = url {
-                    let feed = ["userID" : uid!, "pathToImage" : url.absoluteString, "attending" : 0, "author" : Auth.auth().currentUser?.displayName, "postID" : key!, "eventTitle" : self.eventTitle.text!, "eventDate" : self.inputDate.text!, "location" : self.location.text!, "description": self.Descrip.text!] as [String : Any]
+                    let feed = ["userID" : uid!, "pathToImage" : url.absoluteString, "attending" : 0, "author" : Auth.auth().currentUser?.displayName!, "postID" : key!, "eventTitle" : self.eventTitle.text!, "eventDate" : self.inputDate.text!, "location" : self.location.text!, "description": self.Descrip.text!] as [String : Any]
                     
                     // need to change display name from email to an actual username
                     
