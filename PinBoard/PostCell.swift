@@ -20,7 +20,5 @@ class PostCell: UICollectionViewCell {
     
     @IBAction func attendPressed(_ sender: UIButton) {
     }
-    
-    @IBAction func unAttendPressed(_ sender: UIButton) {
-    }
+
 }

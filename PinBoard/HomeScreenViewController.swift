@@ -11,62 +11,87 @@ import Firebase
 import FirebaseDatabase
 
 class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var posts = [Post]()
+    @IBOutlet weak var channelCollectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    let layout = UICollectionViewFlowLayout()
+    let layout2 = UICollectionViewFlowLayout()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        channelCollectionView.collectionViewLayout = layout
+        channelCollectionView.delegate = self
+        channelCollectionView.dataSource = self
+        layout.itemSize = CGSize(width: 65, height: 65)
+        layout.scrollDirection = .horizontal
+    
+        collectionView.collectionViewLayout = layout2
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        layout2.itemSize = CGSize(width:200, height: 200)
+        layout2.scrollDirection = .vertical
+        
         fetchPosts()
         // Do any additional setup after loading the view.
     }
-    var posts = [Post]()
+    
     //    var following = [String]()
     
     func fetchPosts (){
         let postss = Post()
         postss.attending = 100
-        postss.eventTitle = "Crying"
+        postss.pathToimage = ""
+        postss.userID = Auth.auth().currentUser?.uid
+        postss.eventTitle = "Please Work"
+        postss.location = "My house"
+        postss.Descrip = "something something"
+        postss.eventDate = "3/24/20"
         self.posts.append(postss)
+        print(posts)
         
-        let ref = Database.database().reference().child("posts")
-        
-        ref.observe(.value, with: {snapshot in
-            for child in snapshot.children{
-                
-                if let childSnapShot = child as? DataSnapshot,
-                    let dict = childSnapShot.value as? [String: Any],
-                    let author = dict["author"] as? [String: Any],
-                    let uid = dict["uid"] as? String,
-                    let email = dict["email"] as? String,
-                    let password = dict["password"] as? String,
-//                    let userTag = dict["userTag"] as? Set<Int>,
-                    let fullName = dict["fullName"] as? String,
-                    let urlToImage = dict["urlToImage"] as? String,
-                    let url = URL(string: urlToImage),
-                    let attending = dict["attending"] as? Int,
-                    let pathToimage = dict["pathToImage"] as? String,
-                    let location = dict["location"] as? String,
-                    let eventTitle = dict["eventTitle"] as? String,
-                    let Descrip = dict["description"] as? String,
-                    let eventDate = dict["eventDate"] as? String
-                {
-//                    , userTag: userTag
-//                    let userProfile = UserProfile(uid: uid, email: email, urlToImage: url, password: password, fullName: fullName)
-                    let postss = Post()
-//                    postss.author = userProfile
-                    postss.attending = attending
-                    postss.pathToimage = pathToimage
-                    postss.userID = uid
-                    postss.eventTitle = eventTitle
-                    postss.location = location
-                    postss.Descrip = Descrip
-                    postss.eventDate = eventDate
-                
-                    self.posts.append(postss)
-                    print(self.posts)
-                }
-                
-                self.collectionView.reloadData()
-            }
-            
-        })
+        //        let ref = Database.database().reference().child("posts")
+        //
+        //        ref.observe(.value, with: {snapshot in
+        //            for child in snapshot.children{
+        //
+        //                if let childSnapShot = child as? DataSnapshot,
+        //                    let dict = childSnapShot.value as? [String: Any],
+        //                    let author = dict["author"] as? [String: Any],
+        //                    let uid = dict["uid"] as? String,
+        //                    let email = dict["email"] as? String,
+        //                    let password = dict["password"] as? String,
+        ////                    let userTag = dict["userTag"] as? Set<Int>,
+        //                    let fullName = dict["fullName"] as? String,
+        //                    let urlToImage = dict["urlToImage"] as? String,
+        //                    let url = URL(string: urlToImage),
+        //                    let attending = dict["attending"] as? Int,
+        //                    let pathToimage = dict["pathToImage"] as? String,
+        //                    let location = dict["location"] as? String,
+        //                    let eventTitle = dict["eventTitle"] as? String,
+        //                    let Descrip = dict["description"] as? String,
+        //                    let eventDate = dict["eventDate"] as? String
+        //                {
+        ////                    , userTag: userTag
+        ////                    let userProfile = UserProfile(uid: uid, email: email, urlToImage: url, password: password, fullName: fullName)
+        //                    let postss = Post()
+        ////                    postss.author = userProfile
+        //                    postss.attending = attending
+        //                    postss.pathToimage = pathToimage
+        //                    postss.userID = uid
+        //                    postss.eventTitle = eventTitle
+        //                    postss.location = location
+        //                    postss.Descrip = Descrip
+        //                    postss.eventDate = eventDate
+        //
+        //                    self.posts.append(postss)
+        //                    print(self.posts)
+        //                }
+        //
+        //                self.collectionView.reloadData()
+        //            }
+        //
+        //        })
         
         
         //        ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: {
@@ -119,32 +144,50 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         //            }
         //        })
         
-        ref.removeAllObservers()
+        //        ref.removeAllObservers()
     }
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.posts.count
+        if collectionView == self.collectionView{
+            //change this to the number of posts
+            return 10
+        }
+        else{
+            //change this to the number of channels that the user is following
+            return 20
+        }
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
         
-        //creating the cell
-        cell.postImage.downloadImage(from: self.posts[indexPath.row].pathToimage)
-        //        cell.userProfileImg.downloadImage(from: self.posts[indexPath.row])
-//        cell.userPostedLabel.text = self.posts[indexPath.row].auth
-        cell.attendingLabel.text = "\(self.posts[indexPath.row].attending!) Attending"
-        cell.dateLabel.text = "Date: \(self.posts[indexPath.row].eventDate)"
-        cell.descriPLabel.text = "Description: \(self.posts[indexPath.row].Descrip)"
-        cell.locLabel.text = "Location: \(self.posts[indexPath.row].location)"
+        if collectionView == self.collectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
+            
+            cell.backgroundColor = .purple
+            //creating the cell
+            //        cell.postImage.downloadImage(from: self.posts[indexPath.row].pathToimage)
+            //        cell.userProfileImg.downloadImage(from: self.posts[indexPath.row])
+            //        cell.userPostedLabel.text = self.posts[indexPath.row].auth
+            //            cell.attendingLabel.text = "\(self.posts[indexPath.row].attending!) Attending"
+            //            cell.dateLabel.text = "Date: \(self.posts[indexPath.row].eventDate)"
+            //            cell.descriPLabel.text = "Description: \(self.posts[indexPath.row].Descrip)"
+            //            cell.locLabel.text = "Location: \(self.posts[indexPath.row].location)"
+            
+            return cell
+        }
+            
+        else {
+            let cell = channelCollectionView.dequeueReusableCell(withReuseIdentifier: "channelCell", for: indexPath)
+            
+            cell.backgroundColor = .red
+            cell.layer.cornerRadius = 32
+            
+            return cell
+        }
         
         
-        
-        return cell
     }}
+
+

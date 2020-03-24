@@ -68,7 +68,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         cell.nameLabel.text = self.users[indexPath.row].fullName
         cell.userID = self.users[indexPath.row].userID
-        cell.userImage.downloadImage(from: self.users[indexPath.row].imagePath!)
+//        cell.userImage.downloadImage(from: self.users[indexPath.row].imagePath!)
         
         return cell
     }
@@ -77,21 +77,22 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
 }
 
 extension UIImageView{
-    func downloadImage(from imgURL: String!){
-        let url = URLRequest(url: ((URL(string: imgURL)))!)
-        let task = URLSession.shared.dataTask(with: url){
-            (data, response, error) in
-
-            if error != nil{
-                print(error!)
-                return
-            }
-
-            DispatchQueue.main.async {
-                self.image = UIImage(data: data!)
-            }
-        }
-
-        task.resume()
-    }
+//    func downloadImage(from imgURL: String!){
+////        let url = URLRequest(url: ((URL(string: imgURL)))!)
+//        let url = ""
+//        let task = URLSession.shared.dataTask(with: url){
+//            (data, response, error) in
+//
+//            if error != nil{
+//                print(error!)
+//                return
+//            }
+//
+//            DispatchQueue.main.async {
+//                self.image = UIImage(data: data!)
+//            }
+//        }
+//
+//        task.resume()
+//    }
 }
