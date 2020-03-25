@@ -76,10 +76,10 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
 }
 
-extension UIImageView{
+//extension UIImageView{
 //    func downloadImage(from imgURL: String!){
-////        let url = URLRequest(url: ((URL(string: imgURL)))!)
-//        let url = ""
+//        let url = URLRequest(url: ((URL(string: imgURL)))!)
+////        let url = ""
 //        let task = URLSession.shared.dataTask(with: url){
 //            (data, response, error) in
 //
@@ -95,4 +95,4 @@ extension UIImageView{
 //
 //        task.resume()
 //    }
-}
+//}

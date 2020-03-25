@@ -9,8 +9,8 @@
 import UIKit
 
 class Post: NSObject {
-//    var author : UserProfile!
-    var attending : Int!
+    var author : String!
+    var attending : String!
     var pathToimage : String!
     var userID : String!
     var eventTitle : String!

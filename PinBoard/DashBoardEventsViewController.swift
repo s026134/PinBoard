@@ -11,67 +11,75 @@ import FirebaseAuth
 import FirebaseDatabase
 import Firebase
 
-class DashBoardEventsViewController: UIViewController {
+class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    
     //    UITableViewDelegate, UITableViewDataSource
     
-    @IBOutlet weak var mainTableView: UITableView!
-    
-    @IBOutlet weak var mainCell: UITableViewCell!
-    
-    @IBOutlet weak var eventTableView: UITableView!
-    @IBOutlet weak var eventCell: UITableViewCell!
-    
-    var rootRef : DatabaseReference!
-    var refEvent : DatabaseReference!
-    var dataBaseHandle :DatabaseHandle!
+    @IBOutlet weak var weeklySidebar: UICollectionView!
+    let layout = UICollectionViewFlowLayout()
+    var month : String = ""
+    var day : String = ""
+    var weeklylabels = [weeklyLabels]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        weeklySidebar.delegate = self
+        weeklySidebar.dataSource = self
+        weeklySidebar.collectionViewLayout = layout
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: 100, height: 100)
+      
+        let currentDateTime = Date()
+        let monthFormatter = DateFormatter()
+        let dayFormatter = DateFormatter()
+        monthFormatter.dateFormat = "MM"
+        dayFormatter.dateFormat = "dd"
         
-        refEvent = Database.database().reference().child("Events")
+        let monthString = monthFormatter.string(from: currentDateTime)
         
-        //retrieving and listening for data from firebase database
-        
-//        guard let uid = Auth.auth().currentUser?.uid else{return}
-//        refEvent.observe(.value, with: {(snap: DataSnapshot) in
-//            if let actualEvent = snap.value {
-//                if let date = actualEvent[]{
-//                    self.mainCell.textLabel?.text = date
-//                    self.mainTableView.reloadData()
-//                }
-//            }
-//
+        let dayString = dayFormatter.string(from: currentDateTime)
             
-            
-//        })
-        //            //take value from snapshot and add to table view and its cell
-        //            let event = snapshot.value as Any?
-        //
-        //            if let actualEvent = event {
-        //                if let date = actualEvent ["Date"] {
-        //                    self.mainCell.textLabel?.text = date
-        //
-        //                    self.mainTableView.reloadData()
-        //                }
-        //            }
+        let monthsNumber = [1 : "JAN", 2 : "FEB", 3 : "MAR", 4 : "APR", 5 : "MAY", 6 : "JUN", 7 : "JUL", 8 : "AUG", 9 : "SEP", 10: "OCT", 11 : "NOV", 12 : "DEC"]
         
+        let daysInMonth = ["JAN" : 31, "FEB" : 28, "MAR" : 31, "APR" : 30, "MAY" : 31, "JUN" : 30, "JUL" : 31, "AUG" : 31, "SEP" : 30, "OCT" : 31, "NOV" : 30, "DEC" : 31]
+       
+        month = "\(monthsNumber[Int(monthString)!]!)"
         
+        let label1 = weeklyLabels()
+        label1.dayLabell = dayString
+        label1.monthLabell = month
+        weeklylabels.append(label1)
         
-        
-        
-        // Do any additional setup after loading the view.
+        for i in (Int(dayString)! + 1) ... daysInMonth[month]!{
+            let label2 = weeklyLabels()
+            label2.addLabels(dayLabell: "\(i)", monthLabell: month)
+//            label.dayLabell = "\(i)"
+//            label.monthLabell = month
+            weeklylabels.append(label2)
+        }
+        for i in 1 ... daysInMonth[monthsNumber[(Int(monthString)! + 1)]!]! {
+            let label3 = weeklyLabels()
+            label3.addLabels(dayLabell: "\(i)", monthLabell: monthsNumber[(Int(monthString)! + 1)]!)
+             weeklylabels.append(label3)
+        }
     }
     
-    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        <#code#>
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //        <#code#>
-    //    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 14
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = weeklySidebar.dequeueReusableCell(withReuseIdentifier: "dayCell", for: indexPath) as! dayCell
+        
+        cell.layer.cornerRadius = 10
+        cell.backgroundColor = .yellow
+        cell.dayLabel.text = weeklylabels[indexPath.row].dayLabell
+        cell.monthLabel.text = weeklylabels[indexPath.row].monthLabell
     
-    
+        return cell
+    }
+
     
     
     /*
@@ -84,4 +92,15 @@ class DashBoardEventsViewController: UIViewController {
      }
      */
     
+}
+
+class weeklyLabels : UIViewController{
+    var dayLabell : String = ""
+    var monthLabell : String = ""
+    
+    func addLabels (dayLabell: String, monthLabell: String){
+        self.dayLabell = dayLabell
+        self.monthLabell = monthLabell
+
+    }
 }

@@ -92,7 +92,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
         let ref = Database.database().reference()
         let storage = Storage.storage().reference(forURL: "gs://pinboard-c2ef5.appspot.com")
         
-        let key = ref.child("posts").childByAutoId().key
+        let key = ref.child("All Posts/\(uid!)")
         let imageRef = storage.child("posts").child(uid!).child("\(key).jpg")
         
         guard let image = self.previewImage.image, let imageData = image.jpegData(compressionQuality: 0.6) else {return}
@@ -107,7 +107,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
             
             imageRef.downloadURL(completion: {(url, error) in
                 if let url = url {
-                    let feed = ["userID" : uid!, "pathToImage" : url.absoluteString, "attending" : 0, "author" : Auth.auth().currentUser?.displayName!, "postID" : key!, "eventTitle" : self.eventTitle.text!, "eventDate" : self.inputDate.text!, "location" : self.location.text!, "description": self.Descrip.text!] as [String : Any]
+                    let feed = ["userID" : uid!, "pathToImage" : url.absoluteString, "attending" : 0, "author" : Auth.auth().currentUser?.displayName!, "postID" : key, "eventTitle" : self.eventTitle.text!, "eventDate" : self.inputDate.text!, "location" : self.location.text!, "description": self.Descrip.text!] as [String : Any]
                     
                     // need to change display name from email to an actual username
                     

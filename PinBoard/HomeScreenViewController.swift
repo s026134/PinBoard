@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import FirebaseDatabase
 
 class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -17,6 +18,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var collectionView: UICollectionView!
     let layout = UICollectionViewFlowLayout()
     let layout2 = UICollectionViewFlowLayout()
+    var refreshControl : UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,119 +34,57 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         layout2.itemSize = CGSize(width:200, height: 200)
         layout2.scrollDirection = .vertical
         
+        refreshControl = UIRefreshControl()
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         fetchPosts()
         // Do any additional setup after loading the view.
     }
     
-    //    var following = [String]()
+    @objc func handleRefresh(){
+        print("refresh!")
+    }
+
     
     func fetchPosts (){
-        let postss = Post()
-        postss.attending = 100
-        postss.pathToimage = ""
-        postss.userID = Auth.auth().currentUser?.uid
-        postss.eventTitle = "Please Work"
-        postss.location = "My house"
-        postss.Descrip = "something something"
-        postss.eventDate = "3/24/20"
-        self.posts.append(postss)
-        print(posts)
-        
-        //        let ref = Database.database().reference().child("posts")
-        //
-        //        ref.observe(.value, with: {snapshot in
-        //            for child in snapshot.children{
-        //
-        //                if let childSnapShot = child as? DataSnapshot,
-        //                    let dict = childSnapShot.value as? [String: Any],
-        //                    let author = dict["author"] as? [String: Any],
-        //                    let uid = dict["uid"] as? String,
-        //                    let email = dict["email"] as? String,
-        //                    let password = dict["password"] as? String,
-        ////                    let userTag = dict["userTag"] as? Set<Int>,
-        //                    let fullName = dict["fullName"] as? String,
-        //                    let urlToImage = dict["urlToImage"] as? String,
-        //                    let url = URL(string: urlToImage),
-        //                    let attending = dict["attending"] as? Int,
-        //                    let pathToimage = dict["pathToImage"] as? String,
-        //                    let location = dict["location"] as? String,
-        //                    let eventTitle = dict["eventTitle"] as? String,
-        //                    let Descrip = dict["description"] as? String,
-        //                    let eventDate = dict["eventDate"] as? String
-        //                {
-        ////                    , userTag: userTag
-        ////                    let userProfile = UserProfile(uid: uid, email: email, urlToImage: url, password: password, fullName: fullName)
-        //                    let postss = Post()
-        ////                    postss.author = userProfile
-        //                    postss.attending = attending
-        //                    postss.pathToimage = pathToimage
-        //                    postss.userID = uid
-        //                    postss.eventTitle = eventTitle
-        //                    postss.location = location
-        //                    postss.Descrip = Descrip
-        //                    postss.eventDate = eventDate
-        //
-        //                    self.posts.append(postss)
-        //                    print(self.posts)
-        //                }
-        //
-        //                self.collectionView.reloadData()
-        //            }
-        //
-        //        })
-        
-        
-        //        ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: {
-        //            snapshot in
-        //
-        //            let users = snapshot.value as! [String: AnyObject]
-        //
-        //            for(_,value) in users{
-        //                if let uid = value["uid"] as? String{
-        //                    if uid == Auth.auth().currentUser?.uid{
-        //                        if let followingUsers = value["following"] as? [String: String]{
-        //                            for(_,user) in followingUsers{
-        //                                self.following.append(user)
-        //                            }
-        //                        }
-        //                        self.following.append(Auth.auth().currentUser!.uid)
-        //                        ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: {
-        //                            (snap) in
-        //
-        //                            let postsSnap = snap.value as! [String: AnyObject]
-        //
-        //                            for (_, post) in postsSnap{
-        //                                if let userID = post["userID"] as? String{
-        //                                    for each in self.following{
-        //                                        if each == userID{
-        //                                            let posst = Post()
-        //                                            if let author = post["author"] as? String, let attending = post["attending"] as? Int, let pathToImage = post["pathToImage"] as? String, let postID = post["postID "] as? String, let location = post["location"] as? String, let eventTitle = post["eventTitle"] as? String, let Descrip = post["description"] as? String, let eventDate = post["eventDate"] as? String{
-        //
-        //                                                posst.userPosted = author
-        //                                                posst.attending = attending
-        //                                                posst.pathToimage = pathToImage
-        //                                                posst.postID = postID
-        //                                                posst.location = location
-        //                                                posst.eventTitle = eventTitle
-        //                                                posst.Descrip = Descrip
-        //                                                posst.eventDate = eventDate
-        //
-        //                                                self.posts.append(posst)
-        //                                            }
-        //                                        }
-        //                                    }
-        //
-        //                                    self.collectionView.reloadData()
-        //                                }
-        //                            }
-        //                        })
-        //                    }
-        //
-        //                }
-        //            }
-        //        })
-        
-        //        ref.removeAllObservers()
+    
+        let ref = Database.database().reference()
+        let uid = Auth.auth().currentUser?.uid
+        ref.child("All Posts/\(uid!)").observe(.value){(snapshot) in
+            let allPosts = snapshot.value as? [String : AnyObject]
+            
+            if let allThePosts = allPosts{
+                for(_, post) in allThePosts{
+                    let postss = Post()
+                    
+                    if let attending = post["attending"] as? String,
+                    let author = post["author"] as? String,
+                    let descrip = post["description"] as? String,
+                    let eventDate = post["eventDate"] as? String,
+                    let eventTitle = post["eventTitle"] as? String,
+                    let location = post["location"] as? String,
+                    let pathToImage = post["pathToImage"] as? String,
+                        let userID = post["userID"] as? String{
+                        
+                        postss.attending = attending
+                        postss.author = author
+                        postss.Descrip = descrip
+                        postss.eventDate = eventDate
+                        postss.eventTitle = eventTitle
+                        postss.location = location
+                        postss.pathToimage = pathToImage
+                        postss.userID = userID
+                        
+                        self.posts.append(postss)
+                
+                        
+                    }
+                    self.collectionView.reloadData()
+                }
+            }
+            
+        }
+    
     }
     
     
@@ -166,14 +106,12 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
             
             cell.backgroundColor = .purple
-            //creating the cell
-            //        cell.postImage.downloadImage(from: self.posts[indexPath.row].pathToimage)
-            //        cell.userProfileImg.downloadImage(from: self.posts[indexPath.row])
-            //        cell.userPostedLabel.text = self.posts[indexPath.row].auth
-            //            cell.attendingLabel.text = "\(self.posts[indexPath.row].attending!) Attending"
-            //            cell.dateLabel.text = "Date: \(self.posts[indexPath.row].eventDate)"
-            //            cell.descriPLabel.text = "Description: \(self.posts[indexPath.row].Descrip)"
-            //            cell.locLabel.text = "Location: \(self.posts[indexPath.row].location)"
+            cell.attendingLabel.text = posts[indexPath.row].attending
+            cell.dateLabel.text = posts[indexPath.row].eventDate
+            cell.descriPLabel.text = posts[indexPath.row].Descrip
+            cell.eventTitleLabel.text = posts[indexPath.row].eventTitle
+            cell.locLabel.text = posts[indexPath.row].location
+            cell.postImage.downloadImage(from: posts[indexPath.row].pathToimage)
             
             return cell
         }
@@ -187,7 +125,28 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             return cell
         }
         
-        
+        //ends the refreshing
+//        self.refreshControl.endRefreshing()
     }}
 
+extension UIImageView{
+    func downloadImage(from imgURL: String!){
+        let url = URLRequest(url: ((URL(string: imgURL)))!)
+        //        let url = ""
+        let task = URLSession.shared.dataTask(with: url){
+            (data, response, error) in
+            
+            if error != nil{
+                print(error!)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.image = UIImage(data: data!)
+            }
+        }
+        
+        task.resume()
+    }
+}
 
