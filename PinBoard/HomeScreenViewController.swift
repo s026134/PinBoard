@@ -105,21 +105,20 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         if collectionView == self.collectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
             
-            cell.backgroundColor = .purple
-            cell.attendingLabel.text = posts[indexPath.row].attending
-            cell.dateLabel.text = posts[indexPath.row].eventDate
-            cell.descriPLabel.text = posts[indexPath.row].Descrip
-            cell.eventTitleLabel.text = posts[indexPath.row].eventTitle
-            cell.locLabel.text = posts[indexPath.row].location
-            cell.postImage.downloadImage(from: posts[indexPath.row].pathToimage)
+        
+//            cell.attendingLabel.text = posts[indexPath.row].attending
+//            cell.dateLabel.text = posts[indexPath.row].eventDate
+//            cell.descriPLabel.text = posts[indexPath.row].Descrip
+//            cell.eventTitleLabel.text = posts[indexPath.row].eventTitle
+//            cell.locLabel.text = posts[indexPath.row].location
+//            cell.postImage.downloadImage(from: posts[indexPath.row].pathToimage)
             
             return cell
         }
             
         else {
             let cell = channelCollectionView.dequeueReusableCell(withReuseIdentifier: "channelCell", for: indexPath)
-            
-            cell.backgroundColor = .red
+            cell.backgroundColor = .blue
             cell.layer.cornerRadius = 32
             
             return cell

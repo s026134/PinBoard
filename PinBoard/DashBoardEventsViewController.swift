@@ -58,7 +58,14 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
 //            label.monthLabell = month
             weeklylabels.append(label2)
         }
-        for i in 1 ... daysInMonth[monthsNumber[(Int(monthString)! + 1)]!]! {
+        var nextmonth = (Int(monthString)! + 1)
+        
+        //once we reach december
+        if nextmonth == 13{
+            nextmonth = 1
+        }
+        
+        for i in 1 ... daysInMonth[monthsNumber[nextmonth]!]! {
             let label3 = weeklyLabels()
             label3.addLabels(dayLabell: "\(i)", monthLabell: monthsNumber[(Int(monthString)! + 1)]!)
              weeklylabels.append(label3)
@@ -73,7 +80,7 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         let cell = weeklySidebar.dequeueReusableCell(withReuseIdentifier: "dayCell", for: indexPath) as! dayCell
         
         cell.layer.cornerRadius = 10
-        cell.backgroundColor = .yellow
+        cell.backgroundColor = .white
         cell.dayLabel.text = weeklylabels[indexPath.row].dayLabell
         cell.monthLabel.text = weeklylabels[indexPath.row].monthLabell
     
