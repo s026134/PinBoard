@@ -649,7 +649,7 @@
                                 </connections>
                             </collectionView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fzu-lP-WJO">
-                                <rect key="frame" x="0.0" y="133" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -915,7 +915,7 @@
             </objects>
             <point key="canvasLocation" x="-3075.36231884058" y="2820.5357142857142"/>
         </scene>
-        <!--Item-->
+        <!--Events-->
         <scene sceneID="Rez-Op-o77">
             <objects>
                 <viewController id="sTu-zT-Ezu" customClass="CreateEventsViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
@@ -966,7 +966,7 @@
                         <color key="backgroundColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="llC-mR-HC9"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="calendar1" id="eSN-kO-Q0l"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="calendar1" id="eSN-kO-Q0l"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0T0-lb-Ot4" sceneMemberID="firstResponder"/>
             </objects>
@@ -1113,7 +1113,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="C3T-1q-DgG"/>
-        <segue reference="YRW-ig-peh"/>
+        <segue reference="pHf-oK-7sI"/>
         <segue reference="q6I-cX-msA"/>
     </inferredMetricsTieBreakers>
 </document>
