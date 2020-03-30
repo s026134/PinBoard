@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        
         let colorCoral = UIColor(red: 249/255.0, green: 113/255.0, blue: 113/255.0, alpha: 1.0)
         UITabBar.appearance().barTintColor = .white
         UITabBar.appearance().tintColor = colorCoral

@@ -24,7 +24,9 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     
     var picker = UIImagePickerController()
     var datePicker : UIDatePicker?
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +46,9 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
             postButton.isHidden = false
         }
         
-        activityIndicator.center = self.view.center
+       
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = UIActivityIndicatorView.Style.large
-        self.view.addSubview(activityIndicator)
+    
         
         
 
@@ -85,6 +86,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func postPressed(_ sender: UIButton) {
         activityIndicator.startAnimating()
+        loadingLabel.isEnabled = true
         
 //        guard let userProfile = UserService.currentUserProfile else {return}
 
@@ -102,6 +104,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
             if error != nil{
                 print(error!.localizedDescription)
                 self.activityIndicator.stopAnimating()
+                self.loadingLabel.isHidden = true
                 return
             }
             

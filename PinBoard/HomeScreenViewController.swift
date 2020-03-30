@@ -20,6 +20,14 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     let layout2 = UICollectionViewFlowLayout()
     var refreshControl : UIRefreshControl!
     
+    let mintGreen = UIColor.init(red: 159/255, green: 216/255, blue: 138/255, alpha: 1)
+    
+    let blue = UIColor.init(red: 28/255, green: 53/255, blue: 130/255, alpha: 1)
+    
+    let coral = UIColor.init(red: 229/255, green: 88/255, blue: 93/255, alpha: 1)
+    
+    let lightBlue = UIColor.init(red: 170/255, green: 223/255, blue: 227/255, alpha: 1)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         channelCollectionView.collectionViewLayout = layout
@@ -33,6 +41,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         collectionView.dataSource = self
         layout2.itemSize = CGSize(width:200, height: 200)
         layout2.scrollDirection = .vertical
+        layout2.minimumInteritemSpacing = 1
+        layout2.minimumLineSpacing = 10
         
         refreshControl = UIRefreshControl()
         collectionView.refreshControl = refreshControl
@@ -118,7 +128,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             
         else {
             let cell = channelCollectionView.dequeueReusableCell(withReuseIdentifier: "channelCell", for: indexPath)
-            cell.backgroundColor = .blue
+            cell.backgroundColor = blue
             cell.layer.cornerRadius = 32
             
             return cell
