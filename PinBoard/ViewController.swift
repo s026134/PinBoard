@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ViewController: UIViewController {
 
@@ -14,10 +15,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        if let _ = Auth.auth().currentUser{
+//            self.performSegue(withIdentifier: "HomeScreenViewController", sender: self)
+//        }
         
     }
-
 
 }
 

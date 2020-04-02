@@ -94,8 +94,8 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
         let ref = Database.database().reference()
         let storage = Storage.storage().reference(forURL: "gs://pinboard-c2ef5.appspot.com")
         
-        let key = ref.child("All Posts/\(uid!)")
-        let imageRef = storage.child("posts").child(uid!).child("\(key).jpg")
+        let key = ref.child("All Posts/\(uid!)/\(self.eventTitle.text!)")
+        let imageRef = storage.child("\(key).jpg")
         
         guard let image = self.previewImage.image, let imageData = image.jpegData(compressionQuality: 0.6) else {return}
         
@@ -114,8 +114,9 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
                     
                     // need to change display name from email to an actual username
                     
-                    let postFeed = ["\(key)" : feed]
-                    ref.child("posts").updateChildValues(postFeed)
+                    let postFeed = ["\(self.eventTitle.text!)" : feed]
+//                    ref.child("All Posts").updateChildValues(postFeed)
+                    ref.child("All Posts/\(uid!)").updateChildValues(postFeed)
                     
                     self.activityIndicator.stopAnimating()
                     self.dismiss(animated: true, completion: nil)

@@ -361,17 +361,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dv6-HV-yWt">
-                                <rect key="frame" x="50" y="338" width="316" height="34"/>
+                                <rect key="frame" x="82" y="338" width="284" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1e1-DX-3gB">
-                                <rect key="frame" x="50" y="431" width="316" height="34"/>
+                                <rect key="frame" x="82" y="431" width="284" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TUT-As-x9E">
+                                <rect key="frame" x="47" y="431.5" width="35" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.97647058819999999" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="envelope" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="svs-0X-Oh7">
+                                <rect key="frame" x="49" y="337.5" width="31" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.97647058819999999" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.89803921568627454" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -704,19 +714,21 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UlR-EN-oiw">
-                                <rect key="frame" x="40" y="630" width="334" height="128"/>
+                                <rect key="frame" x="42" y="567" width="334" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="camera.on.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vzV-Hc-O47">
-                                <rect key="frame" x="193" y="462.5" width="28" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera.on.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vzV-Hc-O47">
+                                <rect key="frame" x="172" y="462.5" width="73" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.71764705880000002" green="0.8980392157" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dic-GT-sSU">
-                                <rect key="frame" x="154" y="511.5" width="106" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dic-GT-sSU">
+                                <rect key="frame" x="161" y="481.5" width="106" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <state key="normal" title="Select Image">
                                     <color key="titleColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -732,24 +744,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5c-fS-dgc">
-                                <rect key="frame" x="161" y="598" width="92" height="24"/>
+                                <rect key="frame" x="163" y="535" width="92" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7s-9M-YG7">
-                                <rect key="frame" x="340" y="771" width="54" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                                <state key="normal" title="Post">
-                                    <color key="titleColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="postPressed:" destination="wMo-8o-miN" eventType="touchUpInside" id="BR3-es-iWh"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pick a Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bwD-ez-BCi">
                                 <rect key="frame" x="50" y="270" width="101" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -761,8 +761,9 @@
                                 <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPV-yB-v1f">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPV-yB-v1f">
                                 <rect key="frame" x="142.5" y="419" width="129" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <state key="normal" title="Select Channels">
@@ -770,7 +771,7 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
+                                        <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -789,16 +790,25 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7s-9M-YG7">
+                                <rect key="frame" x="322" y="703" width="54" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <state key="normal" title="Post">
+                                    <color key="titleColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="postPressed:" destination="wMo-8o-miN" eventType="touchUpInside" id="BR3-es-iWh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.67843137249999996" green="0.86666666670000003" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YxC-wN-qrS" firstAttribute="leading" secondItem="HdP-dW-MPg" secondAttribute="leading" constant="50" id="ANC-7e-8k8"/>
-                            <constraint firstItem="dic-GT-sSU" firstAttribute="centerX" secondItem="gaE-U5-TEk" secondAttribute="centerX" id="F3d-zw-L3V"/>
                             <constraint firstItem="YxC-wN-qrS" firstAttribute="top" secondItem="bs8-do-IXD" secondAttribute="bottom" constant="20" id="KGv-xt-S5z"/>
                             <constraint firstItem="bs8-do-IXD" firstAttribute="top" secondItem="bwD-ez-BCi" secondAttribute="bottom" constant="20" id="MDF-0z-ARB"/>
                             <constraint firstItem="Ba8-Qk-KmC" firstAttribute="leading" secondItem="HdP-dW-MPg" secondAttribute="leading" constant="50" id="OxR-fc-oep"/>
-                            <constraint firstItem="vzV-Hc-O47" firstAttribute="centerX" secondItem="gaE-U5-TEk" secondAttribute="centerX" id="QlI-x5-heq"/>
-                            <constraint firstItem="xPV-yB-v1f" firstAttribute="centerX" secondItem="gaE-U5-TEk" secondAttribute="centerX" id="QyF-Z4-ol1"/>
                             <constraint firstItem="PNa-f1-fhs" firstAttribute="leading" secondItem="HdP-dW-MPg" secondAttribute="leading" constant="50" id="Ukr-bP-X7L"/>
                             <constraint firstItem="bs8-do-IXD" firstAttribute="leading" secondItem="HdP-dW-MPg" secondAttribute="leading" constant="50" id="Xo4-f2-g8F"/>
                             <constraint firstItem="C5v-NB-acJ" firstAttribute="top" secondItem="PNa-f1-fhs" secondAttribute="bottom" constant="20" id="YjH-M0-Auu"/>
@@ -971,7 +981,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wu-vN-9BU" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3075.36231884058" y="2820.5357142857142"/>
+            <point key="canvasLocation" x="-3003" y="2097"/>
         </scene>
         <!--Events-->
         <scene sceneID="Rez-Op-o77">
@@ -1025,7 +1035,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0T0-lb-Ot4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3074" y="2097"/>
+            <point key="canvasLocation" x="620" y="1535"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="v1T-eU-Mvy">
@@ -1203,7 +1213,9 @@
         <image name="calendar1" width="24" height="24"/>
         <image name="camera.on.rectangle" catalog="system" width="64" height="48"/>
         <image name="chevron.right.circle" catalog="system" width="64" height="60"/>
+        <image name="envelope" catalog="system" width="64" height="46"/>
         <image name="home" width="24" height="24"/>
+        <image name="lock" catalog="system" width="64" height="64"/>
         <image name="person.circle" catalog="system" width="64" height="60"/>
         <image name="person.crop.circle" catalog="system" width="64" height="60"/>
         <image name="pin.fill" catalog="system" width="58" height="64"/>
