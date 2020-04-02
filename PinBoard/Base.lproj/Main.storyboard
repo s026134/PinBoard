@@ -843,14 +843,14 @@
                     <connections>
                         <segue destination="7IJ-Xz-bRS" kind="relationship" relationship="viewControllers" id="YRW-ig-peh"/>
                         <segue destination="wMo-8o-miN" kind="relationship" relationship="viewControllers" id="UvP-u5-Qax"/>
-                        <segue destination="sTu-zT-Ezu" kind="relationship" relationship="viewControllers" id="ey6-yU-xEE"/>
+                        <segue destination="BYw-lP-yJp" kind="relationship" relationship="viewControllers" id="OeX-aE-ipD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyo-fp-kR5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2158" y="1377"/>
+            <point key="canvasLocation" x="-2052" y="1233"/>
         </scene>
-        <!--Dash Board Events View Controller-->
+        <!--Events-->
         <scene sceneID="WfN-WZ-L4N">
             <objects>
                 <viewController id="BYw-lP-yJp" customClass="DashBoardEventsViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
@@ -962,6 +962,7 @@
                         <color key="tintColor" red="0.71764705880000002" green="0.8980392157" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="xP4-No-Bbl"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Events" image="calendar1" selectedImage="calendar1" id="svZ-PJ-RXJ"/>
                     <navigationItem key="navigationItem" id="sXH-Es-3qr"/>
                     <connections>
                         <outlet property="eventTableView" destination="vwk-eY-0yj" id="5G6-6g-EMo"/>
@@ -1001,9 +1002,6 @@
                                 <rect key="frame" x="312" y="812" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add event"/>
-                                <connections>
-                                    <segue destination="BYw-lP-yJp" kind="show" id="C3T-1q-DgG"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title of Event" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lWG-8K-8lB">
                                 <rect key="frame" x="41" y="111" width="244" height="34"/>
@@ -1212,7 +1210,7 @@
         <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UPp-oU-5Kk"/>
+        <segue reference="OeX-aE-ipD"/>
         <segue reference="YRW-ig-peh"/>
         <segue reference="0eb-mc-0sY"/>
     </inferredMetricsTieBreakers>
