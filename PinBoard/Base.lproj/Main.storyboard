@@ -420,10 +420,10 @@
             </objects>
             <point key="canvasLocation" x="100" y="652"/>
         </scene>
-        <!--View Controller-->
+        <!--User Profile-->
         <scene sceneID="qQO-uf-tUv">
             <objects>
-                <viewController id="uWl-iy-kaV" sceneMemberID="viewController">
+                <viewController id="uWl-iy-kaV" customClass="UserProfile" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lWa-6g-Rsf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -478,6 +478,9 @@
                         <viewLayoutGuide key="safeArea" id="6gS-1S-0hY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Cv6-Bz-Pr2"/>
+                    <connections>
+                        <outlet property="profilePic" destination="abh-27-VJn" id="o2O-Ev-RFh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K7p-nc-qnd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

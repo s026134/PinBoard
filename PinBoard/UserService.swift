@@ -30,8 +30,8 @@ class UserService {
                 let url = URL(string: urlToImage){
                 
 //                , userTag: userTag
-                userProfile = UserProfile(uid: snapshot.key, email: email, urlToImage: url, password: password, fullName: fullName)
-                
+//                userProfile = UserProfile(uid: snapshot.key, email: email, urlToImage: url, password: password, fullName: fullName)
+//
             
                 }
             
