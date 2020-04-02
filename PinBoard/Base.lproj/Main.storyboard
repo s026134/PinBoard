@@ -471,7 +471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K7p-nc-qnd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2188" y="2839"/>
+            <point key="canvasLocation" x="-2188" y="2821"/>
         </scene>
         <!--Home-->
         <scene sceneID="gU6-wR-reZ">
@@ -703,15 +703,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UlR-EN-oiw">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UlR-EN-oiw">
                                 <rect key="frame" x="40" y="630" width="334" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="camera.on.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vzV-Hc-O47">
-                                <rect key="frame" x="70" y="462.5" width="274" height="128"/>
+                                <rect key="frame" x="193" y="462.5" width="28" height="128"/>
                                 <color key="tintColor" red="0.71764705880000002" green="0.8980392157" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dic-GT-sSU">
@@ -730,8 +731,9 @@
                                 <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5c-fS-dgc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5c-fS-dgc">
                                 <rect key="frame" x="161" y="598" width="92" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -760,7 +762,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPV-yB-v1f">
-                                <rect key="frame" x="135" y="419" width="144" height="36"/>
+                                <rect key="frame" x="142.5" y="419" width="129" height="36"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <state key="normal" title="Select Channels">
@@ -790,12 +792,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.67843137249999996" green="0.86666666670000003" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xPV-yB-v1f" firstAttribute="leading" secondItem="HdP-dW-MPg" secondAttribute="leading" constant="135" id="1a7-SP-e3w"/>
-                            <constraint firstItem="h5c-fS-dgc" firstAttribute="centerX" secondItem="gaE-U5-TEk" secondAttribute="centerX" id="1qa-DU-Wiw"/>
-                            <constraint firstItem="HdP-dW-MPg" firstAttribute="trailing" secondItem="vzV-Hc-O47" secondAttribute="trailing" constant="70" id="8Yn-KQ-Wee"/>
                             <constraint firstItem="YxC-wN-qrS" firstAttribute="leading" secondItem="HdP-dW-MPg" secondAttribute="leading" constant="50" id="ANC-7e-8k8"/>
                             <constraint firstItem="dic-GT-sSU" firstAttribute="centerX" secondItem="gaE-U5-TEk" secondAttribute="centerX" id="F3d-zw-L3V"/>
-                            <constraint firstItem="vzV-Hc-O47" firstAttribute="leading" secondItem="HdP-dW-MPg" secondAttribute="leading" constant="70" id="IVk-1x-YSJ"/>
                             <constraint firstItem="YxC-wN-qrS" firstAttribute="top" secondItem="bs8-do-IXD" secondAttribute="bottom" constant="20" id="KGv-xt-S5z"/>
                             <constraint firstItem="bs8-do-IXD" firstAttribute="top" secondItem="bwD-ez-BCi" secondAttribute="bottom" constant="20" id="MDF-0z-ARB"/>
                             <constraint firstItem="Ba8-Qk-KmC" firstAttribute="leading" secondItem="HdP-dW-MPg" secondAttribute="leading" constant="50" id="OxR-fc-oep"/>
@@ -806,11 +804,7 @@
                             <constraint firstItem="C5v-NB-acJ" firstAttribute="top" secondItem="PNa-f1-fhs" secondAttribute="bottom" constant="20" id="YjH-M0-Auu"/>
                             <constraint firstItem="bwD-ez-BCi" firstAttribute="top" secondItem="Ba8-Qk-KmC" secondAttribute="bottom" constant="20" id="bCW-Ww-jPc"/>
                             <constraint firstItem="PNa-f1-fhs" firstAttribute="top" secondItem="HdP-dW-MPg" secondAttribute="top" constant="30" id="ePx-3e-ENe"/>
-                            <constraint firstItem="HdP-dW-MPg" firstAttribute="trailing" secondItem="xPV-yB-v1f" secondAttribute="trailing" constant="135" id="h8Q-U8-5P2"/>
-                            <constraint firstItem="UlR-EN-oiw" firstAttribute="leading" secondItem="HdP-dW-MPg" secondAttribute="leading" constant="40" id="kxM-Q5-Wg7"/>
-                            <constraint firstItem="UlR-EN-oiw" firstAttribute="centerX" secondItem="gaE-U5-TEk" secondAttribute="centerX" id="uDE-E0-vbB"/>
                             <constraint firstItem="Ba8-Qk-KmC" firstAttribute="top" secondItem="C5v-NB-acJ" secondAttribute="bottom" constant="20" id="xKz-w5-q7l"/>
-                            <constraint firstItem="HdP-dW-MPg" firstAttribute="trailing" secondItem="UlR-EN-oiw" secondAttribute="trailing" constant="40" id="yAJ-oG-fKu"/>
                             <constraint firstItem="C5v-NB-acJ" firstAttribute="leading" secondItem="HdP-dW-MPg" secondAttribute="leading" constant="50" id="yxX-Gg-B9U"/>
                             <constraint firstItem="bwD-ez-BCi" firstAttribute="leading" secondItem="HdP-dW-MPg" secondAttribute="leading" constant="50" id="zIb-pr-eX5"/>
                         </constraints>
@@ -1219,7 +1213,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UPp-oU-5Kk"/>
-        <segue reference="0R6-KW-tXD"/>
+        <segue reference="YRW-ig-peh"/>
         <segue reference="0eb-mc-0sY"/>
     </inferredMetricsTieBreakers>
 </document>
