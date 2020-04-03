@@ -22,17 +22,20 @@ class ViewController: UIViewController {
         
         
     }
+    /*
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+       
         if let user = Auth.auth().currentUser{
             self.performSegue(withIdentifier: "toTheNav", sender: self)
         }
+ 
     }
+ */
     
 }
 

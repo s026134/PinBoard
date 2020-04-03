@@ -48,6 +48,7 @@ class LogINViewController: UIViewController, UITextFieldDelegate {
 
         Auth.auth().signIn(withEmail: email, password: password, completion: {(user, error) in
             self.activityIndicator.stopAnimating()
+            /*
 
             if let _ = user{
                 self.performSegue(withIdentifier: "toNav", sender: self)
@@ -70,6 +71,7 @@ class LogINViewController: UIViewController, UITextFieldDelegate {
                 self.invalidLabel.text = "Invalid \(emOrpas)"
                 print(error!.localizedDescription)
             }
+ */
 
         })
 

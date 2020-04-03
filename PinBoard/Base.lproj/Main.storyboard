@@ -359,6 +359,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="logInPressed:" destination="bmf-B8-Yg7" eventType="touchUpInside" id="Unj-rf-q4x"/>
+                                    <segue destination="YXw-6B-wZd" kind="show" identifier="toNav" id="LSv-uE-8ea"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6i-dx-whs">
@@ -1148,6 +1149,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="signUpButtonTouchedUp:" destination="VN8-0F-FDV" eventType="touchUpInside" id="nbn-PP-FuW"/>
                                     <segue destination="YXw-6B-wZd" kind="show" id="q6I-cX-msA"/>
                                 </connections>
                             </button>
@@ -1253,6 +1255,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="UPp-oU-5Kk"/>
         <segue reference="0R6-KW-tXD"/>
-        <segue reference="q6I-cX-msA"/>
+        <segue reference="LSv-uE-8ea"/>
     </inferredMetricsTieBreakers>
 </document>

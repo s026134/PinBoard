@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 class PreferencesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -17,6 +19,7 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
     
   //  var userTags: Set<Int> = []
     var subscribed: [Int] = []
+    var followersArr: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,25 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func signUpButtonTouchedUp(_ sender: UIButton) {
+        let uid = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference()
+        let storage = Storage.storage().reference(forURL: "gs://pinboard-c2ef5.appspot.com")
+        
+        for i in 0...subscribed.count-1 {
+            let elementNum = subscribed[i]
+            followersArr.append(collectionData[elementNum])
+        }
+       // ref.child("users/\(uid!)").setValue([followersArr])
+        
+        ref.child("users/\(uid!)/").updateChildValues(["following": followersArr])
+        
+   //     print(followersArr)
+        
+    }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return collectionData.count
@@ -40,9 +62,6 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-      //  let cell = collectionView.cellForItem(at: indexPath)
-   //     let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-  //      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "channelCell", for: indexPath)
         
         let cell3 = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
         cell3.backgroundColor = grayBlue

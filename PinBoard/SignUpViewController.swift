@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
         activityIndicator.startAnimating()
         guard let email = emailAddress.text else {return}
         guard let password = password.text else {return}
-        
+        print("hello")
 //        let userTag : Set<Int> = [0]
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
@@ -107,6 +107,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
                         }
                         
                         if let url = url{
+                            print("hellohello")
                             let userInfo: [String : Any] = ["uid" : uid, "User Name" : self.nameTextField.text!, "urlToImage" : url.absoluteString, "email" : email, "password": password]
 //                            , "userTag" : userTag
                             self.ref.child("users/\(uid)").setValue(userInfo)
