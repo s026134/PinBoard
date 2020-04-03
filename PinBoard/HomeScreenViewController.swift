@@ -12,7 +12,6 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
     var posts = [Post]()
     @IBOutlet weak var channelCollectionView: UICollectionView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -35,7 +34,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         channelCollectionView.dataSource = self
         layout.itemSize = CGSize(width: 65, height: 65)
         layout.scrollDirection = .horizontal
-    
+        
         collectionView.collectionViewLayout = layout2
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -48,60 +47,81 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         fetchPosts()
-        // Do any additional setup after loading the view.
+        
     }
     
     @objc func handleRefresh(){
         print("refresh!")
     }
-
+    
     
     func fetchPosts (){
-    
+        
         let ref = Database.database().reference()
         let uid = Auth.auth().currentUser?.uid
+        var postss = [String : AnyObject]()
+        //        var pos = [String: [String : AnyObject]]()
+        var pos = Post()
+        var j = 0
+        
         ref.child("All Posts/\(uid!)").observe(.value){(snapshot) in
             let allPosts = snapshot.value as? [String : AnyObject]
             
             if let allThePosts = allPosts{
-                for(_, post) in allThePosts{
-                    let postss = Post()
-                    
-                    if let attending = post["attending"] as? String,
-                    let author = post["author"] as? String,
-                    let descrip = post["description"] as? String,
-                    let eventDate = post["eventDate"] as? String,
-                    let eventTitle = post["eventTitle"] as? String,
-                    let location = post["location"] as? String,
-                    let pathToImage = post["pathToImage"] as? String,
-                        let userID = post["userID"] as? String{
+                for(postName, post) in allThePosts{
+                    self.posts.append(Post())
+                    if let posty = self.posts.last{
                         
-                        postss.attending = attending
-                        postss.author = author
-                        postss.Descrip = descrip
-                        postss.eventDate = eventDate
-                        postss.eventTitle = eventTitle
-                        postss.location = location
-                        postss.pathToimage = pathToImage
-                        postss.userID = userID
-                        
-                        self.posts.append(postss)
-                
+                        for (category, element) in post as! [String: AnyObject]{
+                            if category == "pathToImage" {
+                                posty.pathToimage = element
+                            }
+                            else if category == "eventDate"{
+                                posty.eventDate = element
+                            }
+                            else if category == "attending"{
+                                posty.attending = element
+                            }
+                            else if category == "description"{
+                                posty.Descrip = element
+                            }
+                            else if category == "eventTitle"{
+                                posty.eventTitle = element
+                            }
+                            else if category == "userID"{
+                                posty.userID = element
+                            }
+                            else if category == "location"{
+                                posty.location = element
+                            }
+                            else if category == "userName"{
+                                posty.userName = element
+                            }
+                        }
                         
                     }
-                    self.collectionView.reloadData()
+                    
                 }
+                
             }
             
+            self.collectionView.reloadData()
+            
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+            }
+            
+            
+            
         }
-    
+        
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionView{
             //change this to the number of posts
-            return 10
+            return posts.count
         }
         else{
             //change this to the number of channels that the user is following
@@ -115,14 +135,16 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         if collectionView == self.collectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
             
-        
-//            cell.attendingLabel.text = posts[indexPath.row].attending
-//            cell.dateLabel.text = posts[indexPath.row].eventDate
-//            cell.descriPLabel.text = posts[indexPath.row].Descrip
-//            cell.eventTitleLabel.text = posts[indexPath.row].eventTitle
-//            cell.locLabel.text = posts[indexPath.row].location
-//            cell.postImage.downloadImage(from: posts[indexPath.row].pathToimage)
-            
+            if indexPath.row < posts.count{
+                cell.userPostedLabel.text = posts[indexPath.row].userName as? String
+                cell.attendingLabel.text = posts[indexPath.row].attending as? String
+                cell.dateLabel.text = posts[indexPath.row].eventDate as? String
+                cell.descriPLabel.text = posts[indexPath.row].Descrip as? String
+                cell.eventTitleLabel.text = posts[indexPath.row].eventTitle as? String
+                cell.locLabel.text = posts[indexPath.row].location as? String
+                cell.postImage.downloadImage(from: posts[indexPath.row].pathToimage as? String)
+                
+            }
             return cell
         }
             
@@ -134,28 +156,27 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             return cell
         }
         
-        //ends the refreshing
-//        self.refreshControl.endRefreshing()
     }}
 
 extension UIImageView{
     func downloadImage(from imgURL: String!){
-        let url = URLRequest(url: ((URL(string: imgURL)))!)
-        //        let url = ""
-        let task = URLSession.shared.dataTask(with: url){
-            (data, response, error) in
-            
-            if error != nil{
-                print(error!)
-                return
+        if let imgU = imgURL{
+            let url = URLRequest(url: ((URL(string: imgU)))!)
+            let task = URLSession.shared.dataTask(with: url){
+                (data, response, error) in
+                
+                if error != nil{
+                    print(error!)
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: data!)
+                }
             }
             
-            DispatchQueue.main.async {
-                self.image = UIImage(data: data!)
-            }
+            task.resume()
         }
-        
-        task.resume()
     }
 }
 

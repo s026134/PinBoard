@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class PostCell: UICollectionViewCell {
     @IBOutlet weak var postImage: UIImageView!
@@ -19,6 +21,15 @@ class PostCell: UICollectionViewCell {
     @IBOutlet weak var attendingLabel: UILabel!
     
     @IBAction func attendPressed(_ sender: UIButton) {
+        let uid = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference()
+        let key = ref.child("All Posts/\(uid)/\(eventTitleLabel.text)/attending")
+        
+        if let attend = attendingLabel.text{
+            key.setValue(Int(attend)! + 1)
+        }
+        
+        
     }
 
 }

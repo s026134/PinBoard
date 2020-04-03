@@ -18,7 +18,6 @@
 		A0408F99242972590025A3AB /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408F98242972590025A3AB /* PostCell.swift */; };
 		A0408F9B242973E90025A3AB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408F9A242973E80025A3AB /* Post.swift */; };
 		A0408F9F24298D2D0025A3AB /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408F9E24298D2D0025A3AB /* UserProfile.swift */; };
-		A0408FA124298E360025A3AB /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408FA024298E360025A3AB /* UserService.swift */; };
 		A0408FA5242B08010025A3AB /* dayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408FA4242B08010025A3AB /* dayCell.swift */; };
 		A0408FA7242D8B8E0025A3AB /* eventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408FA6242D8B8E0025A3AB /* eventCell.swift */; };
 		A0DEA25123FD64CA00EAE1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */; };
@@ -68,7 +67,6 @@
 		A0408F98242972590025A3AB /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		A0408F9A242973E80025A3AB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A0408F9E24298D2D0025A3AB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		A0408FA024298E360025A3AB /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		A0408FA4242B08010025A3AB /* dayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dayCell.swift; sourceTree = "<group>"; };
 		A0408FA6242D8B8E0025A3AB /* eventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eventCell.swift; sourceTree = "<group>"; };
 		A0DEA24D23FD64CA00EAE1D9 /* PinBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +127,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A0408FA82436EE460025A3AB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A03158C92414A3B0000CFF41 /* UserCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A0DEA24423FD64C900EAE1D9 = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */,
+				A0408FA82436EE460025A3AB /* Cells */,
 				A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */,
 				A0DEA25423FD64CA00EAE1D9 /* ViewController.swift */,
 				A0DEA25623FD64CA00EAE1D9 /* Main.storyboard */,
@@ -170,13 +177,11 @@
 				A0DEA2822404B88000EAE1D9 /* DashBoardEventsViewController.swift */,
 				A0DEA2842404B8B400EAE1D9 /* CreateEventsViewController.swift */,
 				A03158C724149CD6000CFF41 /* LogINViewController.swift */,
-				A03158C92414A3B0000CFF41 /* UserCell.swift */,
 				A03158CB2414A494000CFF41 /* UsersViewController.swift */,
 				A03158CD2414A719000CFF41 /* User.swift */,
 				A0408F98242972590025A3AB /* PostCell.swift */,
 				A0408F9A242973E80025A3AB /* Post.swift */,
 				A0408F9E24298D2D0025A3AB /* UserProfile.swift */,
-				A0408FA024298E360025A3AB /* UserService.swift */,
 				A0408FA4242B08010025A3AB /* dayCell.swift */,
 				A0408FA6242D8B8E0025A3AB /* eventCell.swift */,
 			);
@@ -388,7 +393,6 @@
 			files = (
 				A03158CE2414A719000CFF41 /* User.swift in Sources */,
 				9ECE3D24240026F8004EDEFE /* PreferencesViewController.swift in Sources */,
-				A0408FA124298E360025A3AB /* UserService.swift in Sources */,
 				A03158CC2414A494000CFF41 /* UsersViewController.swift in Sources */,
 				A0DEA2852404B8B400EAE1D9 /* CreateEventsViewController.swift in Sources */,
 				A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */,

@@ -11,15 +11,18 @@ import FirebaseAuth
 
 class LogINViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var email: UITextField!
-    
     @IBOutlet weak var password: UITextField!
-    
+    @IBOutlet weak var invalidLabel: UILabel!
     @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         email.delegate = self
         password.delegate = self
         email.becomeFirstResponder()
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -37,15 +40,34 @@ class LogINViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func logInPressed(_ sender: UIButton) {
+        activityIndicator.startAnimating()
+        var emOrpas = ""
+        
         guard let email = email.text else {return}
         guard let password = password.text else {return}
 
         Auth.auth().signIn(withEmail: email, password: password, completion: {(user, error) in
+            self.activityIndicator.stopAnimating()
 
             if let _ = user{
-                self.dismiss(animated: false, completion: nil)
+                self.performSegue(withIdentifier: "toNav", sender: self)
+                self.invalidLabel.isHidden = false
+                self.invalidLabel.textColor = .white
+                self.invalidLabel.text = "Successful!"
             }
+                
             else{
+                //checks to see which was incorrect
+                if email != user?.user.email{
+                    emOrpas = "email"
+                }
+                
+                else{
+                    emOrpas = "password"
+                }
+            
+                self.invalidLabel.isHidden = false
+                self.invalidLabel.text = "Invalid \(emOrpas)"
                 print(error!.localizedDescription)
             }
 

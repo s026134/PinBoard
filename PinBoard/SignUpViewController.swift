@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let picker = UIImagePickerController()
     var userStorage: StorageReference!
@@ -69,27 +70,27 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
     
     
     @IBAction func signUpButtonTouchedUp(_ sender: UIButton) {
+        activityIndicator.startAnimating()
         guard let email = emailAddress.text else {return}
         guard let password = password.text else {return}
         
 //        let userTag : Set<Int> = [0]
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            self.activityIndicator.stopAnimating()
             if let _ = user{
                 print("user created")
                 
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                changeRequest?.displayName = email
+                changeRequest?.displayName = self.nameTextField.text!
                 changeRequest?.commitChanges(completion: { (error) in
-                    print ("couldn't change name")
+                    print ("User Display Name Changed")
                 })
                 
                 guard let uid = Auth.auth().currentUser?.uid else{return}
                 
                 let imageRef = self.userStorage.child("\(uid).jpg")
                 
-                
-                //            let data = UIImage.jpegData(self.imageView.image!, 0.5)
                 guard let image = self.imageView?.image, let imageData = image.jpegData(compressionQuality: 0.75) else {return}
                 
                 
@@ -106,13 +107,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
                         }
                         
                         if let url = url{
-                            let userInfo: [String : Any] = ["uid" : uid, "full name" : self.nameTextField.text!, "urlToImage" : url.absoluteString, "email" : email, "password": password]
+                            let userInfo: [String : Any] = ["uid" : uid, "User Name" : self.nameTextField.text!, "urlToImage" : url.absoluteString, "email" : email, "password": password]
 //                            , "userTag" : userTag
-                            self.ref.child("users").child(uid).setValue(userInfo)
+                            self.ref.child("users/\(uid)").setValue(userInfo)
                             
-//                            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "usersPrefVC")
-//                            
-//                            self.present(vc, animated: true, completion: nil)
                             
                         }
                         

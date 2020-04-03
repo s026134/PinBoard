@@ -9,12 +9,12 @@
 import UIKit
 
 class Post: NSObject {
-    var author : String!
-    var attending : String!
-    var pathToimage : String!
-    var userID : String!
-    var eventTitle : String!
-    var location: String!
-    var Descrip: String!
-    var eventDate: String!
+    var userName : Any!
+    var attending : Any!
+    var pathToimage : Any!
+    var userID : Any!
+    var eventTitle : Any!
+    var location: Any!
+    var Descrip: Any!
+    var eventDate: Any!
 }

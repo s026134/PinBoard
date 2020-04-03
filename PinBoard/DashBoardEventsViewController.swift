@@ -58,15 +58,13 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         month = "\(monthsNumber[Int(monthString)!]!)"
         
         let label1 = weeklyLabels()
-        label1.dayLabell = dayString
+        label1.dayLabell = "\(Int(dayString)!)"
         label1.monthLabell = month
         weeklylabels.append(label1)
         
         for i in (Int(dayString)! + 1) ... daysInMonth[month]!{
             let label2 = weeklyLabels()
             label2.addLabels(dayLabell: "\(i)", monthLabell: month)
-            //            label.dayLabell = "\(i)"
-            //            label.monthLabell = month
             weeklylabels.append(label2)
         }
         var nextmonth = (Int(monthString)! + 1)
@@ -93,6 +91,7 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
+        //side bar cell for day and month
             let cell = weeklySidebar.dequeueReusableCell(withReuseIdentifier: "dayCell", for: indexPath) as! dayCell
             
             cell.layer.cornerRadius = 10

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 
 class ViewController: UIViewController {
@@ -19,7 +20,19 @@ class ViewController: UIViewController {
 //            self.performSegue(withIdentifier: "HomeScreenViewController", sender: self)
 //        }
         
+        
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let user = Auth.auth().currentUser{
+            self.performSegue(withIdentifier: "toTheNav", sender: self)
+        }
+    }
+    
 }
 
