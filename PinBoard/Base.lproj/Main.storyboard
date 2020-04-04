@@ -68,22 +68,6 @@
                                     <segue destination="JtD-sn-Men" kind="show" id="dA0-Il-48h"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xwj-sW-zzx">
-                                <rect key="frame" x="187" y="769" width="41" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Home"/>
-                                <connections>
-                                    <segue destination="7IJ-Xz-bRS" kind="show" id="0R6-KW-tXD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdC-dW-t6n">
-                                <rect key="frame" x="184" y="813" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Events"/>
-                                <connections>
-                                    <segue destination="BYw-lP-yJp" kind="show" id="UPp-oU-5Kk"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -160,8 +144,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZC-7g-3Jy">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZC-7g-3Jy">
                                 <rect key="frame" x="149" y="477" width="117" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <state key="normal" title="Select Image">
                                     <color key="titleColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -176,9 +161,10 @@
                                 <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KXm-gC-bVc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KXm-gC-bVc">
                                 <rect key="frame" x="87" y="540" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="30"/>
@@ -207,7 +193,6 @@
                             <constraint firstItem="3Ht-iO-kUO" firstAttribute="top" secondItem="pRI-DF-zBg" secondAttribute="bottom" constant="20" id="fqa-Kd-Whz"/>
                             <constraint firstItem="Cev-cV-SpX" firstAttribute="leading" secondItem="t3y-nS-ume" secondAttribute="leading" constant="50" id="qoP-nt-qoP"/>
                             <constraint firstItem="szG-u3-8XS" firstAttribute="centerX" secondItem="xqX-j4-k8w" secondAttribute="centerX" id="ryT-V9-B7H"/>
-                            <constraint firstItem="PZC-7g-3Jy" firstAttribute="top" secondItem="Cev-cV-SpX" secondAttribute="bottom" constant="20" id="sH1-fN-t8v"/>
                             <constraint firstItem="3Ht-iO-kUO" firstAttribute="leading" secondItem="Aoa-It-hP7" secondAttribute="leading" id="tJC-3O-Rdl"/>
                             <constraint firstItem="LDD-cJ-QSy" firstAttribute="leading" secondItem="t3y-nS-ume" secondAttribute="leading" constant="50" id="uUK-Yh-RFb"/>
                             <constraint firstItem="t3y-nS-ume" firstAttribute="bottom" secondItem="szG-u3-8XS" secondAttribute="bottom" constant="70" id="ucL-l3-XMi"/>
@@ -1282,6 +1267,7 @@
         <image name="Logo" width="582" height="544"/>
         <image name="add1" width="24" height="24"/>
         <image name="calendar1" width="24" height="24"/>
+        <image name="camera" catalog="system" width="64" height="48"/>
         <image name="camera.on.rectangle" catalog="system" width="64" height="48"/>
         <image name="chevron.right.circle" catalog="system" width="64" height="60"/>
         <image name="envelope" catalog="system" width="64" height="46"/>
@@ -1293,8 +1279,6 @@
         <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UPp-oU-5Kk"/>
-        <segue reference="0R6-KW-tXD"/>
         <segue reference="Faw-NK-vRI"/>
     </inferredMetricsTieBreakers>
 </document>
