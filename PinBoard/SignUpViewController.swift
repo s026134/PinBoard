@@ -21,7 +21,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
     
     let picker = UIImagePickerController()
     var userStorage: StorageReference!
+    var channelStorage: StorageReference!
     var ref: DatabaseReference!
+    
+    var collectionNames = ["Gaming", "Music", "Math", "Science", "Sports ", "Reading", "Computer Science", "TV", "Food", "Misc"]
+   // var collectionImages =
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +39,32 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
         ref = Database.database().reference()
 //        userStorage = Storage.storage().child("users")
         userStorage = storage.child("users")
+        channelStorage = storage.child("Channels")
+        
+        setUpChannels()
+    }
+    func setUpChannels () {
+        let key = ref.child("Channels/")
+        let imageRef = self.channelStorage.child("\(key).jpg")
+        let game = UIImage(named: "gaming1")
+        
+        
+       
+        for i in 0...collectionNames.count-1 {
+            //ref.child("Channels/").updateChildValues(["Name": collectionNames[i]])
+            
+            guard let image = game, let imageData = image.jpegData(compressionQuality: 0.6) else {return}
+            let uploadTask = imageRef.putData(imageData, metadata: nil, completion: {(metadata, error) in
+                imageRef.downloadURL { (url, error) in
+                    if let url = url {
+                        let channel = [self.collectionNames[i]: "gaming1"]
+                        self.ref.child("Channels/").updateChildValues(channel)
+                    }
+                }
+            })
+            
+        }
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -80,12 +111,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
             self.activityIndicator.stopAnimating()
             if let _ = user{
                 print("user created")
-                
+               /* this was making the following thing repeat - i think - so I commented it out - claire
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                 changeRequest?.displayName = self.nameTextField.text!
                 changeRequest?.commitChanges(completion: { (error) in
                     print ("User Display Name Changed")
                 })
+ */
                 
                 guard let uid = Auth.auth().currentUser?.uid else{return}
                 

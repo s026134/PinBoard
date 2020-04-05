@@ -7,14 +7,112 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
-class ChannelsViewController: UIViewController {
+class ChannelsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
+   
+    var refreshControl : UIRefreshControl!
+    
+    @IBOutlet weak var channelCV: UICollectionView!
+    
+    @IBOutlet weak var channelTableView: UITableView!
+    
+    let layoutTop = UICollectionViewFlowLayout()
+    
+    let darkBlue = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 51/255.0, alpha: 1.0)
+    let grayBlue = UIColor.init(red: 204, green: 218, blue: 233, alpha: 1.0)
+    
+    let uid = Auth.auth().currentUser?.uid
+    let ref = Database.database().reference()
+    var count = 1
+    
+    
+ //   let channels = ["Gaming": game, "Music": music, "Math": math, "Science": science, "Sports": " ", "Reading": " ", "Computer Science": " ", "TV": " ", "Food": " ", "Misc": " "]
+    func countFollowing () {
+        
+        ref.child("users/\(uid!)").observe(.value){(snapshot) in
+        let user = snapshot.value as? [String : AnyObject]
+            if let users = user {
+                for (userKey, userValue) in users {
+                    if userKey == "following" {
+                       
+                        print("what's up \(userKey) : \(userValue.count)")
+                        if let num = userValue.count {
+                            self.count = num
+                            print(self.count)
+                        }
+                    
+                    
+                    }
+                
+                }
+            }
+            
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // this is supposed to count the number of channels you're following but it doesn't work! ah! - Claire
+        
+        countFollowing()
+        
+        
+        print(count)
+        return count
+            
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+       let cell = channelCV.dequeueReusableCell(withReuseIdentifier: "channelCell2", for: indexPath) as! ChannelCell
+        ref.child("Channels/").observe(.value){(snapshot) in let channels = snapshot.value as? [String : AnyObject]
+            
+            if let channels1 = channels {
+                for (_ , imageName) in channels1 {
+                    cell.profilePicSub.image = UIImage(named: imageName as! String)
+                }
+            }
+            
+        }
+        
+        cell.backgroundColor = grayBlue
+        cell.layer.cornerRadius = 32
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+           return 1
+       }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+                
+        return cell
+    }
+    
 
+  
+   
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        countFollowing()
 
+        channelCV.collectionViewLayout = layoutTop
+        layoutTop.itemSize = CGSize(width: 65, height: 65)
+        layoutTop.scrollDirection = .horizontal
+        
+       
         // Do any additional setup after loading the view.
     }
+   
+   
     
 
     /*
