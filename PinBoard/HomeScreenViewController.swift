@@ -59,10 +59,6 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         
         let ref = Database.database().reference()
         let uid = Auth.auth().currentUser?.uid
-        var postss = [String : AnyObject]()
-        //        var pos = [String: [String : AnyObject]]()
-        var pos = Post()
-        var j = 0
         
         ref.child("All Posts/\(uid!)").observe(.value){(snapshot) in
             let allPosts = snapshot.value as? [String : AnyObject]
@@ -156,7 +152,26 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             return cell
         }
         
-    }}
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.collectionView{
+        let cell = collectionView.cellForItem(at: indexPath) as! PostCell
+        
+      
+        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let nextViewController = segue.destination as? EventViewController{
+                nextViewController.eventzCell = cell
+            }
+            
+     
+        }
+        
+        self.performSegue(withIdentifier: "moreDetails", sender: self)
+        }
+    }
+}
+
 
 extension UIImageView{
     func downloadImage(from imgURL: String!){

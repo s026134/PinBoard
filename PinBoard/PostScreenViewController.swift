@@ -32,7 +32,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         
         datePicker = UIDatePicker()
-        datePicker?.datePickerMode = .date
+        datePicker?.datePickerMode = .dateAndTime
         datePicker?.addTarget(self, action: #selector(PostScreenViewController.dateChanged(datePicker: )), for: .valueChanged)
         inputDate.inputView = datePicker
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PostScreenViewController.viewTapped(gestureRecognizer:)))
@@ -58,9 +58,11 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     
     @objc func dateChanged(datePicker: UIDatePicker){
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
         inputDate.text = dateFormatter.string(from: datePicker.date)
-        view.endEditing(true)
+        
+//        view.endEditing(true)
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
