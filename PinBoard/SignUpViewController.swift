@@ -25,6 +25,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
     var ref: DatabaseReference!
     
     var collectionNames = ["Gaming", "Music", "Math", "Science", "Sports ", "Reading", "Computer Science", "TV", "Food", "Misc"]
+    var collectionPics = ["gaming1", "music1", "math1", "sci1", "sports1", "reading1", "comp1", "tv1", "food1", "mis1"]
    // var collectionImages =
     
     
@@ -39,12 +40,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
         ref = Database.database().reference()
 //        userStorage = Storage.storage().child("users")
         userStorage = storage.child("users")
-        channelStorage = storage.child("Channels")
+        channelStorage = storage.child("channels")
         
         setUpChannels()
     }
     func setUpChannels () {
-        let key = ref.child("Channels/")
+        let key = ref.child("channels/")
         let imageRef = self.channelStorage.child("\(key).jpg")
         let game = UIImage(named: "gaming1")
         
@@ -53,12 +54,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UINavigationC
         for i in 0...collectionNames.count-1 {
             //ref.child("Channels/").updateChildValues(["Name": collectionNames[i]])
             
-            guard let image = game, let imageData = image.jpegData(compressionQuality: 0.6) else {return}
+            guard let image = UIImage(named: collectionPics[i]), let imageData = image.jpegData(compressionQuality: 0.6) else {return}
             let uploadTask = imageRef.putData(imageData, metadata: nil, completion: {(metadata, error) in
                 imageRef.downloadURL { (url, error) in
                     if let url = url {
-                        let channel = [self.collectionNames[i]: "gaming1"]
-                        self.ref.child("Channels/").updateChildValues(channel)
+                        let channel = [self.collectionNames[i]: self.collectionPics[i]]
+                        //self.ref.child("Channels/").updateChildValues(channel) //was update child
+                        self.ref.child("channels/").setValue(channel)
                     }
                 }
             })

@@ -25,7 +25,7 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     let uid = Auth.auth().currentUser?.uid
     let ref = Database.database().reference()
-    var count = 1
+    var count = 5
     
     
  //   let channels = ["Gaming": game, "Music": music, "Math": math, "Science": science, "Sports": " ", "Reading": " ", "Computer Science": " ", "TV": " ", "Food": " ", "Misc": " "]
@@ -65,18 +65,34 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
        let cell = channelCV.dequeueReusableCell(withReuseIdentifier: "channelCell2", for: indexPath) as! ChannelCell
-        ref.child("Channels/").observe(.value){(snapshot) in let channels = snapshot.value as? [String : AnyObject]
+        ref.child("users/\(uid!)").observe(.value){(snapshot) in let elements = snapshot.value as? [String : AnyObject]
             
-            if let channels1 = channels {
-                for (_ , imageName) in channels1 {
-                    cell.profilePicSub.image = UIImage(named: imageName as! String)
+            if let elements1 = elements {
+                print("71 why")
+                for (elementName , element) in elements1 {
+                    if elementName == "following" {
+                        print("74 why")
+                        
+                        guard let element3 = element as? [String] else {return}
+                        cell.profilePicSub.image = UIImage(named: element3[indexPath.row])
+                        /*
+                        for i in element as! [String]{
+                                print("79 why")
+                                print(i)
+                            cell.profilePicSub.image = UIImage(named: i)
+                            }
+                        
+                        */
+                    }
+                    
+                    
                 }
             }
             
         }
         
         cell.backgroundColor = grayBlue
-        cell.layer.cornerRadius = 32
+        cell.layer.cornerRadius = 33
         return cell
         
     }
@@ -105,7 +121,7 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
         countFollowing()
 
         channelCV.collectionViewLayout = layoutTop
-        layoutTop.itemSize = CGSize(width: 65, height: 65)
+        layoutTop.itemSize = CGSize(width: 66, height: 66)
         layoutTop.scrollDirection = .horizontal
         
        

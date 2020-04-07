@@ -45,14 +45,20 @@ class UserProfile: UIViewController {
            
             if let aUser = user {
                 let image1 = aUser["urlToImage"]
- 
-                let url = URL(string: image1 as! String)
-               
+                
+                if let image2 = image1 as? String {
+                    
+                    let url = URL(string: image2)
+                    
                     if let data = try? Data(contentsOf: url!) //replaced url! w/ image1!
                     {
                         let imagge: UIImage = UIImage(data: data)!
                         self.profilePic.image = imagge
                     }
+                    
+                }
+ 
+                
                 
             }
             

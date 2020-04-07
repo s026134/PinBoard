@@ -1082,9 +1082,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ejg-qd-tIB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="65" height="69"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ejg-qd-tIB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="ExY-Sg-OEv"/>
+                                                        <constraint firstAttribute="height" constant="70" id="V9E-SX-Wo6"/>
+                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="40"/>
@@ -1092,6 +1095,10 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ejg-qd-tIB" firstAttribute="centerX" secondItem="1F5-Ua-HuC" secondAttribute="centerX" id="XRy-bN-O2b"/>
+                                                <constraint firstItem="ejg-qd-tIB" firstAttribute="top" secondItem="1F5-Ua-HuC" secondAttribute="top" id="taL-gh-9Mn"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="65" height="65"/>
                                         <connections>
