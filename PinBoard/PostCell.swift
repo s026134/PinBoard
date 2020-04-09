@@ -23,12 +23,21 @@ class PostCell: UICollectionViewCell {
     @IBAction func attendPressed(_ sender: UIButton) {
         let uid = Auth.auth().currentUser?.uid
         let ref = Database.database().reference()
-        let key = ref.child("All Posts/\(uid)/\(eventTitleLabel.text)/attending")
-        
-        if let attend = attendingLabel.text{
-            key.setValue(Int(attend)! + 1)
+        let key = ref.child("All Posts/\(uid!)/\(eventTitleLabel.text!)/attending")
+     
+        key.observeSingleEvent(of: .value){(snapshot) in
+            
+            let attend = snapshot.value as? Int
+            if attend == 0{
+                self.attendingLabel.text = "1"
+                key.setValue(1)
+            }
+            else{
+                if let att = attend{
+                    key.setValue(att + 1)
+                }
+            }
         }
-        
         
     }
 

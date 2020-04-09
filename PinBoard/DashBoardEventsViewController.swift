@@ -38,6 +38,7 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
     let currentDateTime = Date()
     let monthFormatter = DateFormatter()
     let dayFormatter = DateFormatter()
+    var selectedEvent  = ""
     
     
     override func viewDidLoad() {
@@ -86,48 +87,123 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         fetchPosts()
     }
     
+    
     func fetchPosts(){
         let ref = Database.database().reference()
         let uid = Auth.auth().currentUser?.uid
         
         ref.child("All Posts/\(uid!)").observe(.value){(snapshot) in
-            
+            var posty : Post?
             let allPosts = snapshot.value as? [String: AnyObject]
-            
             if let allThePosts = allPosts{
                 for(postName, post) in allThePosts{
-                    self.events.append(Post())
-                    if let pos = self.events.last{
-                        for (category, element) in post as! [String : AnyObject]{
-                            if category == "pathToImage" {
-                                pos.pathToimage = element
-                            }
-                            else if category == "eventDate"{
-                                pos.eventDate = element
-                            }
-                            else if category == "attending"{
-                                pos.attending = element
-                            }
-                            else if category == "description"{
-                                pos.Descrip = element
-                            }
-                            else if category == "eventTitle"{
-                                pos.eventTitle = element
-                            }
-                            else if category == "userID"{
-                                pos.userID = element
-                            }
-                            else if category == "location"{
-                                pos.location = element
-                            }
-                            else if category == "userName"{
-                                pos.userName = element
-                            }
-                            
+                    for i in self.events{
+                        if i.eventTitle as! String == postName as! String{
+                            posty = i
                         }
                     }
+                    if posty != nil{
+                        if let pos = posty{
+                            for (category, element) in post as! [String: AnyObject]{
+                                if category == "pathToImage" {
+                                    pos.pathToimage = element
+                                }
+                                else if category == "eventDate"{
+                                    pos.eventDate = element
+                                }
+                                else if category == "attending"{
+                                    pos.attending = element
+                                }
+                                else if category == "description"{
+                                    pos.Descrip = element
+                                }
+                                else if category == "eventTitle"{
+                                    pos.eventTitle = element
+                                }
+                                else if category == "userID"{
+                                    pos.userID = element
+                                }
+                                else if category == "location"{
+                                    pos.location = element
+                                }
+                                else if category == "userName"{
+                                    pos.userName = element
+                                }
+                            }
+                        }
+                    }
+                        
+                    else{
+                        self.events.append(Post())
+                        if let pos = self.events.last{
+                            for (category, element) in post as! [String: AnyObject]{
+                                if category == "pathToImage" {
+                                    pos.pathToimage = element
+                                }
+                                else if category == "eventDate"{
+                                    pos.eventDate = element
+                                }
+                                else if category == "attending"{
+                                    pos.attending = element
+                                }
+                                else if category == "description"{
+                                    pos.Descrip = element
+                                }
+                                else if category == "eventTitle"{
+                                    pos.eventTitle = element
+                                }
+                                else if category == "userID"{
+                                    pos.userID = element
+                                }
+                                else if category == "location"{
+                                    pos.location = element
+                                }
+                                else if category == "userName"{
+                                    pos.userName = element
+                                }
+                            }
+                        }
+                    }
+                    
                 }
+                
             }
+            
+            
+//            if let allThePosts = allPosts{
+//                for(postName, post) in allThePosts{
+//                    self.events.append(Post())
+//                    if let pos = self.events.last{
+//                        for (category, element) in post as! [String : AnyObject]{
+//                            if category == "pathToImage" {
+//                                pos.pathToimage = element
+//                            }
+//                            else if category == "eventDate"{
+//                                pos.eventDate = element
+//                            }
+//                            else if category == "attending"{
+//                                pos.attending = element
+//                            }
+//                            else if category == "description"{
+//                                pos.Descrip = element
+//                            }
+//                            else if category == "eventTitle"{
+//                                pos.eventTitle = element
+//                            }
+//                            else if category == "userID"{
+//                                pos.userID = element
+//                            }
+//                            else if category == "location"{
+//                                pos.location = element
+//                            }
+//                            else if category == "userName"{
+//                                pos.userName = element
+//                            }
+//
+//                        }
+//                    }
+//                }
+//            }
             self.eventTableView.reloadData()
         }
     }
@@ -209,14 +285,7 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH:mm"
-        
-        //                for i in 0...events.count-1{
-        //                    if selectedDay == dayFormatter.string(from: (events[i].eventDate as! Date)){
-        //                        cell.eventTitleLabel.text = events[i].eventTitle as? String
-        //                        cell.timeLabel.text = timeFormatter.string(from: events[i].eventDate as! Date)
-        //                    }
-        //                }
-        
+    
         for i in 0...(events.count-1){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
@@ -245,6 +314,19 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
             //delete stuff
             events.remove(at: indexPath.row)
             eventTableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = eventTableView.cellForRow(at: indexPath) as! eventCell
+        selectedEvent = cell.eventTitleLabel.text!
+        
+        self.performSegue(withIdentifier: "moreDeat", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextViewController = segue.destination as? EventViewController{
+            nextViewController.fromDashboard = selectedEvent
         }
     }
     

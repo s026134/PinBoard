@@ -26,6 +26,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     let coral = UIColor.init(red: 229/255, green: 88/255, blue: 93/255, alpha: 1)
     
     let lightBlue = UIColor.init(red: 170/255, green: 223/255, blue: 227/255, alpha: 1)
+    var selectedCell : PostCell!
+    var selectedCellImage : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,39 +64,76 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         
         ref.child("All Posts/\(uid!)").observe(.value){(snapshot) in
             let allPosts = snapshot.value as? [String : AnyObject]
+            var posty : Post?
             
             if let allThePosts = allPosts{
                 for(postName, post) in allThePosts{
-                    self.posts.append(Post())
-                    if let posty = self.posts.last{
-                        
-                        for (category, element) in post as! [String: AnyObject]{
-                            if category == "pathToImage" {
-                                posty.pathToimage = element
-                            }
-                            else if category == "eventDate"{
-                                posty.eventDate = element
-                            }
-                            else if category == "attending"{
-                                posty.attending = element
-                            }
-                            else if category == "description"{
-                                posty.Descrip = element
-                            }
-                            else if category == "eventTitle"{
-                                posty.eventTitle = element
-                            }
-                            else if category == "userID"{
-                                posty.userID = element
-                            }
-                            else if category == "location"{
-                                posty.location = element
-                            }
-                            else if category == "userName"{
-                                posty.userName = element
+                    for i in self.posts{
+                        if i.eventTitle as! String == postName as! String{
+                            posty = i
+                        }
+                    }
+                    if posty != nil{
+                        if let pos = posty{
+                            for (category, element) in post as! [String: AnyObject]{
+                                if category == "pathToImage" {
+                                    pos.pathToimage = element
+                                }
+                                else if category == "eventDate"{
+                                    pos.eventDate = element
+                                }
+                                else if category == "attending"{
+                                    pos.attending = element
+                                }
+                                else if category == "description"{
+                                    pos.Descrip = element
+                                }
+                                else if category == "eventTitle"{
+                                    pos.eventTitle = element
+                                }
+                                else if category == "userID"{
+                                    pos.userID = element
+                                }
+                                else if category == "location"{
+                                    pos.location = element
+                                }
+                                else if category == "userName"{
+                                    pos.userName = element
+                                }
                             }
                         }
+                    }
                         
+                    else{
+                        self.posts.append(Post())
+                        if let pos = self.posts.last{
+                            for (category, element) in post as! [String: AnyObject]{
+                                if category == "pathToImage" {
+                                    pos.pathToimage = element
+                                }
+                                else if category == "eventDate"{
+                                    pos.eventDate = element
+                                }
+                                else if category == "attending"{
+                                    pos.attending = element
+                                }
+                                else if category == "description"{
+                                    pos.Descrip = element
+                                }
+                                else if category == "eventTitle"{
+                                    pos.eventTitle = element
+                                }
+                                else if category == "userID"{
+                                    pos.userID = element
+                                }
+                                else if category == "location"{
+                                    pos.location = element
+                                }
+                                else if category == "userName"{
+                                    pos.userName = element
+                                }
+                            }
+                        }
                     }
                     
                 }
@@ -111,6 +150,12 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             
         }
         
+    }
+    
+    @IBAction func loggedOutPressed(_ sender: UIBarButtonItem) {
+        try! Auth.auth().signOut()
+        self.performSegue(withIdentifier: "backToMain", sender: self)
+
     }
     
     
@@ -133,7 +178,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             
             if indexPath.row < posts.count{
                 cell.userPostedLabel.text = posts[indexPath.row].userName as? String
-                cell.attendingLabel.text = posts[indexPath.row].attending as? String
+                cell.attendingLabel.text = "\(posts[indexPath.row].attending as! Int)"
                 cell.dateLabel.text = posts[indexPath.row].eventDate as? String
                 cell.descriPLabel.text = posts[indexPath.row].Descrip as? String
                 cell.eventTitleLabel.text = posts[indexPath.row].eventTitle as? String
@@ -156,18 +201,22 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.collectionView{
-        let cell = collectionView.cellForItem(at: indexPath) as! PostCell
-        
-      
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if let nextViewController = segue.destination as? EventViewController{
-                nextViewController.eventzCell = cell
-            }
+            let cell = collectionView.cellForItem(at: indexPath) as! PostCell
+            selectedCell = cell
+            selectedCellImage = indexPath.row
             
-     
+            self.performSegue(withIdentifier: "moreDetails", sender: self)
         }
-        
-        self.performSegue(withIdentifier: "moreDetails", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextViewController = segue.destination as? EventViewController{
+            nextViewController.eventTitle = selectedCell.eventTitleLabel.text
+            nextViewController.eventDate = selectedCell.dateLabel.text
+            nextViewController.loc = selectedCell.locLabel.text
+            nextViewController.Descrip = selectedCell.descriPLabel.text
+            nextViewController.attending = selectedCell.attendingLabel.text
+            nextViewController.imageURL = posts[selectedCellImage].pathToimage as? String
         }
     }
 }
