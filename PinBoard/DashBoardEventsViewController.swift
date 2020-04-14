@@ -39,7 +39,8 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
     let monthFormatter = DateFormatter()
     let dayFormatter = DateFormatter()
     var selectedEvent  = ""
-    
+    let ref = Database.database().reference()
+    let uid = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,8 +90,6 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
     
     
     func fetchPosts(){
-        let ref = Database.database().reference()
-        let uid = Auth.auth().currentUser?.uid
         
         ref.child("All Posts/\(uid!)").observe(.value){(snapshot) in
             var posty : Post?
@@ -169,41 +168,6 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
                 
             }
             
-            
-//            if let allThePosts = allPosts{
-//                for(postName, post) in allThePosts{
-//                    self.events.append(Post())
-//                    if let pos = self.events.last{
-//                        for (category, element) in post as! [String : AnyObject]{
-//                            if category == "pathToImage" {
-//                                pos.pathToimage = element
-//                            }
-//                            else if category == "eventDate"{
-//                                pos.eventDate = element
-//                            }
-//                            else if category == "attending"{
-//                                pos.attending = element
-//                            }
-//                            else if category == "description"{
-//                                pos.Descrip = element
-//                            }
-//                            else if category == "eventTitle"{
-//                                pos.eventTitle = element
-//                            }
-//                            else if category == "userID"{
-//                                pos.userID = element
-//                            }
-//                            else if category == "location"{
-//                                pos.location = element
-//                            }
-//                            else if category == "userName"{
-//                                pos.userName = element
-//                            }
-//
-//                        }
-//                    }
-//                }
-//            }
             self.eventTableView.reloadData()
         }
     }
@@ -312,8 +276,9 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete{
             //delete stuff
-            events.remove(at: indexPath.row)
+            ref.child("All Posts/\(uid)/\(events.remove(at: indexPath.row).eventTitle as? String)").removeValue()
             eventTableView.reloadData()
+            
         }
     }
     
