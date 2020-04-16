@@ -161,7 +161,6 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionView{
-            //change this to the number of posts
             return posts.count
         }
         else{

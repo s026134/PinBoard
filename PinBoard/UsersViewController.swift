@@ -10,9 +10,11 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var doneButton: UIButton!
+    var checkMarks = [Int: Bool]()
     var channFollowing = [User]()
     let mintGreen = UIColor.init(red: 159/255, green: 216/255, blue: 138/255, alpha: 1)
     
@@ -21,6 +23,9 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let coral = UIColor.init(red: 229/255, green: 88/255, blue: 93/255, alpha: 1)
     
     let lightBlue = UIColor.init(red: 170/255, green: 223/255, blue: 227/255, alpha: 1)
+    let ref = Database.database().reference()
+    let uid = Auth.auth().currentUser?.uid
+    var channelsToSendTo = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +33,45 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.dataSource = self
         
         fetchFollowing()
-        print(self.channFollowing)
+
+        if checkMarks.count != 0{
+            var count = 0
+            for(row, TorF) in checkMarks{
+                if TorF == false{
+                    count += 1
+                }
+            }
+            
+            if count == checkMarks.count{
+                doneButton.isHidden = true
+            }
+        }
+    }
     
+    @IBAction func donePressed(_ sender: UIButton) {
+        for (row, TorF) in checkMarks {
+            if TorF == true{
+                channelsToSendTo.append(channFollowing[row].channelName)
+            }
+        }
+    
+//        performSegue(withIdentifier: "backToPosting", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextViewController = segue.destination as? PostScreenViewController{
+            nextViewController.channelsToSendTo = channelsToSendTo
+        }
     }
     
     func fetchFollowing(){
-        let ref = Database.database().reference()
-        let uid = Auth.auth().currentUser?.uid
+       
         
         ref.child("users/\(uid!)/following").observe(.value){(snapshot) in
             let following = snapshot.value as? [String]
             
             var num : User?
-            let channelDict = [0 : UIImage(named: "gaming1"), 1: UIImage(named: "music1"), 2: UIImage(named: "math1"), 3: UIImage(named: "sci1"), 4: UIImage(named: "sports1"), 5: UIImage(named: "reading1"), 6: UIImage(named: "comp1"), 7: UIImage(named: "tv1"), 8: UIImage(named: "food1"), 9 : UIImage(named: "mis1")]
+            let channelDict = ["gaming1" : "Gaming", "music1": "Music", "math1" : "Math", "sci1": "Science", "sports1": "Sports", "reading1" : "Reading", "comp1": "Computer Science", "tv1": "TV Shows", "food1": "Food", "mis1" : "Miscellaneous"]
             
             
             if let follow = following{
@@ -56,7 +87,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     if num == nil{
                         self.channFollowing.append(User())
                         if let som = self.channFollowing.last{
-                            som.channelName = i
+                            som.channelName = channelDict[i]
                             som.imagePath = UIImage(named: i)
                         }
                         
@@ -78,27 +109,41 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChannCell", for: indexPath) as! UserCell
-        cell.layer.cornerRadius = 10
-        cell.layer.borderWidth = 3
-        cell.layer.borderColor = blue.cgColor
+        cell.layer.cornerRadius = cell.contentView.frame.height / 2
+        cell.backgroundColor = lightBlue
         cell.profImage.image = channFollowing[indexPath.row].imagePath
+        cell.profImage.layer.cornerRadius = 48
         cell.channelNameLabel.text = channFollowing[indexPath.row].channelName
         
+        
+        if checkMarks[indexPath.row] != nil {
+            doneButton.isHidden = false
+            cell.accessoryType = checkMarks[indexPath.row]! ? .checkmark : .none
+        } else {
+            checkMarks[indexPath.row] = false
+            cell.accessoryType = .none
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 93
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+            if cell.accessoryType == .checkmark{
+                cell.accessoryType = .none
+                checkMarks[indexPath.row] = false
+            }
+            else{
+                cell.accessoryType = .checkmark
+                checkMarks[indexPath.row] = true
+            }
+        }
+        self.tableView.reloadData()
     }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        self.tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        
-    }
+
     
 }

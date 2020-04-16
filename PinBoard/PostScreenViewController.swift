@@ -13,7 +13,7 @@ import FirebaseDatabase
 import FirebaseStorage
 //I still need to do the selecting channels stuff but otherwise this is good
 
-class PostScreenViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PostScreenViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var inputDate: UITextField!
     @IBOutlet weak var location: UITextField!
@@ -26,6 +26,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     var datePicker : UIDatePicker?
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingLabel: UILabel!
+    var channelsToSendTo = [String]()
     
     
     override func viewDidLoad() {
@@ -60,8 +61,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
         inputDate.text = dateFormatter.string(from: datePicker.date)
-        
-//        view.endEditing(true)
+    
         
     }
     
@@ -74,6 +74,13 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func selectChannelsPressed(_ sender: UIButton){
+//        var defaults = UserDefaults()
+//        if defaults.value(forKey: "eventTitle") != nil {
+//            
+//        }
+        
+    }
     
     @IBAction func selectPressed(_ sender: UIButton) {
     
@@ -86,12 +93,10 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func postPressed(_ sender: UIButton) {
         activityIndicator.startAnimating()
         loadingLabel.isHidden = false
-        
-
+    
+        let storage = Storage.storage().reference(forURL: "gs://pinboard-c2ef5.appspot.com")
         let uid = Auth.auth().currentUser?.uid
         let ref = Database.database().reference()
-        let storage = Storage.storage().reference(forURL: "gs://pinboard-c2ef5.appspot.com")
-        
         let key = ref.child("All Posts/\(uid!)/\(self.eventTitle.text!)")
         let imageRef = storage.child("\(key).jpg")
         
@@ -108,6 +113,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
             
             imageRef.downloadURL(completion: {(url, error) in
                 if let url = url {
+        
                     let feed = ["userID" : uid!, "pathToImage" : url.absoluteString, "attending" : 0, "userName" : Auth.auth().currentUser?.displayName!, "eventTitle" : self.eventTitle.text!, "eventDate" : self.inputDate.text!, "location" : self.location.text!, "description": self.Descrip.text!] as [String : Any]
                     
                     // need to change display name from email to an actual username
@@ -118,6 +124,10 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
                     self.activityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "Nav", sender: self)
                     
+                    
+                    for i in self.channelsToSendTo{
+                        ref.child("All Posts/\(i)/\(self.eventTitle.text!)").setValue(feed)
+                    }
                 }
                 
             })
