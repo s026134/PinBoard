@@ -28,6 +28,8 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var loadingLabel: UILabel!
     var channelsToSendTo = [String]()
     
+    @IBOutlet weak var selectChannelsButton: UIButton!
+    @IBOutlet weak var selectChannelsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +49,10 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
             postButton.isHidden = false
         }
         
-       
+        
         activityIndicator.hidesWhenStopped = true
-    
-        // Do any additional setup after loading the view.
+        selectChannelsLabel.text = " "
+        retreiveSelectedChannels()
     }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer){
@@ -61,7 +63,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
         inputDate.text = dateFormatter.string(from: datePicker.date)
-    
+        
         
     }
     
@@ -70,20 +72,39 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
             self.previewImage.image = image
             selectImage.isHidden = true
         }
-        
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func selectChannelsPressed(_ sender: UIButton){
-//        var defaults = UserDefaults()
-//        if defaults.value(forKey: "eventTitle") != nil {
-//            
-//        }
-        
+    func retreiveSelectedChannels() {
+        let uid = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference()
+        ref.child("users/\(uid!)/ChannelsToPostOn").observe(.value){(snapshot) in
+            
+            let channels = snapshot.value as? [String]
+            
+            if let chan = channels{
+                self.selectChannelsLabel.isHidden = false
+                
+                for i in chan{
+                    self.channelsToSendTo.append(i)
+                    if i == chan.first{
+                        self.selectChannelsLabel.text = i
+                    }
+                    else if i != chan.last!{
+                    self.selectChannelsLabel.text = "\(self.selectChannelsLabel.text!)" + ", "
+                    }
+                    else{
+                        self.selectChannelsLabel.text = "\(self.selectChannelsLabel.text!)" + i
+                    }
+                    
+                }
+            }
+            
+        }
     }
     
     @IBAction func selectPressed(_ sender: UIButton) {
-    
+        
         picker.allowsEditing = true
         picker.sourceType = .photoLibrary
         present(picker, animated: true, completion: nil)
@@ -93,7 +114,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func postPressed(_ sender: UIButton) {
         activityIndicator.startAnimating()
         loadingLabel.isHidden = false
-    
+        
         let storage = Storage.storage().reference(forURL: "gs://pinboard-c2ef5.appspot.com")
         let uid = Auth.auth().currentUser?.uid
         let ref = Database.database().reference()
@@ -103,7 +124,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
         guard let image = self.previewImage.image, let imageData = image.jpegData(compressionQuality: 0.6) else {return}
         
         let uploadTask = imageRef.putData(imageData, metadata: nil, completion: {(metadata, error) in
-          
+            
             if error != nil{
                 print(error!.localizedDescription)
                 self.activityIndicator.stopAnimating()
@@ -113,21 +134,23 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
             
             imageRef.downloadURL(completion: {(url, error) in
                 if let url = url {
-        
-                    let feed = ["userID" : uid!, "pathToImage" : url.absoluteString, "attending" : 0, "userName" : Auth.auth().currentUser?.displayName!, "eventTitle" : self.eventTitle.text!, "eventDate" : self.inputDate.text!, "location" : self.location.text!, "description": self.Descrip.text!] as [String : Any]
+                    let feed = ["userID" : uid!, "pathToImage" : url.absoluteString, "attending" : 0, "userName" : Auth.auth().currentUser?.email!, "eventTitle" : self.eventTitle.text!, "eventDate" : self.inputDate.text!, "location" : self.location.text!, "description": self.Descrip.text!] as [String : Any]
+                    
+                    
                     
                     // need to change display name from email to an actual username
                     
                     let postFeed = ["\(self.eventTitle.text!)" : feed]
                     ref.child("All Posts/\(uid!)/\(self.eventTitle.text!)").setValue(feed)
+                    for i in self.channelsToSendTo{
+                        ref.child("All Posts/\(i)/\(self.eventTitle.text!)").setValue(feed)
+                    }
+                    
+                    ref.child("users/\(uid!)/ChannelsToPostOn").removeValue()
                     
                     self.activityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "Nav", sender: self)
                     
-                    
-                    for i in self.channelsToSendTo{
-                        ref.child("All Posts/\(i)/\(self.eventTitle.text!)").setValue(feed)
-                    }
                 }
                 
             })
@@ -136,9 +159,9 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
         })
         
         uploadTask.resume()
-            
+        
         
     }
     
-
+    
 }

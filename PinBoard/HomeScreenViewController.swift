@@ -28,6 +28,9 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     let lightBlue = UIColor.init(red: 170/255, green: 223/255, blue: 227/255, alpha: 1)
     var selectedCell : PostCell!
     var selectedCellImage : Int!
+    let ref = Database.database().reference()
+    let uid = Auth.auth().currentUser?.uid
+    var channFollowing = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +50,9 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         
         refreshControl = UIRefreshControl()
         collectionView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(HomeScreenViewController.fetchPosts), for: .valueChanged)
         fetchPosts()
+        fetchFollowing()
         
     }
     
@@ -56,11 +60,44 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         print("refresh!")
     }
     
-    
-    func fetchPosts (){
+    func fetchFollowing(){
         
-        let ref = Database.database().reference()
-        let uid = Auth.auth().currentUser?.uid
+        ref.child("users/\(uid!)/following").observe(.value){(snapshot) in
+            let following = snapshot.value as? [String]
+            
+            var num : User?
+            let channelDict = ["gaming1" : "Gaming", "music1": "Music", "math1" : "Math", "sci1": "Science", "sports1": "Sports", "reading1" : "Reading", "comp1": "Computer Science", "tv1": "TV Shows", "food1": "Food", "mis1" : "Miscellaneous"]
+            
+            
+            if let follow = following{
+                for i in follow{
+                    if self.channFollowing.count > 0{
+                        for j in self.channFollowing{
+                            if j.channelName == i{
+                                num = j
+                                
+                            }
+                        }
+                    }
+                    if num == nil{
+                        self.channFollowing.append(User())
+                        if let som = self.channFollowing.last{
+                            som.channelName = channelDict[i]
+                            som.imagePath = UIImage(named: i)
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            self.channelCollectionView.reloadData()
+        }
+        
+    }
+    
+    @objc func fetchPosts (){
+        
         
         ref.child("All Posts/\(uid!)").observe(.value){(snapshot) in
             let allPosts = snapshot.value as? [String : AnyObject]
@@ -140,14 +177,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
                 
             }
             
+            self.refreshControl.endRefreshing()
             self.collectionView.reloadData()
-            
-            DispatchQueue.main.async {
-                self.refreshControl.endRefreshing()
-            }
-            
-            
-            
         }
         
     }
@@ -164,8 +195,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             return posts.count
         }
         else{
-            //change this to the number of channels that the user is following
-            return 20
+            return channFollowing.count
         }
     }
     
@@ -185,13 +215,16 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
                 cell.postImage.downloadImage(from: posts[indexPath.row].pathToimage as? String)
                 
             }
+            
             return cell
         }
             
         else {
-            let cell = channelCollectionView.dequeueReusableCell(withReuseIdentifier: "channelCell", for: indexPath)
+            let cell = channelCollectionView.dequeueReusableCell(withReuseIdentifier: "channelCell", for: indexPath) as! MainChannCell
             cell.backgroundColor = blue
             cell.layer.cornerRadius = 32
+            cell.profImage.image = channFollowing[indexPath.row].imagePath
+            
             
             return cell
         }

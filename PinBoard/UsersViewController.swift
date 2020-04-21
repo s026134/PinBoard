@@ -55,14 +55,19 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     
-//        performSegue(withIdentifier: "backToPosting", sender: self)
+        let uid = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference()
+        
+        ref.child("users/\(uid!)/ChannelsToPostOn").setValue(channelsToSendTo)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let nextViewController = segue.destination as? PostScreenViewController{
-            nextViewController.channelsToSendTo = channelsToSendTo
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let nextViewController = segue.destination as? PostScreenViewController{
+//            nextViewController.channelsToSendTo = channelsToSendTo
+//        }
+//    }
     
     func fetchFollowing(){
        
