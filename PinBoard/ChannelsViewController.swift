@@ -56,38 +56,118 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = channelCV.dequeueReusableCell(withReuseIdentifier: "channelCell2", for: indexPath) as! ChannelCell
-        ref.child("users/\(uid!)").observe(.value){(snapshot) in let elements = snapshot.value as? [String : AnyObject]
-            
-            if let elements1 = elements {
-                //   print("71 why")
-                for (elementName , element) in elements1 {
-                    if elementName == "following" {
-                        //    print("74 why")
-                        
-                        guard let element3 = element as? [String] else {return}
-                        cell.profilePicSub.image = UIImage(named: element3[indexPath.row])
-                        /*
-                         for i in element as! [String]{
-                         print("79 why")
-                         print(i)
-                         cell.profilePicSub.image = UIImage(named: i)
-                         }
-                         
-                         */
-                    }
-                    
-                    
-                }
-            }
-            
+       
+        // initializing the top collection view for channels
+        if collectionView.tag == 0 {
+            let cell = channelCV.dequeueReusableCell(withReuseIdentifier: "channelCell2", for: indexPath) as! ChannelCell
+                   ref.child("users/\(uid!)").observe(.value){(snapshot) in let elements = snapshot.value as? [String : AnyObject]
+                       
+                       if let elements1 = elements {
+                           //   print("71 why")
+                           for (elementName , element) in elements1 {
+                               if elementName == "following" {
+                                   //    print("74 why")
+                                   
+                                   guard let element3 = element as? [String] else {return}
+                                   cell.profilePicSub.image = UIImage(named: element3[indexPath.row])
+                                   /*
+                                    for i in element as! [String]{
+                                    print("79 why")
+                                    print(i)
+                                    cell.profilePicSub.image = UIImage(named: i)
+                                    }
+                                    
+                                    */
+                               }
+                               
+                               
+                           }
+                       }
+                       
+                   }
+                   
+                   cell.backgroundColor = grayBlue
+                   cell.layer.cornerRadius = 33
+                   return cell
         }
+        // initializing the posts collection view
+        else if collectionView.tag == 1 {
+            print("ok")
+            let cell = channelTableView.dequeueReusableCell(withIdentifier: "tvCell", for: indexPath) as! ChannelTVCell
         
-        cell.backgroundColor = grayBlue
-        cell.layer.cornerRadius = 33
-        return cell
-        
+            let cell2 = cell.channelCVPostsTV.dequeueReusableCell(withReuseIdentifier: "channelPostCell", for: indexPath) as! SimplePostCell
+                   ref.child("users/\(uid!)").observe(.value){(snapshot) in let elements = snapshot.value as? [String : AnyObject]
+                              
+                       if let elements1 = elements {
+                           //   print("71 why")
+                           for (elementName , element) in elements1 {
+                               if elementName == "following" {
+                                   //    print("74 why")
+                                   
+                                   guard let element3 = element as? [String] else {return}
+                                   
+                                   let channelName = element3[indexPath.row].capitalized
+                                   var name: String
+                                   
+                                // assign a value to name - the name of the channel, with correct capitalization and spelling
+                                   if channelName == "Sci1" {
+                                       name = "Science"
+                                   }
+                                   else if channelName == "Comp1" {
+                                       name = "Computer Science"
+
+                                   }
+                                   else {
+                                       let index = channelName.count-1
+                                       name = String(channelName.prefix(index))
+                                       
+                                   }
+                                self.ref.child("All Posts").observe(.value) {(snapshot) in let allPostElements = snapshot.value as? [String : AnyObject]
+                                    
+                                    if let channels = allPostElements {
+                                        for (channelName, channelElements) in channels {
+                                            if channelName == name {
+                                                if let channelPosts = channelElements as? Dictionary<String, Any> {
+                                                    for (postItem, postElement) in channelPosts {
+                                                        if postItem == "eventTitle" {
+                                                            cell2.postTitle.text = postElement as? String
+                                                        }
+                                                        else if postItem == "pathToImage" {
+                                                            
+                                                            if let imageString = postElement as? String {
+                                                                let url = URL(string: imageString)
+                                                                if let data = try? Data(contentsOf: url!) {
+                                                                    let postImage: UIImage = UIImage(data: data)!
+                                                                    
+                                                                    cell2.postImageView.image = postImage
+
+                                                                }
+                                                            }
+                                                            
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                   
+                               }
+                               
+                               
+                           }
+                       }
+                       
+                   }
+            
+              return cell2
+          }
+        else {
+            let cell = UICollectionViewCell()
+            return cell
+        }
+       
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,17 +206,9 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
                             name = String(channelName.prefix(index))
                             
                         }
-                        
-                        cell.channelLabelTV.text =  name
+                        cell.channelLabelTV.text = name
 
-                        /*
-                         for i in element as! [String]{
-                         print("79 why")
-                         print(i)
-                         cell.profilePicSub.image = UIImage(named: i)
-                         }
-                         
-                         */
+                        
                     }
                     
                     
@@ -147,11 +219,6 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         return cell
     }
-    
-    
-    
-    
-    
     
     
     override func viewDidLoad() {

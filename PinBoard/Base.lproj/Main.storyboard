@@ -1283,7 +1283,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="191"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Oo-py-iTJ">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Oo-py-iTJ">
                                                     <rect key="frame" x="20" y="40" width="386" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1294,7 +1294,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="f7j-Q9-nD3">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="channelPostCell" id="f7j-Q9-nD3" customClass="SimplePostCell" customModule="PinBoard" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="127" height="136"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FVv-Ee-zXF">
@@ -1315,8 +1315,16 @@
                                                                 </subviews>
                                                             </collectionViewCellContentView>
                                                             <size key="customSize" width="127" height="136"/>
+                                                            <connections>
+                                                                <outlet property="postImageView" destination="Ent-Z0-0gd" id="lqP-R8-DJI"/>
+                                                                <outlet property="postTitle" destination="zP5-pK-qEg" id="MhR-zf-sOm"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="IrW-Cf-0d3" id="AnO-8X-PR6"/>
+                                                        <outlet property="delegate" destination="IrW-Cf-0d3" id="9wb-gq-lTj"/>
+                                                    </connections>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qN2-3y-tVI">
                                                     <rect key="frame" x="20" y="11" width="332" height="27"/>

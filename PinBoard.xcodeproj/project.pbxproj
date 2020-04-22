@@ -37,6 +37,7 @@
 		DF12C0A72437F8E0004114FB /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF12C0A62437F8E0004114FB /* ChannelsViewController.swift */; };
 		DF12C0A9243A3018004114FB /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF12C0A8243A3017004114FB /* ChannelCell.swift */; };
 		DF12C0AB2450DA41004114FB /* ChannelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF12C0AA2450DA41004114FB /* ChannelTVCell.swift */; };
+		DF12C0AD2450FBCE004114FB /* SimplePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF12C0AC2450FBCE004114FB /* SimplePostCell.swift */; };
 		DF8462922403777100F50205 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8462912403777100F50205 /* HomeScreenViewController.swift */; };
 		DF8462942403788400F50205 /* PostScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8462932403788400F50205 /* PostScreenViewController.swift */; };
 		F14C1319A109CA7F4464E806 /* Pods_PinBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31DE605BE4E589D48F3DDB1D /* Pods_PinBoard.framework */; };
@@ -99,6 +100,7 @@
 		DF12C0A62437F8E0004114FB /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
 		DF12C0A8243A3017004114FB /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		DF12C0AA2450DA41004114FB /* ChannelTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTVCell.swift; sourceTree = "<group>"; };
+		DF12C0AC2450FBCE004114FB /* SimplePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePostCell.swift; sourceTree = "<group>"; };
 		DF8462912403777100F50205 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		DF8462932403788400F50205 /* PostScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +196,7 @@
 				A0408FAF244F9D9B0025A3AB /* MainChannCell.swift */,
 				A0408FB1245097DB0025A3AB /* ChannelFeedViewController.swift */,
 				DF12C0AA2450DA41004114FB /* ChannelTVCell.swift */,
+				DF12C0AC2450FBCE004114FB /* SimplePostCell.swift */,
 			);
 			path = PinBoard;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				A0408FB2245097DB0025A3AB /* ChannelFeedViewController.swift in Sources */,
 				A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */,
 				A0DEA2832404B88000EAE1D9 /* DashBoardEventsViewController.swift in Sources */,
+				DF12C0AD2450FBCE004114FB /* SimplePostCell.swift in Sources */,
 				DF8462942403788400F50205 /* PostScreenViewController.swift in Sources */,
 				A0DEA25123FD64CA00EAE1D9 /* AppDelegate.swift in Sources */,
 				A03158C824149CD6000CFF41 /* LogINViewController.swift in Sources */,
