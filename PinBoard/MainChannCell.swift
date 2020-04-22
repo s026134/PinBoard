@@ -10,5 +10,5 @@ import UIKit
 
 class MainChannCell: UICollectionViewCell {
     @IBOutlet weak var profImage: UIImageView!
-    
+    var channelName: String!
 }

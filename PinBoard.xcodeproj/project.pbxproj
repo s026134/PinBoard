@@ -22,6 +22,7 @@
 		A0408FAA243BF5FB0025A3AB /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408FA9243BF5FB0025A3AB /* EventViewController.swift */; };
 		A0408FAE24452C4C0025A3AB /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408FAD24452C4C0025A3AB /* UserCell.swift */; };
 		A0408FB0244F9D9B0025A3AB /* MainChannCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408FAF244F9D9B0025A3AB /* MainChannCell.swift */; };
+		A0408FB2245097DB0025A3AB /* ChannelFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408FB1245097DB0025A3AB /* ChannelFeedViewController.swift */; };
 		A0DEA25123FD64CA00EAE1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */; };
 		A0DEA25323FD64CA00EAE1D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */; };
 		A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25423FD64CA00EAE1D9 /* ViewController.swift */; };
@@ -75,6 +76,7 @@
 		A0408FA9243BF5FB0025A3AB /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		A0408FAD24452C4C0025A3AB /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		A0408FAF244F9D9B0025A3AB /* MainChannCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChannCell.swift; sourceTree = "<group>"; };
+		A0408FB1245097DB0025A3AB /* ChannelFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelFeedViewController.swift; sourceTree = "<group>"; };
 		A0DEA24D23FD64CA00EAE1D9 /* PinBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				A0408FA9243BF5FB0025A3AB /* EventViewController.swift */,
 				A0408FAD24452C4C0025A3AB /* UserCell.swift */,
 				A0408FAF244F9D9B0025A3AB /* MainChannCell.swift */,
+				A0408FB1245097DB0025A3AB /* ChannelFeedViewController.swift */,
 			);
 			path = PinBoard;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				A03158CC2414A494000CFF41 /* UsersViewController.swift in Sources */,
 				A0DEA2852404B8B400EAE1D9 /* CreateEventsViewController.swift in Sources */,
 				DF12C0A9243A3018004114FB /* ChannelCell.swift in Sources */,
+				A0408FB2245097DB0025A3AB /* ChannelFeedViewController.swift in Sources */,
 				A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */,
 				A0DEA2832404B88000EAE1D9 /* DashBoardEventsViewController.swift in Sources */,
 				DF8462942403788400F50205 /* PostScreenViewController.swift in Sources */,

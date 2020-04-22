@@ -28,6 +28,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     let lightBlue = UIColor.init(red: 170/255, green: 223/255, blue: 227/255, alpha: 1)
     var selectedCell : PostCell!
     var selectedCellImage : Int!
+    var selectedChannel: MainChannCell!
     let ref = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
     var channFollowing = [User]()
@@ -55,10 +56,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         fetchFollowing()
         
     }
-    
-    @objc func handleRefresh(){
-        print("refresh!")
-    }
+
     
     func fetchFollowing(){
         
@@ -97,8 +95,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     @objc func fetchPosts (){
-        
-        
+        let uid = Auth.auth().currentUser?.uid
         ref.child("All Posts/\(uid!)").observe(.value){(snapshot) in
             let allPosts = snapshot.value as? [String : AnyObject]
             var posty : Post?
@@ -183,12 +180,32 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
+    //the bar button doesn't work
     @IBAction func loggedOutPressed(_ sender: UIBarButtonItem) {
-        try! Auth.auth().signOut()
-        self.performSegue(withIdentifier: "backToMain", sender: self)
+//        try! Auth.auth().signOut()
+         print("hello")
+        do{
+            try Auth.auth().signOut()
+//            let defaults = UserDefaults.standard
+//            defaults.set(false, forKey: "isUserSignedIn")
+            self.dismiss(animated: true, completion: nil)
+        }catch let signOutError{
+            print(signOutError.localizedDescription)
+        }
+//        self.performSegue(withIdentifier: "backToMain", sender: self)
 
     }
     
+    @IBAction func signOutPressed(_ sender: UIButton) {
+        do{
+            try Auth.auth().signOut()
+            let defaults = UserDefaults.standard
+            defaults.set(false, forKey: "isUserSignedIn")
+            self.performSegue(withIdentifier: "toFirstNav", sender: self)
+        }catch let signOutError{
+            print(signOutError.localizedDescription)
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionView{
@@ -224,6 +241,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             cell.backgroundColor = blue
             cell.layer.cornerRadius = 32
             cell.profImage.image = channFollowing[indexPath.row].imagePath
+            cell.channelName = channFollowing[indexPath.row].channelName
             
             
             return cell
@@ -239,7 +257,18 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             
             self.performSegue(withIdentifier: "moreDetails", sender: self)
         }
+        
+        else{
+            let cell = channelCollectionView.cellForItem(at: indexPath) as! MainChannCell
+            
+            selectedChannel = cell
+        
+            self.performSegue(withIdentifier: "toChannelFeed", sender: self)
+            
+        }
     }
+    
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let nextViewController = segue.destination as? EventViewController{
@@ -249,6 +278,14 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             nextViewController.Descrip = selectedCell.descriPLabel.text
             nextViewController.attending = selectedCell.attendingLabel.text
             nextViewController.imageURL = posts[selectedCellImage].pathToimage as? String
+        }
+        
+        if let nextViewController = segue.destination as? ChannelFeedViewController{
+       
+        
+            if let chann = selectedChannel {
+                nextViewController.name = chann.channelName!
+            }
         }
     }
 }
