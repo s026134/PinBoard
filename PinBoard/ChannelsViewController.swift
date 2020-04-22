@@ -25,64 +25,10 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     let uid = Auth.auth().currentUser?.uid
     let ref = Database.database().reference()
-    var countFol = 2
+   // var countFol = 2
     var count = 5
-    
-    //   let channels = ["Gaming": game, "Music": music, "Math": math, "Science": science, "Sports": " ", "Reading": " ", "Computer Science": " ", "TV": " ", "Food": " ", "Misc": " "]
-    /*
-    func countFollowing (completion: @escaping ((Int) -> Void)) -> Int {
-        let semaphore = DispatchSemaphore(value: 0)
-        let queue = DispatchQueue.global()
-        var count = 3
-        
-        queue.async {
-            //  completion("")
-            
-            self.ref.child("users/\(self.uid!)").observe(.value){(snapshot) in
-                let user = snapshot.value as? [String : AnyObject]
-                if let users = user {
-                    for (userKey, userValue) in users {
-                        if userKey == "following" {
-                            
-                            //    print("what's up \(userKey) : \(userValue.count)")
-                            if let num = userValue.count {
-                                count = num
-                                print("line 50 \(count)")
-                            }
-                            
-                            
-                        }
-                        
-                    }
-                }
-                
-            }
-            completion(count)
-            semaphore.signal()
-            
-        }
-       // let _ = semaphore.wait(timeout: .now() + 5.0)
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-            //this code will be executed only after 2 seconds have been passed
-            return 5
-        }
-        queue.async {
-            //  completion("Line 65: count = \(count)")
-            return completion(count)
-        }
-        
-        
-        
-        //   return 5a
-        
-    }
- 
-    func asyncMethod(completion: (String) -> Void) {
-        sleep(2)
-        completion("done")
-    }
- */
 
+    
     func countFollowing(completion: @escaping (Bool) -> ()) {
         ref.child("users/\(self.uid!)").observe(.value){(snapshot) in
            let user = snapshot.value as? [String : AnyObject]
@@ -105,32 +51,6 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-
-        
-        
-//        var followingCount: Int
-//        countFollowing()
-//        let semaphore = DispatchSemaphore(value: 0)
-//        let queue = DispatchQueue.global()
-  /*
-        queue.async {
-            self.countFollowing { (countToPass) -> () in
-                self.countFol = countToPass
-            }
-            semaphore.signal()
-        }
-        
-        */
-        // print("line 61 \(count)")
-        
-        // trying to pass something
-        /*
-        countFollowing { (countToPass) -> () in
-            self.countFol = countToPass
-            self.collectionView(self.channelCV, numberOfItemsInSection: self.countFol)
-        }
- */
-      //  return countFol
         print("From collectionView: \(count)")
         return count
     }
@@ -171,13 +91,59 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+       print("In tableview 94: \(count)")
+        return count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        
+        let cell = channelTableView.dequeueReusableCell(withIdentifier: "tvCell", for: indexPath) as! ChannelTVCell
+
+        ref.child("users/\(uid!)").observe(.value){(snapshot) in let elements = snapshot.value as? [String : AnyObject]
+                   
+            if let elements1 = elements {
+                //   print("71 why")
+                for (elementName , element) in elements1 {
+                    if elementName == "following" {
+                        //    print("74 why")
+                        
+                        guard let element3 = element as? [String] else {return}
+                        
+                        let channelName = element3[indexPath.row].capitalized
+                        var name: String
+                        
+                        if channelName == "Sci1" {
+                            name = "Science"
+                        }
+                        else if channelName == "Comp1" {
+                            name = "Computer Science"
+
+                        }
+                        else {
+                            let index = channelName.count-1
+                            name = String(channelName.prefix(index))
+                            
+                        }
+                        
+                        cell.channelLabelTV.text =  name
+
+                        /*
+                         for i in element as! [String]{
+                         print("79 why")
+                         print(i)
+                         cell.profilePicSub.image = UIImage(named: i)
+                         }
+                         
+                         */
+                    }
+                    
+                    
+                }
+            }
+            
+        }
         
         return cell
     }
@@ -196,6 +162,16 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
                 self.channelCV.collectionViewLayout = self.layoutTop
                 self.layoutTop.itemSize = CGSize(width: 66, height: 66)
                 self.layoutTop.scrollDirection = .horizontal
+            /*
+                self.channelTableView.dataSource = self
+                self.channelTableView.delegate = self
+              */
+                self.channelTableView.reloadData()
+                
+                print("In viewdidload: \(self.count)")
+               
+              
+                self.channelTableView.rowHeight = 150
                 
                 super.viewDidLoad()
             } else {
