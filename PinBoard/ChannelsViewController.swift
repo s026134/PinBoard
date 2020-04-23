@@ -19,6 +19,7 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var channelTableView: UITableView!
     
     let layoutTop = UICollectionViewFlowLayout()
+    let layoutPostCV = UICollectionViewFlowLayout()
     
     let darkBlue = UIColor.init(red: 0/255.0, green: 0/255.0, blue: 51/255.0, alpha: 1.0)
     let grayBlue = UIColor.init(red: 204, green: 218, blue: 233, alpha: 1.0)
@@ -51,8 +52,18 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        print("From collectionView: \(count)")
-        return count
+        if collectionView.tag == 0 {
+            print("From collectionView: \(count)")
+            return count
+        }
+        else if collectionView.tag == 1 {
+            // working
+            return 6
+        }
+        else {
+            print("not working? 64")
+            return 7
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -92,17 +103,17 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         // initializing the posts collection view
         else if collectionView.tag == 1 {
-            print("ok")
+            // working
             let cell = channelTableView.dequeueReusableCell(withIdentifier: "tvCell", for: indexPath) as! ChannelTVCell
         
             let cell2 = cell.channelCVPostsTV.dequeueReusableCell(withReuseIdentifier: "channelPostCell", for: indexPath) as! SimplePostCell
                    ref.child("users/\(uid!)").observe(.value){(snapshot) in let elements = snapshot.value as? [String : AnyObject]
                               
                        if let elements1 = elements {
-                           //   print("71 why")
+                              // working
                            for (elementName , element) in elements1 {
                                if elementName == "following" {
-                                   //    print("74 why")
+                                       // working
                                    
                                    guard let element3 = element as? [String] else {return}
                                    
@@ -123,28 +134,45 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
                                        
                                    }
                                 self.ref.child("All Posts").observe(.value) {(snapshot) in let allPostElements = snapshot.value as? [String : AnyObject]
-                                    
+                                    // working
                                     if let channels = allPostElements {
-                                        for (channelName, channelElements) in channels {
-                                            if channelName == name {
+                                        // working
+                                        for (theChannel, channelElements) in channels {
+                                            if theChannel == name {
+                                                // working
                                                 if let channelPosts = channelElements as? Dictionary<String, Any> {
+                                                    // working - channel elements is dict
+                                                    //print(channelElements)
                                                     for (postItem, postElement) in channelPosts {
+                                                     //   print ("post item: \(postItem) and post element: \(postElement)")
+                                                        // postItem should be the title of the post and should be equal to the eventTitle
+                                                        cell2.postTitle.text = postItem
+                                                       // print("this is cell2's text: \(cell2.postTitle.text) | and this is postItem text: \(postItem)")
+                                                        /*
                                                         if postItem == "eventTitle" {
+                                                            print("136 post item == eventtitle")
                                                             cell2.postTitle.text = postElement as? String
                                                         }
-                                                        else if postItem == "pathToImage" {
-                                                            
-                                                            if let imageString = postElement as? String {
-                                                                let url = URL(string: imageString)
-                                                                if let data = try? Data(contentsOf: url!) {
-                                                                    let postImage: UIImage = UIImage(data: data)!
-                                                                    
-                                                                    cell2.postImageView.image = postImage
-
+                                                         */
+                                                        for (postAtr, postDes) in postElement as! Dictionary<String, Any> {
+                                                           // working
+                                                            if postAtr == "pathToImage" {
+                                                                // working
+                                                                if let imageString = postDes as? String {
+                                                                    let url = URL(string: imageString)
+                                                                    if let data = try? Data(contentsOf: url!) {
+                                                                        let postImage: UIImage = UIImage(data: data)!
+                                                                        
+                                                                        cell2.postImageView.image = postImage
+                                                                        
+                                                                        
+                                                                    }
                                                                 }
+                                                                
                                                             }
                                                             
                                                         }
+                                                        
                                                     }
                                                 }
                                             }
@@ -164,6 +192,7 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
               return cell2
           }
         else {
+            print("in else")
             let cell = UICollectionViewCell()
             return cell
         }
@@ -229,6 +258,13 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
                 self.channelCV.collectionViewLayout = self.layoutTop
                 self.layoutTop.itemSize = CGSize(width: 66, height: 66)
                 self.layoutTop.scrollDirection = .horizontal
+                
+                let tableViewCell = self.channelTableView.dequeueReusableCell(withIdentifier: "tvCell") as! ChannelTVCell
+                
+                tableViewCell.channelCVPostsTV.collectionViewLayout = self.layoutPostCV
+                self.layoutPostCV.itemSize = CGSize(width: 150, height: 150)
+                self.layoutPostCV.scrollDirection = .horizontal
+                
             /*
                 self.channelTableView.dataSource = self
                 self.channelTableView.delegate = self
@@ -238,7 +274,7 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
                 print("In viewdidload: \(self.count)")
                
               
-                self.channelTableView.rowHeight = 150
+                self.channelTableView.rowHeight = 170
                 
                 super.viewDidLoad()
             } else {
