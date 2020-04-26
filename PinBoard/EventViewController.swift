@@ -30,7 +30,7 @@ class EventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        LoadingScreen.instance.showLoader()
         if fromDashboard != nil{
             ref.child("All Posts/\(uid!)/\(fromDashboard!)").observe(.value){(snapshot) in
                 let elements = snapshot.value as? [String: Any]
@@ -67,6 +67,8 @@ class EventViewController: UIViewController {
             attendLabel.text = attending
             imAge.downloadImage(from: imageURL)
         }
+        
+        LoadingScreen.instance.hideLoader()
         
     }
     

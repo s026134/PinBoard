@@ -112,7 +112,8 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func postPressed(_ sender: UIButton) {
-        activityIndicator.startAnimating()
+//        activityIndicator.startAnimating()
+        LoadingScreen.instance.showLoader()
         loadingLabel.isHidden = false
         
         let storage = Storage.storage().reference(forURL: "gs://pinboard-c2ef5.appspot.com")
@@ -148,7 +149,8 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
                     
                     ref.child("users/\(uid!)/ChannelsToPostOn").removeValue()
                     
-                    self.activityIndicator.stopAnimating()
+                    LoadingScreen.instance.hideLoader()
+//                    self.activityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "Nav", sender: self)
                     
                 }

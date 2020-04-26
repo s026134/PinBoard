@@ -35,6 +35,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoadingScreen.instance.showLoader()
         channelCollectionView.collectionViewLayout = layout
         channelCollectionView.delegate = self
         channelCollectionView.dataSource = self
@@ -232,7 +233,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
                 cell.postImage.downloadImage(from: posts[indexPath.row].pathToimage as? String)
                 
             }
-            
+            LoadingScreen.instance.hideLoader()
             return cell
         }
             
@@ -243,7 +244,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             cell.profImage.image = channFollowing[indexPath.row].imagePath
             cell.channelName = channFollowing[indexPath.row].channelName
             
-            
+            LoadingScreen.instance.hideLoader()
             return cell
         }
         

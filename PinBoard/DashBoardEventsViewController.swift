@@ -44,6 +44,7 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoadingScreen.instance.showLoader()
         weeklySidebar.delegate = self
         weeklySidebar.dataSource = self
         weeklySidebar.collectionViewLayout = layout
@@ -187,6 +188,7 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         cell.backgroundColor = .white
         cell.dayLabel.text = weeklylabels[indexPath.row].dayLabell
         cell.monthLabel.text = weeklylabels[indexPath.row].monthLabell
+        LoadingScreen.instance.hideLoader()
         return cell
         
     }
@@ -208,6 +210,7 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         eventTableView.reloadData()
         
         eventTableView.isHidden = false
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -264,7 +267,7 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
                 
             }
         }
-        
+
         return cell
     }
     

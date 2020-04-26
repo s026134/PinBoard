@@ -23,6 +23,9 @@
 		A0408FAE24452C4C0025A3AB /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408FAD24452C4C0025A3AB /* UserCell.swift */; };
 		A0408FB0244F9D9B0025A3AB /* MainChannCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408FAF244F9D9B0025A3AB /* MainChannCell.swift */; };
 		A0408FB2245097DB0025A3AB /* ChannelFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0408FB1245097DB0025A3AB /* ChannelFeedViewController.swift */; };
+		A04123D72455FF050023982B /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04123D62455FF050023982B /* UIImage+Gif.swift */; };
+		A04123D92455FF140023982B /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04123D82455FF140023982B /* LoadingScreen.swift */; };
+		A04123DB2455FF850023982B /* pin-animation-final.gif in Resources */ = {isa = PBXBuildFile; fileRef = A04123DA2455FF850023982B /* pin-animation-final.gif */; };
 		A0DEA25123FD64CA00EAE1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */; };
 		A0DEA25323FD64CA00EAE1D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */; };
 		A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25423FD64CA00EAE1D9 /* ViewController.swift */; };
@@ -79,6 +82,9 @@
 		A0408FAD24452C4C0025A3AB /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		A0408FAF244F9D9B0025A3AB /* MainChannCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChannCell.swift; sourceTree = "<group>"; };
 		A0408FB1245097DB0025A3AB /* ChannelFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelFeedViewController.swift; sourceTree = "<group>"; };
+		A04123D62455FF050023982B /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		A04123D82455FF140023982B /* LoadingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
+		A04123DA2455FF850023982B /* pin-animation-final.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "pin-animation-final.gif"; sourceTree = "<group>"; };
 		A0DEA24D23FD64CA00EAE1D9 /* PinBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +183,9 @@
 				A0DEA25B23FD64D100EAE1D9 /* LaunchScreen.storyboard */,
 				A03158C32409767E000CFF41 /* GoogleService-Info.plist */,
 				A0DEA25E23FD64D100EAE1D9 /* Info.plist */,
+				A04123D62455FF050023982B /* UIImage+Gif.swift */,
+				A04123DA2455FF850023982B /* pin-animation-final.gif */,
+				A04123D82455FF140023982B /* LoadingScreen.swift */,
 				DF8462912403777100F50205 /* HomeScreenViewController.swift */,
 				DF8462932403788400F50205 /* PostScreenViewController.swift */,
 				A0DEA2822404B88000EAE1D9 /* DashBoardEventsViewController.swift */,
@@ -337,6 +346,7 @@
 				A0DEA25D23FD64D100EAE1D9 /* LaunchScreen.storyboard in Resources */,
 				A03158C42409767E000CFF41 /* GoogleService-Info.plist in Resources */,
 				A0DEA25A23FD64D100EAE1D9 /* Assets.xcassets in Resources */,
+				A04123DB2455FF850023982B /* pin-animation-final.gif in Resources */,
 				A0DEA25823FD64CA00EAE1D9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +422,7 @@
 				DF12C0A9243A3018004114FB /* ChannelCell.swift in Sources */,
 				A0408FB2245097DB0025A3AB /* ChannelFeedViewController.swift in Sources */,
 				A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */,
+				A04123D92455FF140023982B /* LoadingScreen.swift in Sources */,
 				A0DEA2832404B88000EAE1D9 /* DashBoardEventsViewController.swift in Sources */,
 				DF12C0AD2450FBCE004114FB /* SimplePostCell.swift in Sources */,
 				DF8462942403788400F50205 /* PostScreenViewController.swift in Sources */,
@@ -425,6 +436,7 @@
 				A0DEA25323FD64CA00EAE1D9 /* SceneDelegate.swift in Sources */,
 				A0408FA7242D8B8E0025A3AB /* eventCell.swift in Sources */,
 				A0408FB0244F9D9B0025A3AB /* MainChannCell.swift in Sources */,
+				A04123D72455FF050023982B /* UIImage+Gif.swift in Sources */,
 				DF12C0AB2450DA41004114FB /* ChannelTVCell.swift in Sources */,
 				DF8462922403777100F50205 /* HomeScreenViewController.swift in Sources */,
 				A0408F99242972590025A3AB /* PostCell.swift in Sources */,

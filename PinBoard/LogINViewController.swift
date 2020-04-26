@@ -40,15 +40,16 @@ class LogINViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func logInPressed(_ sender: UIButton) {
-        activityIndicator.startAnimating()
+//        activityIndicator.startAnimating()
+        LoadingScreen.instance.showLoader()
         var emOrpas = ""
         
         guard let email = email.text else {return}
         guard let password = password.text else {return}
 
         Auth.auth().signIn(withEmail: email, password: password, completion: {(user, error) in
-            self.activityIndicator.stopAnimating()
-         
+//            self.activityIndicator.stopAnimating()
+            LoadingScreen.instance.hideLoader()
             if let _ = user{
                 self.performSegue(withIdentifier: "toNav", sender: self)
                 self.invalidLabel.isHidden = false
