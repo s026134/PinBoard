@@ -60,6 +60,10 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)->UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         cell.label.text = collectionData2[indexPath.item]
+        let imageName =  collectionData[indexPath.item]
+        let theImage = UIImage(named: imageName)
+        cell.image.image = theImage
+        
         cell.layer.cornerRadius = 5
         cell.backgroundColor = grayBlue
         
