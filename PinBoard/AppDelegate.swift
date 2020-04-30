@@ -17,8 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         let colorCoral = UIColor(red: 249/255.0, green: 113/255.0, blue: 113/255.0, alpha: 1.0)
+        let blueGrayColor = UIColor(red: 204/255.0, green: 218, blue: 233/255.0, alpha: 1.0)
+        let darkBlue = UIColor(red: 0/255.0, green: 0/255.0, blue: 51/255.0, alpha: 1.0)
         UITabBar.appearance().barTintColor = .white
-        UITabBar.appearance().tintColor = colorCoral
+        UITabBar.appearance().tintColor = darkBlue
         
 //        let authListener = Auth.auth().addStateDidChangeListener({auth, user in
 //            
