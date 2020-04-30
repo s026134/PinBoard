@@ -13,16 +13,21 @@ import FirebaseStorage
 
 class PreferencesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    
+    @IBOutlet weak var prefCV: UICollectionView!
     let darkBlue = UIColor.init(red: 0/255, green: 0/255, blue: 51/255, alpha: 1)
     let grayBlue = UIColor.init(red: 204/255, green: 218/255, blue: 233/255, alpha: 1)
     var collectionData = ["gaming1", "music1", "math1", "sci1", "sports1", "reading1", "comp1", "tv1", "food1", "mis1"]
-    
+    var collectionData2 = ["Gaming", "Music", "Math", "Science", "Sports", "Reading", "CS", "TV", "Food", "MISC"]
+    let layoutCV = UICollectionViewFlowLayout()
   //  var userTags: Set<Int> = []
     var subscribed: [Int] = []
     var followersArr: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        layoutCV.itemSize = CGSize(width: 200, height: 250)
+        prefCV.collectionViewLayout = layoutCV
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,8 +59,8 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)->UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        cell.label.text = collectionData[indexPath.item]
-        cell.layer.cornerRadius = 32
+        cell.label.text = collectionData2[indexPath.item]
+        cell.layer.cornerRadius = 5
         cell.backgroundColor = grayBlue
         
         return cell

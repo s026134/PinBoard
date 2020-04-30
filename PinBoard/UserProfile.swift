@@ -20,7 +20,9 @@ class UserProfile: UIViewController {
 //    var fullName: String
 //    var userTag: Set<Int>
 //    , userTag: Set<Int>
-   
+   let ref = Database.database().reference()
+    let uid = Auth.auth().currentUser?.uid
+         
     @IBOutlet weak var profilePic: UIImageView!
     
 //    init(uid: String, email: String, urlToImage: URL, password: String, fullName: String) {
@@ -31,10 +33,16 @@ class UserProfile: UIViewController {
 //        self.fullName = fullName
 ////        self.userTag = userTag
 //    }
+    @IBOutlet weak var userName: UILabel!
     override func viewDidLoad() {
            super.viewDidLoad()
           
+        profilePic?.layer.cornerRadius = (profilePic?.frame.size.width ?? 0.0) / 2
+          profilePic?.clipsToBounds = true
+          profilePic?.layer.borderWidth = 3.0
+          profilePic?.layer.borderColor = UIColor.white.cgColor
            fetchImage()
+            fetchName()
            // Do any additional setup after loading the view.
        }
     
@@ -48,13 +56,35 @@ class UserProfile: UIViewController {
             print(signOutError.localizedDescription)
         }
     }
+    func fetchName() {
+        ref.child("users/\(uid!)").observe(.value){(snapshot) in
+            let user = snapshot.value as? [String : AnyObject]
+            
+            if let aUser = user {
+                let name = aUser["User Name"]
+                
+                if let userName = name as? String {
+                    
+                   
+                    self.userName.text = userName
+                    
+                    
+                }
+                
+                
+                
+            }
+            
+            
+        }
+        
+        
+    }
     
     func fetchImage() {
-        let ref = Database.database().reference()
-        let uid = Auth.auth().currentUser?.uid
         ref.child("users/\(uid!)").observe(.value){(snapshot) in
-                   let user = snapshot.value as? [String : AnyObject]
-           
+            let user = snapshot.value as? [String : AnyObject]
+            
             if let aUser = user {
                 let image1 = aUser["urlToImage"]
                 
@@ -65,11 +95,12 @@ class UserProfile: UIViewController {
                     if let data = try? Data(contentsOf: url!) //replaced url! w/ image1!
                     {
                         let imagge: UIImage = UIImage(data: data)!
+                        
                         self.profilePic.image = imagge
                     }
                     
                 }
- 
+                
                 
                 
             }
@@ -77,5 +108,6 @@ class UserProfile: UIViewController {
             
         }
     }
- 
+    
+    
 }
