@@ -45,9 +45,9 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         collectionView.collectionViewLayout = layout2
         collectionView.delegate = self
         collectionView.dataSource = self
-        layout2.itemSize = CGSize(width:200, height: 200)
+        layout2.itemSize = CGSize(width:200, height: 250)
         layout2.scrollDirection = .vertical
-        layout2.minimumInteritemSpacing = 1
+        layout2.minimumInteritemSpacing = 5
         layout2.minimumLineSpacing = 10
         
         refreshControl = UIRefreshControl()
