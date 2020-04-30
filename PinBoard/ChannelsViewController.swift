@@ -29,7 +29,9 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
    // var countFol = 2
     var count = 5
 
-    
+  //  let layOutPostCV = UICollectionViewFlowLayout()
+   
+   
     func countFollowing(completion: @escaping (Bool) -> ()) {
         ref.child("users/\(self.uid!)").observe(.value){(snapshot) in
            let user = snapshot.value as? [String : AnyObject]
@@ -251,6 +253,8 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     
     override func viewDidLoad() {
+      
+      //  layoutPostCV.scrollDirection = .horizontal
         
         countFollowing() {success in
             if success{
@@ -261,10 +265,17 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
                 
                 let tableViewCell = self.channelTableView.dequeueReusableCell(withIdentifier: "tvCell") as! ChannelTVCell
                 
-                tableViewCell.channelCVPostsTV.collectionViewLayout = self.layoutPostCV
-                self.layoutPostCV.itemSize = CGSize(width: 150, height: 150)
                 self.layoutPostCV.scrollDirection = .horizontal
-                
+
+                self.layoutPostCV.itemSize = CGSize(width: 130, height: 130)
+               // tableViewCell.channelCVPostsTV.delegate = self
+            //   tableViewCell.channelCVPostsTV.dataSource = self
+                tableViewCell.channelCVPostsTV.collectionViewLayout = self.layoutPostCV
+               
+              /*
+                self.layoutPostCV.itemSize = CGSize(width: 10, height: 10)
+                self.layoutPostCV.scrollDirection = .horizontal
+              */
             /*
                 self.channelTableView.dataSource = self
                 self.channelTableView.delegate = self
@@ -274,7 +285,7 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
                 print("In viewdidload: \(self.count)")
                
               
-                self.channelTableView.rowHeight = 170
+                self.channelTableView.rowHeight = 180
                 
                 super.viewDidLoad()
             } else {

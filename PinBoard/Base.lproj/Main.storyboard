@@ -1237,7 +1237,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ejg-qd-tIB">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ejg-qd-tIB">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="ExY-Sg-OEv"/>
@@ -1251,7 +1251,7 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ejg-qd-tIB" firstAttribute="centerX" secondItem="1F5-Ua-HuC" secondAttribute="centerX" id="XRy-bN-O2b"/>
+                                                <constraint firstItem="ejg-qd-tIB" firstAttribute="centerX" secondItem="1F5-Ua-HuC" secondAttribute="centerX" constant="2.5" id="XRy-bN-O2b"/>
                                                 <constraint firstItem="ejg-qd-tIB" firstAttribute="top" secondItem="1F5-Ua-HuC" secondAttribute="top" id="taL-gh-9Mn"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -1272,60 +1272,60 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tvCell" rowHeight="191" id="gcf-yn-qu4" customClass="ChannelTVCell" customModule="PinBoard" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="191"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tvCell" rowHeight="240" id="gcf-yn-qu4" customClass="ChannelTVCell" customModule="PinBoard" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gcf-yn-qu4" id="2xe-Ar-32f">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="191"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Oo-py-iTJ">
-                                                    <rect key="frame" x="20" y="40" width="500" height="128"/>
+                                                    <rect key="frame" x="20" y="40" width="500" height="177"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="500" id="aMA-ei-N8c"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="opg-Fs-qG6">
-                                                        <size key="itemSize" width="127" height="136"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="opg-Fs-qG6">
+                                                        <size key="itemSize" width="125" height="125"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="channelPostCell" id="f7j-Q9-nD3" customClass="SimplePostCell" customModule="PinBoard" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="130" height="140"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FVv-Ee-zXF">
-                                                                <rect key="frame" x="0.0" y="0.0" width="130" height="140"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ent-Z0-0gd">
-                                                                        <rect key="frame" x="8" y="-15" width="120" height="120"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="110"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="120" id="ZqM-Hd-GGy"/>
-                                                                            <constraint firstAttribute="height" constant="120" id="ahT-XQ-p1U"/>
+                                                                            <constraint firstAttribute="width" constant="128" id="ZqM-Hd-GGy"/>
+                                                                            <constraint firstAttribute="height" constant="110" id="ahT-XQ-p1U"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zP5-pK-qEg">
-                                                                        <rect key="frame" x="8" y="98" width="130" height="30"/>
+                                                                        <rect key="frame" x="1" y="112" width="130" height="15"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="130" id="JUf-b4-b9r"/>
-                                                                            <constraint firstAttribute="height" constant="30" id="R9E-Md-RBm"/>
+                                                                            <constraint firstAttribute="height" constant="15" id="R9E-Md-RBm"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
+                                                                        <color key="textColor" red="0.0" green="0.13817482889999999" blue="0.33674173000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="zP5-pK-qEg" firstAttribute="leading" secondItem="FVv-Ee-zXF" secondAttribute="leading" constant="8" id="Hlq-c5-D2R"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="Ent-Z0-0gd" secondAttribute="bottom" constant="35" id="Osx-Pd-vzc"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="zP5-pK-qEg" secondAttribute="bottom" constant="12" id="lFz-LD-AmW"/>
-                                                                    <constraint firstItem="Ent-Z0-0gd" firstAttribute="leading" secondItem="FVv-Ee-zXF" secondAttribute="leading" constant="8" id="xEP-lG-MHU"/>
+                                                                    <constraint firstItem="zP5-pK-qEg" firstAttribute="leading" secondItem="FVv-Ee-zXF" secondAttribute="leading" constant="1" id="Hlq-c5-D2R"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Ent-Z0-0gd" secondAttribute="bottom" constant="20" id="Osx-Pd-vzc"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="zP5-pK-qEg" secondAttribute="bottom" constant="3" id="lFz-LD-AmW"/>
+                                                                    <constraint firstItem="Ent-Z0-0gd" firstAttribute="leading" secondItem="FVv-Ee-zXF" secondAttribute="leading" id="xEP-lG-MHU"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
-                                                            <color key="backgroundColor" red="0.95940214400000001" green="0.78810876610000002" blue="0.27943542599999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <size key="customSize" width="130" height="140"/>
+                                                            <color key="backgroundColor" red="0.79887660090000001" green="0.85299199540000004" blue="0.91399368520000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <size key="customSize" width="130" height="130"/>
                                                             <connections>
                                                                 <outlet property="postImageView" destination="Ent-Z0-0gd" id="lqP-R8-DJI"/>
                                                                 <outlet property="postTitle" destination="zP5-pK-qEg" id="MhR-zf-sOm"/>
@@ -1338,10 +1338,10 @@
                                                     </connections>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qN2-3y-tVI">
-                                                    <rect key="frame" x="20" y="11" width="332" height="27"/>
+                                                    <rect key="frame" x="20" y="11" width="332" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.0" green="0.13817482889999999" blue="0.33674173000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1567,6 +1567,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="97h-NY-yOr"/>
         <segue reference="UvP-u5-Qax"/>
-        <segue reference="Faw-NK-vRI"/>
+        <segue reference="q6I-cX-msA"/>
     </inferredMetricsTieBreakers>
 </document>
