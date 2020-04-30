@@ -196,7 +196,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
 //        self.performSegue(withIdentifier: "backToMain", sender: self)
 
     }
-    
+    /* I put a sign out button in the user profile because the home screen's getting a little crowded
     @IBAction func signOutPressed(_ sender: UIButton) {
         do{
             try Auth.auth().signOut()
@@ -207,6 +207,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             print(signOutError.localizedDescription)
         }
     }
+ */
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionView{

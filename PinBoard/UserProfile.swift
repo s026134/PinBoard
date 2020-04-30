@@ -37,6 +37,18 @@ class UserProfile: UIViewController {
            fetchImage()
            // Do any additional setup after loading the view.
        }
+    
+    @IBAction func signOutWasPressed(_ sender: UIButton) {
+        do{
+            try Auth.auth().signOut()
+            let defaults = UserDefaults.standard
+            defaults.set(false, forKey: "isUserSignedIn")
+            self.performSegue(withIdentifier: "fromProfiletoNav", sender: self)
+        }catch let signOutError{
+            print(signOutError.localizedDescription)
+        }
+    }
+    
     func fetchImage() {
         let ref = Database.database().reference()
         let uid = Auth.auth().currentUser?.uid

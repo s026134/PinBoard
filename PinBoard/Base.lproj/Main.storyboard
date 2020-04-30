@@ -479,6 +479,15 @@
                                 <rect key="frame" x="79" y="353" width="257" height="164"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sa8-6Y-aHk">
+                                <rect key="frame" x="177" y="762" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="signOutWasPressed:" destination="uWl-iy-kaV" eventType="touchUpInside" id="Wlb-Nc-TMY"/>
+                                    <segue destination="ftg-KI-d6g" kind="show" identifier="fromProfiletoNav" id="98z-LS-PGH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6gS-1S-0hY"/>
@@ -492,7 +501,7 @@
             </objects>
             <point key="canvasLocation" x="-2188" y="2821"/>
         </scene>
-        <!--PinBoard-->
+        <!--Home-->
         <scene sceneID="gU6-wR-reZ">
             <objects>
                 <viewController storyboardIdentifier="HomeScreenViewController" id="7IJ-Xz-bRS" customClass="HomeScreenViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
@@ -675,30 +684,16 @@
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fzu-lP-WJO">
-                                <rect key="frame" x="-6" y="89" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="PinBoard" id="mpJ-gD-pz2">
-                                        <leftBarButtonItems>
-                                            <barButtonItem title="Item" image="pin.fill" catalog="system" id="dF5-0h-TPr">
-                                                <color key="tintColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" id="yAN-Li-J3d">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2Jm-8z-wAc">
-                                                    <rect key="frame" x="62.5" y="7" width="92" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Sign Out">
-                                                        <color key="titleColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                </button>
-                                                <connections>
-                                                    <action selector="loggedOutPressed:" destination="7IJ-Xz-bRS" id="GRK-C5-2CU"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </leftBarButtonItems>
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="pin.fill" catalog="system" id="dF5-0h-TPr">
+                                            <color key="tintColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" image="person.circle" catalog="system" id="330-sP-trh">
                                             <color key="tintColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
@@ -713,7 +708,6 @@
                         <viewLayoutGuide key="safeArea" id="cLj-GB-7Db"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="PPp-rH-huw"/>
-                    <navigationItem key="navigationItem" title="PinBoard" id="w1m-F2-bxt"/>
                     <connections>
                         <outlet property="channelCollectionView" destination="U7y-DV-yaY" id="Oye-I5-fTK"/>
                         <outlet property="collectionView" destination="VjO-SP-RGj" id="D7E-GE-PWc"/>
@@ -1574,5 +1568,6 @@
         <segue reference="97h-NY-yOr"/>
         <segue reference="wdq-on-DYj"/>
         <segue reference="3zE-u9-Vfs"/>
+        <segue reference="8BH-OA-OYJ"/>
     </inferredMetricsTieBreakers>
 </document>
