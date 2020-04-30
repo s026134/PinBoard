@@ -672,19 +672,8 @@
                                     <outlet property="prefetchDataSource" destination="7IJ-Xz-bRS" id="38C-zL-LWY"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xea-zp-63J">
-                                <rect key="frame" x="38" y="115" width="68" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <state key="normal" title="Sign Out">
-                                    <color key="titleColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="signOutPressed:" destination="7IJ-Xz-bRS" eventType="touchUpInside" id="XTS-Dj-VKS"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fzu-lP-WJO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -712,13 +701,12 @@
                         <outlet property="channelCollectionView" destination="U7y-DV-yaY" id="Oye-I5-fTK"/>
                         <outlet property="collectionView" destination="VjO-SP-RGj" id="D7E-GE-PWc"/>
                         <segue destination="eV2-NZ-h3z" kind="show" identifier="moreDetails" id="97h-NY-yOr"/>
-                        <segue destination="ftg-KI-d6g" kind="show" identifier="toFirstNav" id="8BH-OA-OYJ"/>
                         <segue destination="RkH-w0-sIY" kind="show" identifier="toChannelFeed" id="cmP-N9-v4v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXv-nq-Hgv" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2301" y="2079"/>
+            <point key="canvasLocation" x="-2301.449275362319" y="2078.5714285714284"/>
         </scene>
         <!--Channel Feed View Controller-->
         <scene sceneID="Qq8-z5-C0X">
@@ -1568,6 +1556,5 @@
         <segue reference="97h-NY-yOr"/>
         <segue reference="wdq-on-DYj"/>
         <segue reference="3zE-u9-Vfs"/>
-        <segue reference="8BH-OA-OYJ"/>
     </inferredMetricsTieBreakers>
 </document>
