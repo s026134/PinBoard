@@ -36,6 +36,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         LoadingScreen.instance.showLoader()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        
         channelCollectionView.collectionViewLayout = layout
         channelCollectionView.delegate = self
         channelCollectionView.dataSource = self
@@ -55,6 +57,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         refreshControl.addTarget(self, action: #selector(HomeScreenViewController.fetchPosts), for: .valueChanged)
         fetchPosts()
         fetchFollowing()
+        
         
     }
 

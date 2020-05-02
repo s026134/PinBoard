@@ -31,7 +31,58 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
   //  let layOutPostCV = UICollectionViewFlowLayout()
    
-   
+    override func viewDidLoad() {
+        
+        //  layoutPostCV.scrollDirection = .horizontal
+        LoadingScreen.instance.showLoader()
+        countFollowing() {success in
+            if success{
+                
+                self.channelCV.collectionViewLayout = self.layoutTop
+                self.layoutTop.itemSize = CGSize(width: 66, height: 66)
+                self.layoutTop.scrollDirection = .horizontal
+                
+                let tableViewCell = self.channelTableView.dequeueReusableCell(withIdentifier: "tvCell") as! ChannelTVCell
+                
+                self.layoutPostCV.scrollDirection = .horizontal
+                
+                self.layoutPostCV.itemSize = CGSize(width: 130, height: 130)
+                // tableViewCell.channelCVPostsTV.delegate = self
+                //   tableViewCell.channelCVPostsTV.dataSource = self
+                tableViewCell.channelCVPostsTV.collectionViewLayout = self.layoutPostCV
+                
+                /*
+                 self.layoutPostCV.itemSize = CGSize(width: 10, height: 10)
+                 self.layoutPostCV.scrollDirection = .horizontal
+                 */
+                /*
+                 self.channelTableView.dataSource = self
+                 self.channelTableView.delegate = self
+                 */
+                self.channelTableView.reloadData()
+                
+                print("In viewdidload: \(self.count)")
+                
+                
+                self.channelTableView.rowHeight = 180
+                
+                super.viewDidLoad()
+            } else {
+                
+            }
+        }
+        
+        
+        
+        /*
+         countFollowing { (countToPass) -> () in
+         self.countFol = countToPass
+         self.collectionView(self.channelCV, numberOfItemsInSection: self.countFol)
+         }
+         */
+        // Do any additional setup after loading the view.
+    }
+
     func countFollowing(completion: @escaping (Bool) -> ()) {
         ref.child("users/\(self.uid!)").observe(.value){(snapshot) in
            let user = snapshot.value as? [String : AnyObject]
@@ -190,7 +241,7 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
                        }
                        
                    }
-            
+            LoadingScreen.instance.hideLoader()
               return cell2
           }
         else {
@@ -247,62 +298,11 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
             }
             
         }
-        
         return cell
     }
     
     
-    override func viewDidLoad() {
-      
-      //  layoutPostCV.scrollDirection = .horizontal
-        
-        countFollowing() {success in
-            if success{
-                
-                self.channelCV.collectionViewLayout = self.layoutTop
-                self.layoutTop.itemSize = CGSize(width: 66, height: 66)
-                self.layoutTop.scrollDirection = .horizontal
-                
-                let tableViewCell = self.channelTableView.dequeueReusableCell(withIdentifier: "tvCell") as! ChannelTVCell
-                
-                self.layoutPostCV.scrollDirection = .horizontal
-
-                self.layoutPostCV.itemSize = CGSize(width: 130, height: 130)
-               // tableViewCell.channelCVPostsTV.delegate = self
-            //   tableViewCell.channelCVPostsTV.dataSource = self
-                tableViewCell.channelCVPostsTV.collectionViewLayout = self.layoutPostCV
-               
-              /*
-                self.layoutPostCV.itemSize = CGSize(width: 10, height: 10)
-                self.layoutPostCV.scrollDirection = .horizontal
-              */
-            /*
-                self.channelTableView.dataSource = self
-                self.channelTableView.delegate = self
-              */
-                self.channelTableView.reloadData()
-                
-                print("In viewdidload: \(self.count)")
-               
-              
-                self.channelTableView.rowHeight = 180
-                
-                super.viewDidLoad()
-            } else {
-                
-            }
-        }
-
-
-
-      /*
-        countFollowing { (countToPass) -> () in
-            self.countFol = countToPass
-            self.collectionView(self.channelCV, numberOfItemsInSection: self.countFol)
-        }
-        */
-        // Do any additional setup after loading the view.
-    }
+    
     
     
     

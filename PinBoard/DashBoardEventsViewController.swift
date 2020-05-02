@@ -59,7 +59,7 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         
         let monthString = monthFormatter.string(from: currentDateTime)
         
-        let dayString = dayFormatter.string(from: currentDateTime)
+        var dayString = dayFormatter.string(from: currentDateTime)
         
         month = "\(monthsNumber[Int(monthString)!]!)"
         
@@ -67,6 +67,12 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         label1.dayLabell = "\(Int(dayString)!)"
         label1.monthLabell = month
         weeklylabels.append(label1)
+        
+        //when you reach the end of the month
+        if (Int(dayString)! + 1) > daysInMonth[month]!{
+            dayString = "0"
+            month = "\(monthsNumber[Int(monthString)! + 1]!)"
+        }
         
         for i in (Int(dayString)! + 1) ... daysInMonth[month]!{
             let label2 = weeklyLabels()
@@ -186,6 +192,8 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         
         cell.layer.cornerRadius = 10
         cell.backgroundColor = .white
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = CGColor.init(srgbRed: 0, green: 0, blue: 0, alpha: 0.2)
         cell.dayLabel.text = weeklylabels[indexPath.row].dayLabell
         cell.monthLabel.text = weeklylabels[indexPath.row].monthLabell
         LoadingScreen.instance.hideLoader()
@@ -197,9 +205,9 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         
         let cell = weeklySidebar.cellForItem(at: indexPath) as! dayCell
         
-        cell.backgroundColor = blue
-        cell.dayLabel.textColor = coral
-        cell.monthLabel.textColor = coral
+        cell.backgroundColor = blue.withAlphaComponent(1.0)
+        cell.dayLabel.textColor = .white
+        cell.monthLabel.textColor = .white
         
         if let day = cell.dayLabel.text{
             selectedDay = day
@@ -245,10 +253,10 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = eventTableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
         
-        cell.backgroundColor = lightBlue
-        cell.layer.borderColor = UIColor.white.cgColor
+        cell.backgroundColor = .white
+        cell.layer.borderColor = coral.cgColor
         cell.layer.cornerRadius = 10
-        cell.layer.borderWidth = 3
+        cell.layer.borderWidth = 2
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH:mm"

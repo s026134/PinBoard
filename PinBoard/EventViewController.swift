@@ -31,6 +31,7 @@ class EventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         LoadingScreen.instance.showLoader()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         if fromDashboard != nil{
             ref.child("All Posts/\(uid!)/\(fromDashboard!)").observe(.value){(snapshot) in
                 let elements = snapshot.value as? [String: Any]

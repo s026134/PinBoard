@@ -24,15 +24,37 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     
     var picker = UIImagePickerController()
     var datePicker : UIDatePicker?
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var loadingLabel: UILabel!
     var channelsToSendTo = [String]()
+    
+    let mintGreen = UIColor.init(red: 159/255, green: 216/255, blue: 138/255, alpha: 1)
+    
+    let blue = UIColor.init(red: 28/255, green: 53/255, blue: 130/255, alpha: 1)
+    
+    let coral = UIColor.init(red: 229/255, green: 88/255, blue: 93/255, alpha: 1)
+    
+    let lightBlue = UIColor.init(red: 170/255, green: 223/255, blue: 227/255, alpha: 1)
     
     @IBOutlet weak var selectChannelsButton: UIButton!
     @IBOutlet weak var selectChannelsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        eventTitle.layer.cornerRadius = eventTitle.frame.size.height/2
+        eventTitle.layer.borderWidth = 2.0
+        eventTitle.layer.borderColor = blue.cgColor
+        eventTitle.layer.masksToBounds = true
+        
+        inputDate.layer.cornerRadius = eventTitle.frame.size.height/2
+        inputDate.layer.borderWidth = 2.0
+        inputDate.layer.borderColor = blue.cgColor
+        inputDate.layer.masksToBounds = true
+        
+        location.layer.cornerRadius = eventTitle.frame.size.height/2
+        location.layer.borderWidth = 2.0
+        location.layer.borderColor = blue.cgColor
+        location.layer.masksToBounds = true
+        
         
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .dateAndTime
@@ -49,10 +71,12 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
             postButton.isHidden = false
         }
         
-        
-        activityIndicator.hidesWhenStopped = true
+     
         selectChannelsLabel.text = " "
+        removeValues()
         retreiveSelectedChannels()
+    
+        
     }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer){
@@ -111,10 +135,14 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
+    func removeValues() {
+        let uid = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference()
+        ref.child("users/\(uid!)/ChannelsToPostOn").removeValue()
+    }
+    
     @IBAction func postPressed(_ sender: UIButton) {
-//        activityIndicator.startAnimating()
         LoadingScreen.instance.showLoader()
-        loadingLabel.isHidden = false
         
         let storage = Storage.storage().reference(forURL: "gs://pinboard-c2ef5.appspot.com")
         let uid = Auth.auth().currentUser?.uid
@@ -128,8 +156,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
             
             if error != nil{
                 print(error!.localizedDescription)
-                self.activityIndicator.stopAnimating()
-                self.loadingLabel.isHidden = true
+                LoadingScreen.instance.hideLoader()
                 return
             }
             
@@ -150,7 +177,6 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
                     ref.child("users/\(uid!)/ChannelsToPostOn").removeValue()
                     
                     LoadingScreen.instance.hideLoader()
-//                    self.activityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "Nav", sender: self)
                     
                 }

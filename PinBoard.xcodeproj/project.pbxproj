@@ -26,6 +26,7 @@
 		A04123D72455FF050023982B /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04123D62455FF050023982B /* UIImage+Gif.swift */; };
 		A04123D92455FF140023982B /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04123D82455FF140023982B /* LoadingScreen.swift */; };
 		A04123DB2455FF850023982B /* pin-animation-final.gif in Resources */ = {isa = PBXBuildFile; fileRef = A04123DA2455FF850023982B /* pin-animation-final.gif */; };
+		A04123DF245DA0720023982B /* channelTagsPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04123DE245DA0720023982B /* channelTagsPosting.swift */; };
 		A0DEA25123FD64CA00EAE1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */; };
 		A0DEA25323FD64CA00EAE1D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */; };
 		A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25423FD64CA00EAE1D9 /* ViewController.swift */; };
@@ -35,7 +36,6 @@
 		A0DEA26823FD64D200EAE1D9 /* PinBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA26723FD64D200EAE1D9 /* PinBoardTests.swift */; };
 		A0DEA27323FD64D200EAE1D9 /* PinBoardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA27223FD64D200EAE1D9 /* PinBoardUITests.swift */; };
 		A0DEA2832404B88000EAE1D9 /* DashBoardEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA2822404B88000EAE1D9 /* DashBoardEventsViewController.swift */; };
-		A0DEA2852404B8B400EAE1D9 /* CreateEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA2842404B8B400EAE1D9 /* CreateEventsViewController.swift */; };
 		A0DEA2CD2406B3F800EAE1D9 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DEA2CC2406B3F800EAE1D9 /* WebKit.framework */; };
 		DF12C0A72437F8E0004114FB /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF12C0A62437F8E0004114FB /* ChannelsViewController.swift */; };
 		DF12C0A9243A3018004114FB /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF12C0A8243A3017004114FB /* ChannelCell.swift */; };
@@ -85,6 +85,7 @@
 		A04123D62455FF050023982B /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		A04123D82455FF140023982B /* LoadingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		A04123DA2455FF850023982B /* pin-animation-final.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "pin-animation-final.gif"; sourceTree = "<group>"; };
+		A04123DE245DA0720023982B /* channelTagsPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = channelTagsPosting.swift; sourceTree = "<group>"; };
 		A0DEA24D23FD64CA00EAE1D9 /* PinBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,7 +101,6 @@
 		A0DEA27223FD64D200EAE1D9 /* PinBoardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinBoardUITests.swift; sourceTree = "<group>"; };
 		A0DEA27423FD64D200EAE1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0DEA2822404B88000EAE1D9 /* DashBoardEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardEventsViewController.swift; sourceTree = "<group>"; };
-		A0DEA2842404B8B400EAE1D9 /* CreateEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventsViewController.swift; sourceTree = "<group>"; };
 		A0DEA2CC2406B3F800EAE1D9 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C78A6263B16AA98D1A311A87 /* Pods-PinBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinBoard.debug.xcconfig"; path = "Target Support Files/Pods-PinBoard/Pods-PinBoard.debug.xcconfig"; sourceTree = "<group>"; };
 		DF12C0A62437F8E0004114FB /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
@@ -189,7 +189,6 @@
 				DF8462912403777100F50205 /* HomeScreenViewController.swift */,
 				DF8462932403788400F50205 /* PostScreenViewController.swift */,
 				A0DEA2822404B88000EAE1D9 /* DashBoardEventsViewController.swift */,
-				A0DEA2842404B8B400EAE1D9 /* CreateEventsViewController.swift */,
 				A03158C724149CD6000CFF41 /* LogINViewController.swift */,
 				A03158CB2414A494000CFF41 /* UsersViewController.swift */,
 				A03158CD2414A719000CFF41 /* User.swift */,
@@ -206,6 +205,7 @@
 				A0408FB1245097DB0025A3AB /* ChannelFeedViewController.swift */,
 				DF12C0AA2450DA41004114FB /* ChannelTVCell.swift */,
 				DF12C0AC2450FBCE004114FB /* SimplePostCell.swift */,
+				A04123DE245DA0720023982B /* channelTagsPosting.swift */,
 			);
 			path = PinBoard;
 			sourceTree = "<group>";
@@ -418,7 +418,6 @@
 				A0408FAA243BF5FB0025A3AB /* EventViewController.swift in Sources */,
 				9ECE3D24240026F8004EDEFE /* PreferencesViewController.swift in Sources */,
 				A03158CC2414A494000CFF41 /* UsersViewController.swift in Sources */,
-				A0DEA2852404B8B400EAE1D9 /* CreateEventsViewController.swift in Sources */,
 				DF12C0A9243A3018004114FB /* ChannelCell.swift in Sources */,
 				A0408FB2245097DB0025A3AB /* ChannelFeedViewController.swift in Sources */,
 				A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */,
@@ -426,6 +425,7 @@
 				A0DEA2832404B88000EAE1D9 /* DashBoardEventsViewController.swift in Sources */,
 				DF12C0AD2450FBCE004114FB /* SimplePostCell.swift in Sources */,
 				DF8462942403788400F50205 /* PostScreenViewController.swift in Sources */,
+				A04123DF245DA0720023982B /* channelTagsPosting.swift in Sources */,
 				A0DEA25123FD64CA00EAE1D9 /* AppDelegate.swift in Sources */,
 				A03158C824149CD6000CFF41 /* LogINViewController.swift in Sources */,
 				9ECE3D22240026AF004EDEFE /* SignUpViewController.swift in Sources */,

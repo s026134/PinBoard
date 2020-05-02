@@ -36,7 +36,8 @@ class ChannelFeedViewController: UIViewController, UICollectionViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         channelNameLabel.text = name
