@@ -20,7 +20,11 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
     var events = [Post]()
     
     @IBOutlet weak var eventTableView: UITableView!
+    @IBOutlet weak var popUpView: UIView!
     
+    @IBOutlet weak var popUpTableView: UITableView!
+    @IBOutlet weak var popUpButton: UIButton!
+    @IBOutlet weak var popUpLabel: UILabel!
     let mintGreen = UIColor.init(red: 159/255, green: 216/255, blue: 138/255, alpha: 1)
     
     let blue = UIColor.init(red: 28/255, green: 53/255, blue: 130/255, alpha: 1)
@@ -42,6 +46,11 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
     let ref = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
     
+    var sortedFutureEventDates = [Post]()
+    var sortedPastEventDates = [Post]()
+    //false is past, true is future
+    var pasFut = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         LoadingScreen.instance.showLoader()
@@ -53,6 +62,11 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         
         eventTableView.delegate = self
         eventTableView.dataSource = self
+        popUpTableView.delegate = self
+        popUpTableView.dataSource = self
+        
+        popUpView.layer.cornerRadius = 20
+        popUpTableView.backgroundColor = blue
         
         monthFormatter.dateFormat = "MM"
         dayFormatter.dateFormat = "dd"
@@ -180,6 +194,28 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
+    @IBAction func pastEventsPressed(_ sender: UIButton) {
+        popUpView.isHidden = false
+        popUpLabel.text = "Past Events"
+        pasFut = false
+        popUpView.isUserInteractionEnabled = true
+        popUpTableView.reloadData()
+    }
+    @IBAction func futureEventsPressed(_ sender: UIButton) {
+        popUpView.isHidden = false
+        pasFut = true
+        popUpLabel.text = "Future Events"
+        popUpView.isUserInteractionEnabled = true
+        popUpTableView.reloadData()
+    }
+    
+    @IBAction func popUpButtonxPressed(_ sender: UIButton) {
+        popUpView.isHidden = true
+        popUpView.isUserInteractionEnabled = false
+        sortedPastEventDates.removeAll()
+        sortedFutureEventDates.removeAll()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return 14
@@ -246,53 +282,124 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = 0
-        if self.events.count > 0 {
+        if tableView == eventTableView{
+            var count = 0
+            if self.events.count > 0 {
+                for i in 0...(events.count-1){
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+                    let date = dateFormatter.date(from: events[i].eventDate as! String)
+                    
+                    
+                    if let dat = date{
+                        if selectedDay == "\(Int(dayFormatter.string(from: dat))!)" && selectedMonth == "\(monthsNumber[Int(monthFormatter.string(from: dat))!]!)"{
+                            count += 1
+                        }
+                    }
+                }
+            }
+            return count
+        }
+            
+        else{
+            if self.events.count > 0 {
+                
+                //sorting dates
+                for i in 0...(events.count-1){
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+                    let monthFormatter = DateFormatter()
+                    monthFormatter.dateFormat = "MM"
+                    let dayFormatter = DateFormatter()
+                    dayFormatter.dateFormat = "dd"
+                    let yearFormatter = DateFormatter()
+                    yearFormatter.dateFormat = "yyyy"
+                    
+                    
+                    if Int(yearFormatter.string(from: currentDateTime))! < Int(yearFormatter.string(from: dateFormatter.date(from: events[i].eventDate as! String)!))!{
+                        sortedFutureEventDates.append(events[i])
+                    }
+                    else if Int(yearFormatter.string(from: currentDateTime))! > Int(yearFormatter.string(from: dateFormatter.date(from: events[i].eventDate as! String)!))!{
+                        sortedPastEventDates.append(events[i])
+                    }
+                    else{
+                        if Int(monthFormatter.string(from: currentDateTime))! < Int(monthFormatter.string(from: dateFormatter.date(from: events[i].eventDate as! String)!))!{
+                            sortedFutureEventDates.append(events[i])
+                        }
+                        else if Int(monthFormatter.string(from: currentDateTime))! > Int(monthFormatter.string(from: dateFormatter.date(from: events[i].eventDate as! String)!))!{
+                            sortedPastEventDates.append(events[i])
+                        }
+                        else{
+                            if Int(dayFormatter.string(from: currentDateTime))! < Int(dayFormatter.string(from: dateFormatter.date(from: events[i].eventDate as! String)!))!{
+                                sortedFutureEventDates.append(events[i])
+                            }
+                            else if Int(dayFormatter.string(from: currentDateTime))! > Int(dayFormatter.string(from: dateFormatter.date(from: events[i].eventDate as! String)!))!{
+                                sortedPastEventDates.append(events[i])
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                }
+                if pasFut == true{
+                    return sortedFutureEventDates.count
+                }
+                else{
+                    return sortedPastEventDates.count
+                }
+            }
+            return 0
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if tableView == eventTableView{
+            let cell = eventTableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
+            
+            cell.backgroundColor = .white
+            cell.layer.borderColor = coral.cgColor
+            cell.layer.cornerRadius = 10
+            cell.layer.borderWidth = 2
+            
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm"
+            
             for i in 0...(events.count-1){
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
                 let date = dateFormatter.date(from: events[i].eventDate as! String)
                 
-                
                 if let dat = date{
-                    if selectedDay == "\(Int(dayFormatter.string(from: dat))!)" && selectedMonth == "\(monthsNumber[Int(monthFormatter.string(from: dat))!]!)"{
-                        count += 1
+                    
+                    if selectedDay == "\(Int(dayFormatter.string(from: dat))!)"{
+                        cell.eventTitleLabel.text = events[i].eventTitle as? String
+                        cell.timeLabel.text = timeFormatter.string(from: dat)
+                        cell.locationLabel.text = events[i].location as? String
                     }
+                    
                 }
             }
-        }
-        return count
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = eventTableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
-        
-        cell.backgroundColor = .white
-        cell.layer.borderColor = coral.cgColor
-        cell.layer.cornerRadius = 10
-        cell.layer.borderWidth = 2
-        
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm"
-    
-        for i in 0...(events.count-1){
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
-            let date = dateFormatter.date(from: events[i].eventDate as! String)
             
-            if let dat = date{
-                
-                if selectedDay == "\(Int(dayFormatter.string(from: dat))!)"{
-                    cell.eventTitleLabel.text = events[i].eventTitle as? String
-                    cell.timeLabel.text = timeFormatter.string(from: dat)
-                    cell.locationLabel.text = events[i].location as? String
-                }
-                
-            }
+            return cell
         }
-
-        return cell
+            
+        else{
+            let cell = popUpTableView.dequeueReusableCell(withIdentifier: "popUpEventCell", for: indexPath) as! popUpEventCell
+            
+            if pasFut == true{
+                cell.eventTitleLabel.text = sortedFutureEventDates[indexPath.row].eventTitle as? String
+                cell.dateTimeLabel.text = sortedFutureEventDates[indexPath.row].eventDate as? String
+            }
+            else{
+                cell.eventTitleLabel.text = sortedPastEventDates[indexPath.row].eventTitle as? String
+                cell.dateTimeLabel.text = sortedPastEventDates[indexPath.row].eventDate as? String
+            }
+            
+            return cell
+        }
     }
     
     
@@ -310,10 +417,19 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = eventTableView.cellForRow(at: indexPath) as! eventCell
-        selectedEvent = cell.eventTitleLabel.text!
-        
+        if tableView == eventTableView{
+            let cell = eventTableView.cellForRow(at: indexPath) as! eventCell
+            selectedEvent = cell.eventTitleLabel.text!
+            
+        }
+            
+        else{
+            let cell = popUpTableView.cellForRow(at: indexPath) as! popUpEventCell
+            selectedEvent = cell.eventTitleLabel.text!
+            
+        }
         self.performSegue(withIdentifier: "moreDeat", sender: self)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -335,5 +451,7 @@ class weeklyLabels : UIViewController{
         
     }
 }
+
+
 
 

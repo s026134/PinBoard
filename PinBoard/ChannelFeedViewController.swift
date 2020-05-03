@@ -43,7 +43,7 @@ class ChannelFeedViewController: UIViewController, UICollectionViewDataSource, U
         channelNameLabel.text = name
         
         collectionView.collectionViewLayout = layout
-        layout.itemSize = CGSize(width: 200, height:  200)
+        layout.itemSize = CGSize(width: 414, height:  494)
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 10
@@ -149,6 +149,7 @@ class ChannelFeedViewController: UIViewController, UICollectionViewDataSource, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
         
         if indexPath.row < posts.count{
+            print(posts[indexPath.row].userName)
             cell.userPostedLabel.text = posts[indexPath.row].userName as? String
             cell.attendingLabel.text = "\(posts[indexPath.row].attending as! Int)"
             cell.dateLabel.text = posts[indexPath.row].eventDate as? String

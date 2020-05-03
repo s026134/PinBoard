@@ -14,7 +14,7 @@ class EventViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var location: UILabel!
-    @IBOutlet weak var descrip: UILabel!
+    @IBOutlet weak var descrip: UITextView!
     @IBOutlet weak var attendLabel: UILabel!
     @IBOutlet weak var imAge: UIImageView!
     var eventTitle : String!
@@ -27,10 +27,14 @@ class EventViewController: UIViewController {
     let uid = Auth.auth().currentUser?.uid
     let ref = Database.database().reference()
     
+    @IBOutlet weak var viewOpac: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         LoadingScreen.instance.showLoader()
+        
+        let blue = UIColor.init(red: 28/255, green: 53/255, blue: 130/255, alpha: 0.2)
+        viewOpac.backgroundColor = blue
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         if fromDashboard != nil{
             ref.child("All Posts/\(uid!)/\(fromDashboard!)").observe(.value){(snapshot) in
@@ -87,17 +91,7 @@ class EventViewController: UIViewController {
                 self.attendLabel.text = "1"
                 key.setValue(1)
             }
-            
-//            if attend == 0{
-//                self.attendLabel.text = "1"
-//                key.setValue(1)
-//            }
-//            else{
-//                if let att = attend{
-//                    key.setValue(att + 1)
-//                    self.attendLabel.text = "\(att + 1)"
-//                }
-//            }
+
         }
         
     }
