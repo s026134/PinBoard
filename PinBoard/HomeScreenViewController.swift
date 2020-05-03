@@ -184,21 +184,6 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
-    //the bar button doesn't work
-    @IBAction func loggedOutPressed(_ sender: UIBarButtonItem) {
-//        try! Auth.auth().signOut()
-         print("hello")
-        do{
-            try Auth.auth().signOut()
-//            let defaults = UserDefaults.standard
-//            defaults.set(false, forKey: "isUserSignedIn")
-            self.dismiss(animated: true, completion: nil)
-        }catch let signOutError{
-            print(signOutError.localizedDescription)
-        }
-//        self.performSegue(withIdentifier: "backToMain", sender: self)
-
-    }
     /* I put a sign out button in the user profile because the home screen's getting a little crowded
     @IBAction func signOutPressed(_ sender: UIButton) {
         do{

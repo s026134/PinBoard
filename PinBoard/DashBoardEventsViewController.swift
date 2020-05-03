@@ -176,6 +176,7 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
             }
             
             self.eventTableView.reloadData()
+            self.weeklySidebar.reloadData()
         }
     }
     
@@ -196,6 +197,20 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
         cell.layer.borderColor = CGColor.init(srgbRed: 0, green: 0, blue: 0, alpha: 0.2)
         cell.dayLabel.text = weeklylabels[indexPath.row].dayLabell
         cell.monthLabel.text = weeklylabels[indexPath.row].monthLabell
+        
+        for i in events{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+            let date = dateFormatter.date(from: i.eventDate as! String)
+            
+            
+            if let dat = date{
+                if cell.dayLabel.text == "\(Int(dayFormatter.string(from: dat))!)" && cell.monthLabel.text == "\(monthsNumber[Int(monthFormatter.string(from: dat))!]!)"{
+                    cell.eventIndicator.isHidden = false
+                }
+            }
+        }
+        
         LoadingScreen.instance.hideLoader()
         return cell
         
@@ -271,6 +286,7 @@ class DashBoardEventsViewController: UIViewController, UICollectionViewDelegate,
                 if selectedDay == "\(Int(dayFormatter.string(from: dat))!)"{
                     cell.eventTitleLabel.text = events[i].eventTitle as? String
                     cell.timeLabel.text = timeFormatter.string(from: dat)
+                    cell.locationLabel.text = events[i].location as? String
                 }
                 
             }

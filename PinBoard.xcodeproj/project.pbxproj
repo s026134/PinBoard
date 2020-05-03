@@ -26,7 +26,6 @@
 		A04123D72455FF050023982B /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04123D62455FF050023982B /* UIImage+Gif.swift */; };
 		A04123D92455FF140023982B /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04123D82455FF140023982B /* LoadingScreen.swift */; };
 		A04123DB2455FF850023982B /* pin-animation-final.gif in Resources */ = {isa = PBXBuildFile; fileRef = A04123DA2455FF850023982B /* pin-animation-final.gif */; };
-		A04123DF245DA0720023982B /* channelTagsPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04123DE245DA0720023982B /* channelTagsPosting.swift */; };
 		A0DEA25123FD64CA00EAE1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */; };
 		A0DEA25323FD64CA00EAE1D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */; };
 		A0DEA25523FD64CA00EAE1D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DEA25423FD64CA00EAE1D9 /* ViewController.swift */; };
@@ -85,7 +84,6 @@
 		A04123D62455FF050023982B /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		A04123D82455FF140023982B /* LoadingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		A04123DA2455FF850023982B /* pin-animation-final.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "pin-animation-final.gif"; sourceTree = "<group>"; };
-		A04123DE245DA0720023982B /* channelTagsPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = channelTagsPosting.swift; sourceTree = "<group>"; };
 		A0DEA24D23FD64CA00EAE1D9 /* PinBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DEA25023FD64CA00EAE1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0DEA25223FD64CA00EAE1D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 				A0408FB1245097DB0025A3AB /* ChannelFeedViewController.swift */,
 				DF12C0AA2450DA41004114FB /* ChannelTVCell.swift */,
 				DF12C0AC2450FBCE004114FB /* SimplePostCell.swift */,
-				A04123DE245DA0720023982B /* channelTagsPosting.swift */,
 			);
 			path = PinBoard;
 			sourceTree = "<group>";
@@ -425,7 +422,6 @@
 				A0DEA2832404B88000EAE1D9 /* DashBoardEventsViewController.swift in Sources */,
 				DF12C0AD2450FBCE004114FB /* SimplePostCell.swift in Sources */,
 				DF8462942403788400F50205 /* PostScreenViewController.swift in Sources */,
-				A04123DF245DA0720023982B /* channelTagsPosting.swift in Sources */,
 				A0DEA25123FD64CA00EAE1D9 /* AppDelegate.swift in Sources */,
 				A03158C824149CD6000CFF41 /* LogINViewController.swift in Sources */,
 				9ECE3D22240026AF004EDEFE /* SignUpViewController.swift in Sources */,

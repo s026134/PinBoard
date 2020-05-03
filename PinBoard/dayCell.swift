@@ -13,5 +13,6 @@ class dayCell: UICollectionViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     
+    @IBOutlet weak var eventIndicator: UIImageView!
     
 }
