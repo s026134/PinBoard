@@ -65,32 +65,40 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
         cell.image.image = theImage
         
         cell.layer.cornerRadius = 5
-        cell.backgroundColor = grayBlue
         
+        if subscribed.contains(indexPath.item) {
+            cell.label.textColor = grayBlue
+            cell.backgroundColor = darkBlue
+        }
+        else {
+            cell.label.textColor = darkBlue
+            cell.backgroundColor = grayBlue
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
         let cell3 = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
-        cell3.backgroundColor = grayBlue
-        
-        
-        
+      
         if subscribed.contains(indexPath.item) {
-            let index = subscribed.firstIndex { (Int) -> Bool in
-                if Int == indexPath.item {
-                    return true
-                }
-                else {
-                    return false
+            print(indexPath.item)
+            
+            cell3.label.textColor = grayBlue
+            cell3.backgroundColor = darkBlue
+            
+            let number = indexPath.item
+            var index: Int
+            for i in 0 ..< subscribed.count {
+                if number == subscribed[i] {
+                    index = i
+                    subscribed.remove(at: index)
+                    cell3.label.textColor = darkBlue
+                    cell3.backgroundColor = grayBlue
                 }
             }
-          //  print(index)
-            if let num = index {
-                subscribed.remove(at: num)
-                cell3.label.textColor = darkBlue
-            }
+            
+          
         }
         else {
             subscribed.append(indexPath.item)
@@ -100,17 +108,7 @@ class PreferencesViewController: UIViewController, UICollectionViewDataSource, U
             
         }
         print(subscribed)
-        /*
-         I commented this out, wasn't sure what it did - claire
-        if let index = userTags.firstIndex(of: indexPath.item){
-            userTags.remove(at: index)
-            cell?.contentView.backgroundColor = #colorLiteral(red: 0.5787474513, green: 0.3215198815, blue: 0, alpha: 1)
-        }
-        else{
-            userTags.insert(indexPath.item)
-        }
-        print(userTags)
-    */
+       
     }
     
 }

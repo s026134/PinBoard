@@ -1415,11 +1415,11 @@
             </objects>
             <point key="canvasLocation" x="-2190" y="2022"/>
         </scene>
-        <!--Explore-->
+        <!--yourChannels-->
         <scene sceneID="RSa-l6-zW5">
             <objects>
                 <navigationController id="kBT-fx-jMB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Explore" image="magnifyingglass" catalog="system" id="5ag-en-RgW"/>
+                    <tabBarItem key="tabBarItem" title="yourChannels" image="magnifyingglass" catalog="system" id="5ag-en-RgW"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Wh-ic-dBB">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1438,7 +1438,7 @@
             </objects>
             <point key="canvasLocation" x="-1339" y="2022"/>
         </scene>
-        <!--exploreMore-->
+        <!--yourChannels-->
         <scene sceneID="v1T-eU-Mvy">
             <objects>
                 <viewController id="IrW-Cf-0d3" customClass="ChannelsViewController" customModule="PinBoard" customModuleProvider="target" sceneMemberID="viewController">
@@ -1491,7 +1491,7 @@
                                                                             <constraint firstAttribute="width" constant="130" id="JUf-b4-b9r"/>
                                                                             <constraint firstAttribute="height" constant="15" id="R9E-Md-RBm"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.13817482889999999" blue="0.33674173000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -1517,9 +1517,9 @@
                                                     </connections>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qN2-3y-tVI">
-                                                    <rect key="frame" x="20" y="11" width="332" height="20"/>
+                                                    <rect key="frame" x="20" y="7" width="332" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="26"/>
                                                     <color key="textColor" red="0.0" green="0.13817482889999999" blue="0.33674173000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1582,10 +1582,10 @@
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="qhF-kj-Sdv"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Explore" image="magnifyingglass" catalog="system" id="xJa-bu-o0P">
+                    <tabBarItem key="tabBarItem" title="Your Channels" image="magnifyingglass" catalog="system" id="xJa-bu-o0P">
                         <color key="badgeColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="exploreMore" id="Q1X-z2-j9k"/>
+                    <navigationItem key="navigationItem" title="yourChannels" id="Q1X-z2-j9k"/>
                     <connections>
                         <outlet property="channelCV" destination="nZc-5y-etF" id="gRd-fn-Aqh"/>
                         <outlet property="channelTableView" destination="hLz-D2-GOc" id="PAt-TX-NUK"/>
@@ -1821,7 +1821,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="URR-Vp-7K2"/>
-        <segue reference="JAf-qy-Aqm"/>
+        <segue reference="7pi-jX-STf"/>
         <segue reference="yQp-6S-5bQ"/>
     </inferredMetricsTieBreakers>
 </document>
