@@ -32,7 +32,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     let ref = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
     var channFollowing = [User]()
-    
+    let channelsArr = ["Gaming", "Music", "Math", "Science", "Sports", "Reading", "Computer Science", "TV", "Food", "MISC"]
     override func viewDidLoad() {
         super.viewDidLoad()
         LoadingScreen.instance.showLoader()
@@ -62,7 +62,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     }
 
     
-    func fetchFollowing(){
+    @objc func fetchFollowing(){
         
         ref.child("users/\(uid!)/following").observe(.value){(snapshot) in
             let following = snapshot.value as? [String]
@@ -94,11 +94,98 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
                 
             }
             self.channelCollectionView.reloadData()
+           
         }
-        
+       //  print(self.channFollowing)
     }
     
     @objc func fetchPosts (){
+        // my stuff
+        print("heeloo \(channFollowing)")
+        for channel in channelsArr {
+           // let channel = i.channelName
+            
+            ref.child("All Posts/\(channel)").observe(.value){(snapshot) in
+                let allPosts = snapshot.value as? [String : AnyObject]
+                var posty : Post?
+                
+                if let allThePosts = allPosts{
+                    for(postName, post) in allThePosts{
+                        for i in self.posts{
+                            if i.eventTitle as! String == postName as! String{
+                                posty = i
+                            }
+                        }
+                        if posty != nil{
+                            if let pos = posty{
+                                for (category, element) in post as! [String: AnyObject]{
+                                    if category == "pathToImage" {
+                                        pos.pathToimage = element
+                                    }
+                                    else if category == "eventDate"{
+                                        pos.eventDate = element
+                                    }
+                                    else if category == "attending"{
+                                        pos.attending = element
+                                    }
+                                    else if category == "description"{
+                                        pos.Descrip = element
+                                    }
+                                    else if category == "eventTitle"{
+                                        pos.eventTitle = element
+                                    }
+                                    else if category == "userID"{
+                                        pos.userID = element
+                                    }
+                                    else if category == "location"{
+                                        pos.location = element
+                                    }
+                                    else if category == "userName"{
+                                        pos.userName = element
+                                    }
+                                }
+                            }
+                        }
+                            
+                        else{
+                            self.posts.append(Post())
+                            if let pos = self.posts.last{
+                                for (category, element) in post as! [String: AnyObject]{
+                                    if category == "pathToImage" {
+                                        pos.pathToimage = element
+                                    }
+                                    else if category == "eventDate"{
+                                        pos.eventDate = element
+                                    }
+                                    else if category == "attending"{
+                                        pos.attending = element
+                                    }
+                                    else if category == "description"{
+                                        pos.Descrip = element
+                                    }
+                                    else if category == "eventTitle"{
+                                        pos.eventTitle = element
+                                    }
+                                    else if category == "userID"{
+                                        pos.userID = element
+                                    }
+                                    else if category == "location"{
+                                        pos.location = element
+                                    }
+                                    else if category == "userName"{
+                                        pos.userName = element
+                                    }
+                                }
+                            }
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+        // my stuff ends
+       /*
         let uid = Auth.auth().currentUser?.uid
         ref.child("All Posts/\(uid!)").observe(.value){(snapshot) in
             let allPosts = snapshot.value as? [String : AnyObject]
@@ -177,6 +264,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
                 }
                 
             }
+            */
             
             self.refreshControl.endRefreshing()
             self.collectionView.reloadData()
