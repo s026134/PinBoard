@@ -1419,7 +1419,7 @@
         <scene sceneID="RSa-l6-zW5">
             <objects>
                 <navigationController id="kBT-fx-jMB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Your Channels" image="your_Posts" id="5ag-en-RgW"/>
+                    <tabBarItem key="tabBarItem" title="Your Channels" image="Posts" id="5ag-en-RgW"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Wh-ic-dBB">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1582,7 +1582,7 @@
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="qhF-kj-Sdv"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Your Channels" image="your_Posts" id="xJa-bu-o0P">
+                    <tabBarItem key="tabBarItem" title="Your Channels" image="Posts" id="xJa-bu-o0P">
                         <color key="badgeColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="yourChannels" id="Q1X-z2-j9k"/>
@@ -1804,6 +1804,7 @@
     </scenes>
     <resources>
         <image name="Logo" width="582" height="544"/>
+        <image name="Posts" width="24" height="24"/>
         <image name="add1" width="24" height="24"/>
         <image name="calendar1" width="24" height="24"/>
         <image name="camera" catalog="system" width="64" height="48"/>
@@ -1817,7 +1818,6 @@
         <image name="pin_pic" width="119" height="162"/>
         <image name="plus" catalog="system" width="64" height="56"/>
         <image name="xmark.circle" catalog="system" width="64" height="60"/>
-        <image name="your_Posts" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="URR-Vp-7K2"/>
