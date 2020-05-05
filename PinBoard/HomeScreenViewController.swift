@@ -32,7 +32,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     let ref = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
     var channFollowing = [User]()
-    let channelsArr = ["Gaming", "Music", "Math", "Science", "Sports", "Reading", "Computer Science", "TV", "Food", "MISC"]
+    let channelsArr = ["Gaming", "Music", "Math", "Science", "Sports", "Reading", "Computer Science", "TV", "Food", "Miscellaneous"]
     override func viewDidLoad() {
         super.viewDidLoad()
         LoadingScreen.instance.showLoader()

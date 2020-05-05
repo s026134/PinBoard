@@ -1415,11 +1415,11 @@
             </objects>
             <point key="canvasLocation" x="-2190" y="2022"/>
         </scene>
-        <!--yourChannels-->
+        <!--Your Channels-->
         <scene sceneID="RSa-l6-zW5">
             <objects>
                 <navigationController id="kBT-fx-jMB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="yourChannels" image="magnifyingglass" catalog="system" id="5ag-en-RgW"/>
+                    <tabBarItem key="tabBarItem" title="Your Channels" image="your_Posts" id="5ag-en-RgW"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Wh-ic-dBB">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1517,7 +1517,7 @@
                                                     </connections>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qN2-3y-tVI">
-                                                    <rect key="frame" x="20" y="7" width="332" height="20"/>
+                                                    <rect key="frame" x="17" y="1" width="333" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="26"/>
                                                     <color key="textColor" red="0.0" green="0.13817482889999999" blue="0.33674173000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1582,7 +1582,7 @@
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="qhF-kj-Sdv"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Your Channels" image="magnifyingglass" catalog="system" id="xJa-bu-o0P">
+                    <tabBarItem key="tabBarItem" title="Your Channels" image="your_Posts" id="xJa-bu-o0P">
                         <color key="badgeColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="yourChannels" id="Q1X-z2-j9k"/>
@@ -1812,12 +1812,12 @@
         <image name="envelope" catalog="system" width="64" height="46"/>
         <image name="home" width="24" height="24"/>
         <image name="lock" catalog="system" width="64" height="64"/>
-        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="person.circle" catalog="system" width="64" height="60"/>
         <image name="person.crop.circle" catalog="system" width="64" height="60"/>
         <image name="pin_pic" width="119" height="162"/>
         <image name="plus" catalog="system" width="64" height="56"/>
         <image name="xmark.circle" catalog="system" width="64" height="60"/>
+        <image name="your_Posts" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="URR-Vp-7K2"/>
