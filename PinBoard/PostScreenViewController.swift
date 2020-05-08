@@ -19,6 +19,8 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var location: UITextField!
     @IBOutlet weak var Descrip: UITextView!
     @IBOutlet weak var previewImage: UIImageView!
+    
+    @IBOutlet weak var contactInfo: UITextField!
     @IBOutlet weak var postButton: UIButton!
     @IBOutlet weak var selectImage: UIButton!
     
@@ -58,6 +60,11 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
         location.layer.borderColor = blue.cgColor
         location.layer.masksToBounds = true
         
+        contactInfo.layer.cornerRadius = eventTitle.frame.size.height/2
+        contactInfo.layer.borderWidth = 2.0
+        contactInfo.layer.borderColor = blue.cgColor
+        contactInfo.layer.masksToBounds = true
+        
         postButton.layer.masksToBounds = true
         postButton.layer.cornerRadius = postButton.frame.size.height/2
         
@@ -95,7 +102,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
     
     @objc func dateChanged(datePicker: UIDatePicker){
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+        dateFormatter.dateFormat = "MM/dd/yyyy h:mm a"
         inputDate.text = dateFormatter.string(from: datePicker.date)
         
         
@@ -121,7 +128,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
                 self.selectChannelsLabel.isHidden = false
                 
                 var xcoordinate = 50
-                var ycoordinate = 870
+                var ycoordinate = 850
                 
                 for i in chan{
                     self.channelsToSendTo.append(i)
@@ -150,17 +157,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
                     self.postView.addSubview(self.tagz.last!.tagView)
                     self.postView.addSubview(self.tagz.last!.channelLabel)
                     
-                    
-//                    if i == chan.first{
-//                        self.selectChannelsLabel.text = i
-//                    }
-//                    else if i != chan.last!{
-//                    self.selectChannelsLabel.text = "\(self.selectChannelsLabel.text!)" + ", "
-//                    }
-//                    else{
-//                        self.selectChannelsLabel.text = "\(self.selectChannelsLabel.text!)" + i
-//                    }
-//
+
                 }
             }
             
@@ -212,7 +209,7 @@ class PostScreenViewController: UIViewController, UIImagePickerControllerDelegat
             
             imageRef.downloadURL(completion: {(url, error) in
                 if let url = url {
-                    let feed = ["userID" : uid!, "pathToImage" : url.absoluteString, "attending" : 0, "userName" : Auth.auth().currentUser?.email!, "eventTitle" : self.eventTitle.text!, "eventDate" : self.inputDate.text!, "location" : self.location.text!, "description": self.Descrip.text!] as [String : Any]
+                    let feed = ["userID" : uid!, "pathToImage" : url.absoluteString, "attending" : 0, "userName" : Auth.auth().currentUser?.email!, "eventTitle" : self.eventTitle.text!, "eventDate" : self.inputDate.text!, "location" : self.location.text!, "description": self.Descrip.text!, "contactInfo" : self.contactInfo.text!] as [String : Any]
                     
                     
                     

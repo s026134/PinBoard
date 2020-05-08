@@ -14,8 +14,8 @@ class LoadingScreen: UIView {
     
     static let lightBlue = UIColor.init(red: 170/255, green: 223/255, blue: 227/255, alpha: 1)
     
-    var viewColor : UIColor = LoadingScreen.lightBlue
-    var setAlpha: CGFloat = 0.5
+    var viewColor : UIColor = UIColor.init(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+    var setAlpha: CGFloat = 0.7
     var gifName: String = "pin-animation-final"
     
     lazy var transparentView:UIView = {

@@ -62,7 +62,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     }
 
     
-    @objc func fetchFollowing(){
+    func fetchFollowing(){
         
         ref.child("users/\(uid!)/following").observe(.value){(snapshot) in
             let following = snapshot.value as? [String]
@@ -101,7 +101,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
     
     @objc func fetchPosts (){
         // my stuff
-        print("heeloo \(channFollowing)")
+//        print("heeloo \(channFollowing)")
         for channel in channelsArr {
            // let channel = i.channelName
             
@@ -182,7 +182,8 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
                     }
                     
                 }
-                
+                self.refreshControl.endRefreshing()
+                self.collectionView.reloadData()
             }
         // my stuff ends
        /*
@@ -265,25 +266,10 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
                 
             }
             */
-            
-            self.refreshControl.endRefreshing()
-            self.collectionView.reloadData()
         }
         
     }
-    
-    /* I put a sign out button in the user profile because the home screen's getting a little crowded
-    @IBAction func signOutPressed(_ sender: UIButton) {
-        do{
-            try Auth.auth().signOut()
-            let defaults = UserDefaults.standard
-            defaults.set(false, forKey: "isUserSignedIn")
-            self.performSegue(withIdentifier: "toFirstNav", sender: self)
-        }catch let signOutError{
-            print(signOutError.localizedDescription)
-        }
-    }
- */
+  
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionView{

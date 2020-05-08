@@ -51,6 +51,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func donePressed(_ sender: UIButton) {
         for (row, TorF) in checkMarks {
             if TorF == true{
+                
                 channelsToSendTo.append(channFollowing[row].channelName)
             }
         }
@@ -115,10 +116,11 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChannCell", for: indexPath) as! UserCell
         cell.layer.cornerRadius = cell.contentView.frame.height / 2
-        cell.backgroundColor = lightBlue
+        cell.backgroundColor = blue
         cell.profImage.image = channFollowing[indexPath.row].imagePath
         cell.profImage.layer.cornerRadius = 48
         cell.channelNameLabel.text = channFollowing[indexPath.row].channelName
+        cell.channelNameLabel.textColor = .white
         
         
         if checkMarks[indexPath.row] != nil {

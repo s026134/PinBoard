@@ -18,26 +18,32 @@ class EventViewController: UIViewController {
     @IBOutlet weak var attendLabel: UILabel!
     @IBOutlet weak var imAge: UIImageView!
     var eventTitle : String!
+    @IBOutlet weak var contactInfoLabel: UILabel!
     var eventDate : String!
     var loc : String!
     var Descrip : String!
     var attending : String!
     var imageURL: String!
+    var contactInfo : String!
     var fromDashboard: String?
     let uid = Auth.auth().currentUser?.uid
     let ref = Database.database().reference()
+    var channFollowing = [User]()
     
     @IBOutlet weak var viewOpac: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         LoadingScreen.instance.showLoader()
+        descrip.isEditable = false
         
         let blue = UIColor.init(red: 28/255, green: 53/255, blue: 130/255, alpha: 0.2)
         viewOpac.backgroundColor = blue
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         if fromDashboard != nil{
-            ref.child("All Posts/\(uid!)/\(fromDashboard!)").observe(.value){(snapshot) in
+            fetchFollowing()
+            for i in channFollowing{
+                ref.child("All Posts/\(i.channelName!)/\(fromDashboard!)").observe(.value){(snapshot) in
                 let elements = snapshot.value as? [String: Any]
                 if let element = elements{
                     for (ele, val) in element{
@@ -56,11 +62,15 @@ class EventViewController: UIViewController {
                         else if ele == "location"{
                             self.location.text = val as? String
                         }
+                        else if ele == "contactInfo"{
+                            self.contactInfoLabel.text = val as? String
+                        }
                         else if ele == "pathToImage"{
                             self.imAge.downloadImage(from: val as? String)
                         }
                     }
                 }
+            }
             }
         }
         
@@ -70,6 +80,7 @@ class EventViewController: UIViewController {
             location.text = loc
             descrip.text = Descrip
             attendLabel.text = attending
+            contactInfoLabel.text = contactInfo
             imAge.downloadImage(from: imageURL)
         }
         
@@ -78,22 +89,89 @@ class EventViewController: UIViewController {
     }
     
     @IBAction func attendingPressed(_ sender: UIButton) {
-        let key = ref.child("All Posts/\(uid!)/\(titleLabel.text!)/attending")
-        
-        key.observeSingleEvent(of: .value){(snapshot) in
+        fetchFollowing()
+        for i in channFollowing{
+            let keyy = ref.child("All Posts/\(i.channelName!)/\(titleLabel.text!)")
+            keyy.observeSingleEvent(of: .value){(snapshot) in
+                let postQ = snapshot.value as? [String: Any]
+                if postQ != nil{
+                    let key = self.ref.child("All Posts/\(i.channelName!)/\(self.titleLabel.text!)/attending")
+                    key.observeSingleEvent(of: .value){(snapshot) in
+                        
+                        let attend = snapshot.value as? Int
+                        if let att = attend{
+                            print(att)
+                            print(i.channelName!)
+                            self.attendLabel.text = "\(att + 1)"
+                            key.setValue(att + 1)
+                            
+                            let thirdkey = self.ref.child("All Posts/\(self.uid!)/\(self.titleLabel.text!)")
+                            let keyz = self.ref.child("All Posts/\(i.channelName!)/\(self.titleLabel.text!)")
+                            keyz.observeSingleEvent(of: .value){(snapshot) in
+                                let poz = snapshot.value as? [String: Any]
+                                thirdkey.setValue(poz!)
+                            }
+                        }
+                        
+                        
+                    }
+                    
+                    let secondkey = self.ref.child("All Posts/\(postQ!["userID"]!)/\(self.titleLabel.text!)/attending")
+                    secondkey.observeSingleEvent(of: .value){(snapshot) in
+                        
+                        let attend = snapshot.value as? Int
+                        if let att = attend{
+                            print(att)
+                            secondkey.setValue(att + 1)
+                        }
+                        
+                    }
+                    
+                    
+                }
+                
+            }
             
-            let attend = snapshot.value as? Int
-            if let att = attend{
-                self.attendLabel.text = "\(att + 1)"
-                key.setValue(att + 1)
-            }
-            else{
-                self.attendLabel.text = "1"
-                key.setValue(1)
-            }
-
+            
+            
         }
         
+        
+    }
+    
+    func fetchFollowing(){
+        
+        ref.child("users/\(uid!)/following").observeSingleEvent(of: .value){(snapshot) in
+            let following = snapshot.value as? [String]
+            
+            var num : User?
+            let channelDict = ["gaming1" : "Gaming", "music1": "Music", "math1" : "Math", "sci1": "Science", "sports1": "Sports", "reading1" : "Reading", "comp1": "Computer Science", "tv1": "TV Shows", "food1": "Food", "mis1" : "Miscellaneous"]
+            
+            
+            if let follow = following{
+                for i in follow{
+                    if self.channFollowing.count > 0{
+                        for j in self.channFollowing{
+                            if j.channelName == i{
+                                num = j
+                                
+                            }
+                        }
+                    }
+                    if num == nil{
+                        self.channFollowing.append(User())
+                        if let som = self.channFollowing.last{
+                            som.channelName = channelDict[i]
+                            som.imagePath = UIImage(named: i)
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+        }
+        //  print(self.channFollowing)
     }
     
 }
