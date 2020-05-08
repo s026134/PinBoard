@@ -22,6 +22,7 @@ class PostCell: UICollectionViewCell {
     var channFollowing = [User]()
     let uid = Auth.auth().currentUser?.uid
     let ref = Database.database().reference()
+    var contactInfo : String!
 
     @IBAction func attendPressed(_ sender: UIButton) {
         

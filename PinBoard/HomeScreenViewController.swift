@@ -143,6 +143,9 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
                                     else if category == "userName"{
                                         pos.userName = element
                                     }
+                                    else if category == "contactInfo"{
+                                        pos.contactInfo = element
+                                    }
                                 }
                             }
                         }
@@ -174,6 +177,9 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
                                     }
                                     else if category == "userName"{
                                         pos.userName = element
+                                    }
+                                    else if category == "contactInfo"{
+                                        pos.contactInfo = element
                                     }
                                 }
                             }
@@ -342,6 +348,7 @@ class HomeScreenViewController: UIViewController, UICollectionViewDelegate, UICo
             nextViewController.Descrip = selectedCell.descriPLabel.text
             nextViewController.attending = selectedCell.attendingLabel.text
             nextViewController.imageURL = posts[selectedCellImage].pathToimage as? String
+            nextViewController.contactInfo = selectedCell.contactInfo
         }
         
         if let nextViewController = segue.destination as? ChannelFeedViewController{

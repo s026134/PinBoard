@@ -120,6 +120,8 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // initializing the top collection view for channels

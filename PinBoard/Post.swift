@@ -17,4 +17,5 @@ class Post: NSObject {
     var location: Any!
     var Descrip: Any!
     var eventDate: Any!
+    var contactInfo : Any!
 }

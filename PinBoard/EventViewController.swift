@@ -40,50 +40,7 @@ class EventViewController: UIViewController {
         let blue = UIColor.init(red: 28/255, green: 53/255, blue: 130/255, alpha: 0.2)
         viewOpac.backgroundColor = blue
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
-        if fromDashboard != nil{
-            fetchFollowing()
-            for i in channFollowing{
-                ref.child("All Posts/\(i.channelName!)/\(fromDashboard!)").observe(.value){(snapshot) in
-                let elements = snapshot.value as? [String: Any]
-                if let element = elements{
-                    for (ele, val) in element{
-                        if ele == "attending"{
-                            self.attendLabel.text = "\(val as! Int)"
-                        }
-                        else if ele == "description"{
-                            self.descrip.text = val as? String
-                        }
-                        else if ele == "eventDate"{
-                            self.dateLabel.text = val as? String
-                        }
-                        else if ele == "eventTitle"{
-                            self.titleLabel.text = val as? String
-                        }
-                        else if ele == "location"{
-                            self.location.text = val as? String
-                        }
-                        else if ele == "contactInfo"{
-                            self.contactInfoLabel.text = val as? String
-                        }
-                        else if ele == "pathToImage"{
-                            self.imAge.downloadImage(from: val as? String)
-                        }
-                    }
-                }
-            }
-            }
-        }
-        
-        else{
-            titleLabel.text = eventTitle
-            dateLabel.text = eventDate
-            location.text = loc
-            descrip.text = Descrip
-            attendLabel.text = attending
-            contactInfoLabel.text = contactInfo
-            imAge.downloadImage(from: imageURL)
-        }
-        
+        fetchEvent()
         LoadingScreen.instance.hideLoader()
         
     }
@@ -139,6 +96,53 @@ class EventViewController: UIViewController {
         
     }
     
+    func fetchEvent(){
+        if fromDashboard != nil{
+                ref.child("All Posts/\(uid!)/\(fromDashboard!)").observe(.value){(snapshot) in
+                    let elements = snapshot.value as? [String: Any]
+                    if let element = elements{
+                        for (ele, val) in element{
+                            if ele == "attending"{
+                                print(val)
+                                self.attendLabel.text = "\(val as! Int)"
+                            }
+                            else if ele == "description"{
+                                self.descrip.text = val as? String
+                            }
+                            else if ele == "eventDate"{
+                                self.dateLabel.text = val as? String
+                            }
+                            else if ele == "eventTitle"{
+                                self.titleLabel.text = val as? String
+                            }
+                            else if ele == "location"{
+                                self.location.text = val as? String
+                            }
+                            else if ele == "contactInfo"{
+                                self.contactInfoLabel.text = val as? String
+                            }
+                            else if ele == "pathToImage"{
+                                self.imAge.downloadImage(from: val as? String)
+                            }
+                            else if ele == "contactInfo"{
+                                self.contactInfoLabel.text = val as? String
+                            }
+                        }
+                    }
+            }
+        }
+            
+        else{
+            titleLabel.text = eventTitle
+            dateLabel.text = eventDate
+            location.text = loc
+            descrip.text = Descrip
+            attendLabel.text = attending
+            contactInfoLabel.text = contactInfo
+            imAge.downloadImage(from: imageURL)
+        }
+    }
+    
     func fetchFollowing(){
         
         ref.child("users/\(uid!)/following").observeSingleEvent(of: .value){(snapshot) in
@@ -173,6 +177,8 @@ class EventViewController: UIViewController {
         }
         //  print(self.channFollowing)
     }
+    
+    
     
 }
 

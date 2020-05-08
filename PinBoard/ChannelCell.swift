@@ -11,8 +11,6 @@ import UIKit
 class ChannelCell: UICollectionViewCell {
     
     @IBOutlet weak var profilePicSub: UIImageView!
-    
-
     /*
     // MARK: - Navigation
 
