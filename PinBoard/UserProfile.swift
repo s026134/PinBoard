@@ -36,6 +36,7 @@ class UserProfile: UIViewController {
     @IBOutlet weak var userName: UILabel!
     override func viewDidLoad() {
            super.viewDidLoad()
+        LoadingScreen.instance.showLoader()
           
         profilePic?.layer.cornerRadius = (profilePic?.frame.size.width ?? 0.0) / 2
           profilePic?.clipsToBounds = true
@@ -44,7 +45,13 @@ class UserProfile: UIViewController {
            fetchImage()
             fetchName()
            // Do any additional setup after loading the view.
+        
        }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if animated == true{ LoadingScreen.instance.hideLoader()
+        }
+    }
     
     @IBAction func signOutWasPressed(_ sender: UIButton) {
         do{

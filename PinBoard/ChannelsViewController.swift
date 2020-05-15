@@ -84,6 +84,12 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if animated == true{
+            LoadingScreen.instance.hideLoader()
+        }
+    }
+    
     func countFollowing(completion: @escaping (Bool) -> ()) {
         ref.child("users/\(self.uid!)").observe(.value){(snapshot) in
             let user = snapshot.value as? [String : AnyObject]
@@ -286,7 +292,6 @@ class ChannelsViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
                 
             }
-            LoadingScreen.instance.hideLoader()
             return cell2
         }
             
